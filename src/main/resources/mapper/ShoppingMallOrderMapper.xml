@@ -8,15 +8,16 @@
         <result column="status"   property="status" jdbcType="VARCHAR" />
         <result column="create_time" property="createTime" jdbcType="VARCHAR" />
         <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+        <result column="payment_type" property="paymentType" jdbcType="VARCHAR" />
         <result column="payment_time" property="paymentTime" jdbcType="VARCHAR" />
         <result column="consign_time" property="consignTime" jdbcType="VARCHAR" />
         <result column="end_time" property="endTime" jdbcType="VARCHAR" />
         <result column="close_time" property="closeTime" jdbcType="VARCHAR" />
         <result column="receiver_mobile" property="receiverMobile" jdbcType="VARCHAR" />
         <result column="receiver_area_name" property="receiverAreaName" jdbcType="VARCHAR" />
-        <result column="user_id" property="userId" jdbcType="INTEGER" />
-        <result column="user_name" property="userName" jdbcType="VARCHAR" />
-        
+        <result column="client_id" property="clientId" jdbcType="INTEGER" />
+        <result column="client_name" property="clientName" jdbcType="VARCHAR" />
+        <result column="client_chinesename" property="clientChineseName" jdbcType="VARCHAR" />
         <result column="receiver_zip_code" property="receiverZipcode" jdbcType="VARCHAR" />
         <result column="shipping_name" property="shippingName" jdbcType="VARCHAR" />
         <result column="shipping_code" property="shippingNo" jdbcType="INTEGER" />
@@ -28,7 +29,6 @@
         <result column="invoice_type" property="invoiceType" jdbcType="VARCHAR" />
         <result column="source_type" property="sourceType" jdbcType="VARCHAR" />
         <result column="seller_id" property="sellerId" jdbcType="VARCHAR" />
-        <result column="payment_type" property="paymentType" jdbcType="VARCHAR" />
         <result column="post_fee" property="postFee" jdbcType="VARCHAR" />
        
     </resultMap>
@@ -38,26 +38,30 @@
 	
 	<select id="findOrderListByClientId" parameterType="java.lang.Integer" resultMap="OrderBaseResultMap">
 		SELECT order_id, payment, status, create_time, payment_time, consign_time, 
-		receiver_mobile, receiver_area_name,  user_id, user_name
-		 FROM t_order t where t.user_id  = #{id,jdbcType=INTEGER}
+		receiver_mobile, receiver_area_name,  client_id, client_name
+		 FROM t_order t where t.client_id  = #{id,jdbcType=INTEGER}
 	</select>
 	
 	<select id="findOrderListByClientName" parameterType="java.lang.String" resultMap="OrderBaseResultMap">
-		SELECT * FROM t_order t where t.user_name = #{userName,jdbcType=VARCHAR}
+		SELECT * FROM t_order t where t.client_name = #{clientName,jdbcType=VARCHAR}
 	</select>
 	
 	<select id="add" parameterType="com.shopping.mall.model.ShoppingMallOrder">
-		insert into t_order (order_id, user_id, user_name, create_time, receiver_mobile, receiver_area_name, payment_time, consign_time)
-         values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR},
-          #{createTime,jdbcType=VARCHAR}, #{receiverMobile,jdbcType=VARCHAR}, #{receiverAreaName,jdbcType=VARCHAR},
+		insert into t_order (order_id, client_id, client_name, client_chinesename,
+		 create_time, receiver_mobile, receiver_area_name, payment_time, consign_time)
+         values (#{id,jdbcType=BIGINT}, #{clientId,jdbcType=INTEGER}, #{clientName,jdbcType=VARCHAR},
+          #{clientChineseName,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+          #{receiverMobile,jdbcType=VARCHAR}, #{receiverAreaName,jdbcType=VARCHAR},
           #{paymentTime,jdbcType=VARCHAR}, #{consignTime,jdbcType=VARCHAR})
 	</select>
 	
 	<select id="save" parameterType="com.shopping.mall.model.ShoppingMallOrder">
-        update t_order set name = #{name,jdbcType=VARCHAR}, typeid = #{typeid,jdbcType=INTEGER}, 
-               price = #{price,jdbcType=DECIMAL}, icon = #{icon,jdbcType=VARCHAR},
-               remarks = #{remarks,jdbcType=VARCHAR}
-         where id = #{id,jdbcType=INTEGER}
+        update t_order set order_id = #{id,jdbcType=VARCHAR}, status = #{status,jdbcType=VARCHAR}, 
+               payment_type = #{paymentType,jdbcType=VARCHAR}, payment_time = #{paymentTime,jdbcType=VARCHAR},
+               consign_time = #{consignTime,jdbcType=VARCHAR}, end_time = #{endTime,jdbcType=VARCHAR},
+               client_chinesename = #{clientChineseName,jdbcType=VARCHAR}, receiver_mobile = #{receiverMobile,jdbcType=VARCHAR},
+               receiver_area_name = #{receiverAreaName,jdbcType=VARCHAR}
+         where order_id = #{id,jdbcType=INTEGER}
 
 	</select>
 	

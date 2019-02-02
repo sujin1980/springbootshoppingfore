@@ -162,11 +162,11 @@ function register(){
 			<div style="padding:0 20px">
 			    <span  style="font-size:14px">用户名</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="clientName" data-options="prompt:'青输入至少6个字符。包括英文字符和数字以及_'  "  style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="clientName" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "  style="width:100%;height:38px">
 			    </div>
 			    <span  style="font-size:14px">中文名称</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="chineseName" data-options="prompt:'青输入中文 '  "  style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="chineseName" data-options="prompt:'请输入中文 '  "  style="width:100%;height:38px">
 			    </div>
 			    <span  style="font-size:14px">密码</span>
 			    <div>
@@ -178,23 +178,23 @@ function register(){
 			    </div>
 			    <span  style="font-size:14px">电话</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="telephone" data-options="prompt:'青输入至少6个字符。包括英文字符和数字以及_'  "  style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="telephone" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "  style="width:100%;height:38px">
 			    </div>
 			    <span  style="font-size:14px">地址</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="address" data-options="prompt:'青输入至少6个字符。包括英文字符和数字以及_'  "  style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="address" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "  style="width:100%;height:38px">
 			    </div>
 			    <span  style="font-size:14px">微信</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="weixin" data-options="prompt:'青输入至少6个字符。包括英文字符和数字以及_'  "   style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="weixin" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "   style="width:100%;height:38px">
 			    </div>
 			    <span  style="font-size:14px">QQ</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="qq" data-options="prompt:'青输入至少6个字符。包括英文字符和数字以及_'  "   style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="qq" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "   style="width:100%;height:38px">
 			    </div>
 			    <span  style="font-size:14px">自我介绍</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="remarks" data-options="prompt:'青输入至少6个字符。包括英文字符和数字以及_'  "   style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="remarks" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "   style="width:100%;height:38px">
 			    </div>
 			    
 			    <span id="registerValidate" style="color:red;font-size:14px"></span><br/>

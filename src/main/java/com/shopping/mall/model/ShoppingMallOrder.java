@@ -11,6 +11,10 @@ public class ShoppingMallOrder  implements Serializable{
 	private static final long serialVersionUID = -344918765006398270L;
 	private long        id;
     private BigDecimal  payment;
+    private int         clientId;
+    private String      clientName;
+    private String      clientChineseName;
+    
     private String      paymentType;
     private String      postFee;
     private String      status;
@@ -22,8 +26,7 @@ public class ShoppingMallOrder  implements Serializable{
     private String      closeTime;
     private String      shippingName;
     private int         shippingNo;
-    private int         userId;
-    private String      userName;
+    
     private String      buyerMessage;
     private String      buyerNick;
     private String      buyerRate;
@@ -69,7 +72,7 @@ public class ShoppingMallOrder  implements Serializable{
 	public void setPostFee(String postFee) {
 		this.postFee = postFee;
 	}
-
+	
 	public String getStatus() {
 		return status;
 	}
@@ -123,13 +126,6 @@ public class ShoppingMallOrder  implements Serializable{
 	}
 	public void setShippingNo(int shippingNo) {
 		this.shippingNo = shippingNo;
-	}
-	
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 	
 	public String getBuyerMessage() {
@@ -206,12 +202,38 @@ public class ShoppingMallOrder  implements Serializable{
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	public int getUserId() {
-		return userId;
+	public int getClientId() {
+		return clientId;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setClientId(int clientId) {
+		this.clientId = clientId;
 	}
-	
+	public String getClientName() {
+		return clientName;
+	}
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+	public String getClientChineseName() {
+		return clientChineseName;
+	}
+	public void setClientChineseName(String clientChineseName) {
+		this.clientChineseName = clientChineseName;
+	}
+
+	@Override
+	public String toString() {
+		return "ShoppingMallOrder [id=" + id + ", payment=" + payment + ", clientId=" + clientId + ", clientName="
+				+ clientName + ", clientChineseName=" + clientChineseName + ", paymentType=" + paymentType
+				+ ", postFee=" + postFee + ", status=" + status + ", createTime=" + createTime + ", updateTime="
+				+ updateTime + ", paymentTime=" + paymentTime + ", consignTime=" + consignTime + ", endTime=" + endTime
+				+ ", closeTime=" + closeTime + ", shippingName=" + shippingName + ", shippingNo=" + shippingNo
+				+ ", buyerMessage=" + buyerMessage + ", buyerNick=" + buyerNick + ", buyerRate=" + buyerRate
+				+ ", receiverAreaName=" + receiverAreaName + ", receiverMobile=" + receiverMobile + ", receiverZipcode="
+				+ receiverZipcode + ", receiver=" + receiver + ", expire=" + expire + ", invoiceType=" + invoiceType
+				+ ", sourceType=" + sourceType + ", sellerId=" + sellerId + ", remarks=" + remarks + ", productList="
+				+ productList + "]";
+	}
+
 	
 }

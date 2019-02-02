@@ -45,7 +45,50 @@ $(function () {
 			//alert(index);
 	    }
 	});
+	
+	if('${sessionScope.loginClient.name}' != '') {
+		initOrderInfo('${sessionScope.loginClient.name}');
+		document.getElementById('clientname').innerHTML = "登录";
+	}else{
+		//alert("=========================");
+		document.getElementById('clientname').innerHTML = "未登录";
+	}
+	
+	$('#goodsname').textbox({
+		onClickButton:function(){
+			alert("111111111111");
+			window.location.href = "/product/search.jsp";
+		},
+		onChange:function(newValue, oldValue){
+			alert(newValue);
+		},
+		onClickIcon:function(index){
+			alert("2222222222");
+			window.location.href = "/product/search.jsp";
+		}
+	});
 });
+
+function initOrderInfo(clientname){
+	alert(clientname);
+	$.ajax({
+    	dataType: "json",  
+        type: "POST",
+		data: {
+			"clientName": clientname
+		},
+		url : '/order/getOrderListByClientName.do',
+		success : function(data) {
+			 if (data != null) {  
+				 document.getElementById("ordernumber").innerText = data.length;
+				 
+		     }
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("fail");
+		}
+	});
+}
 
 function getProductById(id){
 	return;
@@ -100,16 +143,18 @@ function loginClient(){
 </script> 
 
 <body class="easyui-layout">
-    <div data-options="region:'north',split:false,border:true" style="overflow:hidden;height:50px;width:100%;z-index:1">
+    <div data-options="region:'north',split:false,border:true" style="justify-content:center;align-items:center;background:#FFC0CB;overflow:hidden;height:40px;width:100%;z-index:1">
 		
-            <div class="m-toolbar">
-                <div class="m-title">Menu on Toolbarjsp</div>
+            <div class="m-toolbar" style="justify-content:center;align-items:center;">
+                <div class="m-title" style="vertical-align: middle;">
+                	<input class="easyui-textbox" id="goodsname" data-options="iconCls:'icon-search'" style="width:300px;">
+                </div>
                 <div class="m-left">
-                	<a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a> 
+                	<a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a>
+                	</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;美酒商城系统
                 </div>
                 <div class="m-right">
-                    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true"></a>
-                    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-man',plain:true"></a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()" data-options="iconCls:'icon-man',plain:true"></a>
                 </div>
             </div>
             <div id="mm" class="easyui-menu" style="width:150px;" data-options="itemHeight:30,noline:true">
@@ -119,30 +164,30 @@ function loginClient(){
 	        </div>
     </div> 
     
-    <div data-options="region:'south',split:false,border:true" style="padding:5px;height:100px;width:100%;z-index:1">   
+    <div data-options="region:'south',split:false,border:true" style="background:#C71585;padding:5px;height:60px;width:100%;z-index:1">   
 		   
-		        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
-					<div style="padding:10px">
-						<div class="panel-header tt-inner">
+		        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true" style="background:#C71585;">
+					<div style="background:#C71585;padding:10px">
+						<div class="panel-header tt-inner" style="background:#C71585;">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="">
 							<img src='common/images/default.gif'/></ br>首页
 							</a>
 						</div>
-						
 					</div>
+					
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
 							<img src='common/images/default.gif'/></ br>分类
 							</a>
 						</div>
-						
 					</div>
+					
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
 							<img src='common/images/default.gif'/></ br>订单
-							<span class="m-badge">23</span>
+							<span class="m-badge" id="ordernumber"></span>
 							</a>
 						</div>
 						
@@ -150,15 +195,15 @@ function loginClient(){
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
-							<img src='common/images/default.gif'/></ br>登录
+							<img src='common/images/default.gif'/></ br><label id="clientname"></label>
 				    		</a>
 				        </div>
 					</div>
-				</div>
+			</div>
 		  
 	</div>
     
-    <div data-options="region:'center',split:false,border:true" style="padding:5px;height:100%;width:100%;z-index:1">
+    <div data-options="region:'center',split:false,border:true" style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
 	    <div id="productlist">
 		    <ul class="m-list" id="product-m-list">
 		    

@@ -99,8 +99,8 @@ public class OrderController2 {
     	
     	ShoppingMallOrder order = new ShoppingMallOrder();
     	order.setId(System.currentTimeMillis());
-    	order.setUserId(client.getId());
-    	order.setUserName(client.getName());
+    	order.setClientId(client.getId());
+    	order.setClientName(client.getName());
     	
     	String createTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis());
     	order.setCreateTime(createTime);
