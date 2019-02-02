@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ 
+<mapper namespace="com.shopping.mall.dao.ProductTypeDao">
+   
+    <resultMap id="ProductTypeBaseResultMap" type="com.shopping.mall.model.ProductType" >
+        <id column="id" property="id" jdbcType="INTEGER" /> 
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="remarks" property="remarks" jdbcType="VARCHAR" /> 
+        <association column="categoryid" property="productCategory" javaType="com.shopping.mall.model.ProductCategory" select="com.shopping.mall.dao.ProductCategoryDao.findOne">
+		</association>
+     </resultMap>
+     
+	<select id="findAll" resultMap="ProductTypeBaseResultMap">
+		select *
+		from producttype
+	</select>
+    
+    <select id="findProductTypeListByCategoryId" parameterType="java.lang.Integer" resultMap="ProductTypeBaseResultMap">
+		select *
+		from producttype t, productcategory c where t.categoryid = c.id and c.id = #{id}
+	</select>
+	
+    <select id="findProductTypeListByCategoryName" parameterType="java.lang.String" resultMap="ProductTypeBaseResultMap">
+		select *
+		from producttype t, productcategory c where t.categoryid = c.id and c.name = #{name}
+	</select>
+	
+    
+    
+	<select id="save" parameterType="com.shopping.mall.model.ProductType">
+		insert into producttype(id, name, remarks)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR})
+        ON DUPLICATE KEY UPDATE
+        name = VALUES(name), remarks = values(remarks)
+	</select>
+	
+	<delete id="delete" parameterType="java.lang.Integer" >
+        delete from producttype
+        where id = #{id,jdbcType=INTEGER}
+    </delete>	
+		 
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="ProductTypeBaseResultMap">
+		select *
+		from producttype, productcategory 
+		where producttype.categoryid = productcategory.id and producttype.id=#{id}
+	</select>
+	
+	
+</mapper>

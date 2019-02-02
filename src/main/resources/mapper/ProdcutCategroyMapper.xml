@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ 
+<mapper namespace="com.shopping.mall.dao.ProductCategoryDao">
+    <resultMap id="ProductCategoryBaseResultMap" type="com.shopping.mall.model.ProductCategory" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    </resultMap>
+	<select id="findAll" resultMap="ProductCategoryBaseResultMap">
+		SELECT * FROM productcategory
+	</select>
+    
+	<select id="save" parameterType="com.shopping.mall.model.ProductCategory">
+		insert into productcategory (id, name, remarks)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR})
+        ON DUPLICATE KEY UPDATE
+        name = VALUES(name), remarks = values(remarks)
+	</select>
+	
+	<delete id="delete" parameterType="java.lang.Integer" >
+        delete from productcategory
+        where id = #{id,jdbcType=INTEGER}
+    </delete>	
+		 
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="ProductCategoryBaseResultMap">
+		SELECT * FROM productcategory p where  p.id=#{id}
+	</select>
+	
+</mapper>

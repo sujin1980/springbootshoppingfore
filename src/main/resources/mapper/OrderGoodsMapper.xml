@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ 
+<mapper namespace="com.shopping.mall.dao.OrderGoodsDao">
+    <resultMap id="OrderGoodsBaseResultMap" type="com.shopping.mall.model.OrderGoods" >
+        <id column="orderid" property="orderId" jdbcType="BIGINT" />
+        <id column="goodsid" property="goodsId" jdbcType="INTEGER" />
+        <result column="goodsnumber" property="goodsNumber" jdbcType="INTEGER" />
+        <result column="goodsname" property="goodsName" jdbcType="INTEGER" />
+        <result column="price" property="price" jdbcType="DECIMAL" />
+        <result column="goodsfee" property="goodsFee" jdbcType="DECIMAL" />
+        <result column="picture" property="picture" jdbcType="VARCHAR" />
+        <result column="totalfee" property="totalFee" jdbcType="DECIMAL" />
+        <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    </resultMap>
+    
+	<select id="findAll" resultMap="OrderGoodsBaseResultMap">
+		SELECT * FROM t_ordergoods
+	</select>
+	
+	<select id="add" parameterType="com.shopping.mall.model.OrderGoods">
+		insert into t_ordergoods 
+		(orderid, goodsid, goodsnumber, goodsname, price, goodsfee, picture, totalfee, remarks)
+        values (#{orderId,jdbcType=BIGINT}, #{goodsId,jdbcType=INTEGER}, 
+		#{goodsNumber,jdbcType=INTEGER},  #{goodsName,jdbcType=VARCHAR}, 
+		#{price,jdbcType=DECIMAL}, #{goodsFee,jdbcType=DECIMAL}, 
+		#{picture,jdbcType=VARCHAR},  #{totalFee,jdbcType=DECIMAL}, #{remarks,jdbcType=VARCHAR})
+	</select>
+	
+	<select id="save" parameterType="com.shopping.mall.model.OrderGoods">
+        update t_ordergoods set goodsnumber = #{goodsNumber,jdbcType=INTEGER}, 
+		price = #{price,jdbcType=DECIMAL}, goodsfee = #{goodsFee,jdbcType=DECIMAL}, 
+		picture = #{picture,jdbcType=VARCHAR}, totalfee = #{totalFee,jdbcType=DECIMAL}, remarks = #{remarks,jdbcType=VARCHAR}
+        where orderid = #{orderId,jdbcType=BIGINT} and goodsid = #{goodsId,jdbcType=INTEGER} 
+	</select>
+	
+	
+	<delete id="delete" >
+        delete from t_ordergoods
+        where orderid = #{orderId,jdbcType=BIGINT} and goodsid = #{goodsId,jdbcType=INTEGER} 
+    </delete>	
+		 
+		 
+	<select id="findOrderGoodsListByOrderId" resultMap="OrderGoodsBaseResultMap">
+		SELECT * FROM t_ordergoods o where  o.orderid = #{orderId,jdbcType=BIGINT}
+	</select>
+		 
+	<select id="findOne" resultMap="OrderGoodsBaseResultMap">
+		SELECT * FROM t_ordergoods o where  o.orderid = #{orderId,jdbcType=BIGINT} and o.goodsid = #{goodsId,jdbcType=INTEGER} 
+	</select>
+	
+	<select id="deleteProducts"  parameterType="java.util.List"> 
+		delete from t_ordergoods where goodsid in 
+		<foreach collection="idList" index="index" item="id" open="(" separator="," close=")">
+				#{id}
+		</foreach>
+
+	</select>
+</mapper>

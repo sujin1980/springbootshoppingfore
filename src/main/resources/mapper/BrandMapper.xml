@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ 
+<mapper namespace="com.shopping.mall.dao.BrandDao">
+    <resultMap id="BrandBaseResultMap" type="com.shopping.mall.model.Brand" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    </resultMap>
+	<select id="findAll" resultMap="BrandBaseResultMap">
+		SELECT * FROM Brand
+	</select>
+	 
+   
+	<select id="save" parameterType="com.shopping.mall.model.Brand">
+		insert into Brand (id, name, remarks)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR})
+        ON DUPLICATE KEY UPDATE
+        name = VALUES(name), remarks = values(remarks)
+	</select>
+	
+	<delete id="delete" parameterType="java.lang.Integer" >
+        delete from Brand
+        where id = #{id,jdbcType=INTEGER}
+    </delete>	
+		 
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="BrandBaseResultMap">
+		SELECT * FROM Brand p where  p.id=#{id}
+	</select>
+	
+</mapper>

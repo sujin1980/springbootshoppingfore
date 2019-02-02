@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ 
+<mapper namespace="com.shopping.mall.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.shopping.mall.model.User" >
+        <id column="user_id" property="id" jdbcType="INTEGER" />
+        <result column="user_name"     property="name"      jdbcType="VARCHAR" />
+        <result column="user_password" property="password"  jdbcType="VARCHAR" />
+        <result column="user_email"    property="email"     jdbcType="VARCHAR" />
+        <result column="user_tel"      property="telephone" jdbcType="VARCHAR" />
+        <result column="articles"      property="articles"  jdbcType="VARCHAR" />
+        <result column="vidoes"        property="videos"    jdbcType="INTEGER" />
+        <result column="avatar"        property="avatar"    jdbcType="INTEGER" />
+        <result column="info"          property="information" jdbcType="VARCHAR" />
+        <result column="user_pic"      property="picture"    jdbcType="VARCHAR" />
+        <result column="role_id"       property="roleId"     jdbcType="INTEGER" />
+        <result column="miss_number"   property="missNumber" jdbcType="INTEGER" />
+        <result column="miss_time"     property="missTime"   jdbcType="VARCHAR" />
+        <result column="allow_time"     property="allowTime"   jdbcType="VARCHAR" />
+    </resultMap>
+    
+    
+	<select id="getNameById" resultMap="BaseResultMap" parameterType="java.lang.Integer" resultType="com.shopping.mall.model.User">
+		SELECT * FROM t_user WHERE ID = #{id}
+	</select>
+	
+	<select id="findOneByName" resultMap="BaseResultMap" parameterType="java.lang.String" resultType="com.shopping.mall.model.User">
+		SELECT * FROM t_user WHERE user_name = #{name}
+	</select>
+</mapper>

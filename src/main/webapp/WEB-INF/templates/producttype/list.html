@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>商品二级类型列表</title>
+    <link rel="stylesheet" th:href="@{producttype/css/bootstrap.css}"></link>
+</head>
+<body class="container">
+<br/>
+<h1>商品二级类型列表</h1>
+<br/><br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>二级类型名称</th>
+            <th>一级类型名称</th>
+            <th>描述</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="producttype : ${producttypes}">
+            <th scope="row" th:text="${producttype.id}">1</th>
+            <td th:text="${producttype.name}">pancm</td>
+			<td th:text="${producttype.productCategory.name}">pancm</td>
+            <td th:text="${producttype.remarks}">123456</td>
+            <td><a th:href="@{/producttype/toEdit(id=2) }">编辑</a></td>
+            <td><a th:href="@{/producttype/toDelete(id=${producttype.id}) }">删除</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a href="/toAdd" th:href="@{/producttype/toAdd}" class="btn btn-info">添加1</a>
+    </div>
+</div>
+
+</html>

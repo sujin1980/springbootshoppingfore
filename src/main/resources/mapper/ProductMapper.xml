@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ 
+<mapper namespace="com.shopping.mall.dao.ProductDao">
+    <resultMap id="ProductBaseResultMap" type="com.shopping.mall.model.Product" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name"    property="name"    jdbcType="VARCHAR" />
+        <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+        <result column="status"  property="status"  jdbcType="VARCHAR" />
+        <result column="icon"    property="icon"    jdbcType="VARCHAR" />
+        <result column="begintime" property="beginTime" jdbcType="VARCHAR" />
+        <result column="endtime"   property="endTime"   jdbcType="VARCHAR" />
+        <association column="typeid" property="productType" javaType="com.shopping.mall.model.ProductType" select="com.shopping.mall.dao.ProductTypeDao.findOne">
+		</association>
+    </resultMap>
+	<select id="findAll" resultMap="ProductBaseResultMap">
+		SELECT * FROM product
+	</select>
+	
+	<select id="add" parameterType="com.shopping.mall.model.Product">
+		insert into product (name, typeid, price, icon, remarks)
+        values (#{name,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL},  #{icon,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR})
+	</select>
+	
+	<select id="save" parameterType="com.shopping.mall.model.Product">
+        update product set name = #{name,jdbcType=VARCHAR}, typeid = #{typeid,jdbcType=INTEGER}, 
+               price = #{price,jdbcType=DECIMAL}, icon = #{icon,jdbcType=VARCHAR},
+               remarks = #{remarks,jdbcType=VARCHAR}
+         where id = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="findProductListByTypeId" parameterType="java.lang.Integer" resultMap="ProductBaseResultMap">
+		select p.id as id, p.name as name, p.remarks as remarks, 
+		    p.status as status, p.icon as icon, p.begintime as begintime,
+		    p.endtime as endtime, p.typeid as typeid
+		from product p,  producttype t where p.typeid = t.id and t.id = #{typeid}
+	</select>
+	
+	<select id="findOneByName" parameterType="java.lang.String" resultMap="ProductBaseResultMap">
+		SELECT * FROM product p where  p.name=#{name}
+	</select>
+	
+	<delete id="delete" parameterType="java.lang.Integer" >
+        delete from product
+        where id = #{id,jdbcType=INTEGER}
+    </delete>	
+		 
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="ProductBaseResultMap">
+		SELECT * FROM product p where  p.id=#{id}
+	</select>
+	
+	<select id="deleteProducts"  parameterType="java.util.List"> 
+		delete from product where id in 
+		<foreach collection="idList" index="index" item="id" open="(" separator="," close=")">
+				#{id}
+		</foreach>
+
+	</select>
+</mapper>
