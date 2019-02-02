@@ -14,22 +14,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	
-	<link rel="stylesheet" type="text/css" href="../common/css/style.css"  />
-		<link rel="stylesheet" type="text/css" href="../common/easyui/themes/metro/easyui.css">
-	    <link rel="stylesheet" type="text/css" href="../common/easyui/themes/mobile.css">
-		<link rel="stylesheet" type="text/css" href="../common/easyui/themes/icon.css">
-		
-		<script type="text/javascript" src="../common/js/jquery.js"></script>
-		<script type="text/javascript" src="../common/js/cloud.js"></script>
-		<script type="text/javascript" src="../common/js/jquery.js"></script>
-		<script type="text/javascript" src="../common/js/jquery.min.js"></script>
-		<script type="text/javascript" src="../common/js/jquery.mobile.min.js"></script>
-		<script type="text/javascript" src="../common/easyui/jquery.min.js"></script>
-	    <script type="text/javascript" src="../common/easyui/jquery.easyui.min.js"></script>
-	    <script type="text/javascript" src="../common/easyui/jquery.easyui.mobile.js"></script>
-  </head>
-<script type="text/javascript">
+	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
+	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
+	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
 
+	<script type="text/javascript" src="common/easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
+  </head>
+
+<script type="text/javascript">
 $(document).ready(function (){
 	$('#clientName').textbox({
 	      onChange: function (newvalue, oldvalue) {
@@ -156,6 +151,9 @@ function register(){
 			<header>
 			    <div class="m-toolbar">
 			        <span class="m-title">用户注册</span>
+			        <div class="m-left">
+		                <a href="#" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">登录</a>
+		            </div>
 			    </div>
 			</header>
 			<div style="margin:20px auto;width:100px;height:100px;border-radius:100px;overflow:hidden">

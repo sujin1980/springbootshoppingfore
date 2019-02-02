@@ -12,12 +12,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Menu on Toolbar - jQuery EasyUI Mobile Demo</title>
 	
+	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
     <link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
 	
-	<script type="text/javascript" src="common/js/jquery.js"></script>
-	<script type="text/javascript" src="common/js/jquery.min.js"></script>
 	<script type="text/javascript" src="common/easyui/jquery.min.js"></script>
     <script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
@@ -53,8 +52,7 @@ function getProductById(id){
 }
 function updateProductList(data){
 	if((data != null) && (data.length != 0)) {
-		$("#product-m-list").children().filter('li').remove();
-		$("#product-m-list").children().filter('label').remove();
+		$("#product-m-list").html("");
 		var thtmlbody = "";
 		for(var i= 0; i< data.length; i++){
 			thtmlbody += "<label for=\"价格\"> " + data[i].name + "</label><br />";
@@ -73,7 +71,7 @@ function updateProductList(data){
 		}
 		
 		console.log(thtmlbody);
-		$("#product-m-list").append(thtmlbody);
+		$("#product-m-list").html(thtmlbody);
 	}
 }
 
@@ -121,13 +119,13 @@ function loginClient(){
 	        </div>
     </div> 
     
-    <div data-options="region:'south',split:false,border:true" style="padding:5px;height:50px;width:100%;z-index:1">   
-		       
+    <div data-options="region:'south',split:false,border:true" style="padding:5px;height:100px;width:100%;z-index:1">   
+		   
 		        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="">
-							<img src='common/images/default.gif'/>首页
+							<img src='common/images/default.gif'/></ br>首页
 							</a>
 						</div>
 						
@@ -135,7 +133,7 @@ function loginClient(){
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
-							<img src='common/images/default.gif'/>分类
+							<img src='common/images/default.gif'/></ br>分类
 							</a>
 						</div>
 						
@@ -143,7 +141,8 @@ function loginClient(){
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
-							<img src='common/images/default.gif'/><br>订单
+							<img src='common/images/default.gif'/></ br>订单
+							<span class="m-badge">23</span>
 							</a>
 						</div>
 						
@@ -151,7 +150,7 @@ function loginClient(){
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
-							<img src='common/images/default.gif'/><br>登录
+							<img src='common/images/default.gif'/></ br>登录
 				    		</a>
 				        </div>
 					</div>
