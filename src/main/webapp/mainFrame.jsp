@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 $(function () {
 	$('#mm').menu({
 	    onClick:function(item){
-			alert(item.text);
+			//alert(item.text);
 			getProductType(item.text);
 	    }
 	});
@@ -69,7 +69,6 @@ function initOrderInfo(clientname){
 		success : function(data) {
 			 if (data != null) {  
 				 document.getElementById("ordernumber").innerText = data.length;
-				 
 		     }
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -158,11 +157,11 @@ function findGoods(){
 	        </div>
     </div> 
     
-    <div data-options="region:'south',split:false,border:true" style="background:#C71585;padding:5px;height:60px;width:100%;z-index:1">   
+    <div data-options="region:'south',split:false,border:true" style="padding:5px;height:60px;width:100%;z-index:1">   
 		   
-		        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true" style="background:#C71585;">
-					<div style="background:#C71585;padding:10px">
-						<div class="panel-header tt-inner" style="background:#C71585;">
+		        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+					<div style="padding:10px">
+						<div class="panel-header tt-inner">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="">
 							<img src='common/images/default.gif'/></ br>首页
 							</a>
