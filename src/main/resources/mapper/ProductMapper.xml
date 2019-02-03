@@ -36,7 +36,7 @@
 		from product p,  producttype t where p.typeid = t.id and t.id = #{typeid}
 	</select>
 	
-	<select id="findOneByName" parameterType="java.lang.String" resultMap="ProductBaseResultMap">
+	<select id="findByName" parameterType="java.lang.String" resultMap="ProductBaseResultMap">
 		SELECT * FROM product p where  p.name=#{name}
 	</select>
 	

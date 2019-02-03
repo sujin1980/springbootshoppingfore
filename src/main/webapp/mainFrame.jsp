@@ -54,19 +54,7 @@ $(function () {
 		document.getElementById('clientname').innerHTML = "未登录";
 	}
 	
-	$('#goodsname').textbox({
-		onClickButton:function(){
-			alert("111111111111");
-			window.location.href = "/product/search.jsp";
-		},
-		onChange:function(newValue, oldValue){
-			alert(newValue);
-		},
-		onClickIcon:function(index){
-			alert("2222222222");
-			window.location.href = "/product/search.jsp";
-		}
-	});
+	
 });
 
 function initOrderInfo(clientname){
@@ -90,9 +78,11 @@ function initOrderInfo(clientname){
 	});
 }
 
-function getProductById(id){
+function getProductById(productid){
+	window.location.href = "/product/toEdit2?id=" + productid;
 	return;
 }
+
 function updateProductList(data){
 	if((data != null) && (data.length != 0)) {
 		$("#product-m-list").html("");
@@ -140,14 +130,18 @@ function loginClient(){
 	return;
 }
 
+function findGoods(){
+	window.location.href = "/product/search.jsp";
+	return;
+}
 </script> 
 
 <body class="easyui-layout">
     <div data-options="region:'north',split:false,border:true" style="justify-content:center;align-items:center;background:#FFC0CB;overflow:hidden;height:40px;width:100%;z-index:1">
 		
-            <div class="m-toolbar" style="justify-content:center;align-items:center;">
-                <div class="m-title" style="vertical-align: middle;">
-                	<input class="easyui-textbox" id="goodsname" data-options="iconCls:'icon-search'" style="width:300px;">
+            <div class="m-toolbar">
+                <div class="m-title">
+                	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="findGoods()" data-options="text:'搜索商品请进入'  ,iconCls:'icon-search',plain:true"></a>
                 </div>
                 <div class="m-left">
                 	<a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a>

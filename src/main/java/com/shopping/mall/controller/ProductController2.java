@@ -96,7 +96,7 @@ public class ProductController2 {
 			productList = productService.findAll();
 		}else {
 	        System.out.println(productName);
-	        productList.add(productService.findOneByName(productName));
+	        productList = productService.findByName(productName);
 		}
         //model.addAttribute("products", productList);
         return productList;

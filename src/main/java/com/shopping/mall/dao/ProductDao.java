@@ -21,7 +21,7 @@ public interface ProductDao {
 	
 	public Product findOne(int id);
 	
-	public Product findOneByName(String name);
+	public List<Product> findByName(String name);
 	
 	public List<Product> findAll();
 	

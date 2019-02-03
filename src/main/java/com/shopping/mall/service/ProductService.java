@@ -33,7 +33,7 @@ public interface ProductService {
      */
 	Product findProductById(int id);
 	
-	Product findOneByName(String name);
+	List<Product>  findByName(String name);
 	
 	List<Product> findProductListByTypeId(int id);
     /**
