@@ -46,6 +46,12 @@
 		SELECT * FROM t_order t where t.client_name = #{clientName,jdbcType=VARCHAR}
 	</select>
 	
+	<select id="findUnPayedOrderByClientId" parameterType="java.lang.Integer" resultMap="OrderBaseResultMap">
+		SELECT order_id, payment, status, create_time, payment_time, consign_time, 
+		receiver_mobile, receiver_area_name,  client_id, client_name
+		 FROM t_order t where t.client_id  = #{id,jdbcType=INTEGER} and status in('未付款')
+	</select>
+	
 	<select id="add" parameterType="com.shopping.mall.model.ShoppingMallOrder">
 		insert into t_order (order_id, client_id, client_name, client_chinesename,
 		 create_time, receiver_mobile, receiver_area_name, payment_time, consign_time)

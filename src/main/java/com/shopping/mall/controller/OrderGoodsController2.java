@@ -125,7 +125,7 @@ public class OrderGoodsController2 {
     
     @RequestMapping("/ordergoods/add2")
     public String add(OrderGoods orderGoods) {
-    	System.out.println("开始添加");
+    	//System.out.println("开始添加");
         orderGoodsService.addOrderGoods(orderGoods);
         return "redirect:/ordergoods/list2";
     }

@@ -29,5 +29,5 @@ public interface OrderDao {
 	
 	public List<ShoppingMallOrder> findOrderListByClientName(String clientName);
 
-	
+	public ShoppingMallOrder findUnPayedOrderByClientId(int clientId);
 }

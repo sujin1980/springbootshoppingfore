@@ -1,6 +1,5 @@
 package com.shopping.mall.controller;
 
-
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URLDecoder;
@@ -24,9 +23,15 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.web.bind.annotation.ModelAttribute;
+
+import com.shopping.mall.model.OrderGoods;
 import com.shopping.mall.model.Product;
 import com.shopping.mall.model.ProductCategory;
 import com.shopping.mall.model.ProductType;
+import com.shopping.mall.model.ShoppingMallClient;
+import com.shopping.mall.model.ShoppingMallOrder;
+import com.shopping.mall.service.OrderGoodsService;
+import com.shopping.mall.service.OrderService;
 import com.shopping.mall.service.ProductService;
 import com.shopping.mall.service.ProductTypeService;
 
@@ -39,6 +44,12 @@ public class ProductController2 {
 	
 	@Autowired
 	private ProductTypeService productTypeService;
+	
+	@Autowired
+	private OrderGoodsService orderGoodsService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	@RequestMapping("/product/hello")
     public String hello(Model model) {
@@ -101,6 +112,25 @@ public class ProductController2 {
         //model.addAttribute("products", productList);
         return productList;
     } 
+    
+   
+    
+    @RequestMapping(value = "/product/buyNow", method = { RequestMethod.POST })
+    @ResponseBody
+    public String  buyNow(HttpServletRequest request, @RequestParam String goodsid){
+    	
+    	ShoppingMallClient client = (ShoppingMallClient)request.getSession().getAttribute("loginClient");
+    	if(client == null) {
+    		request.getSession().setAttribute("addgoods", goodsid);
+    		return "FAIL";
+    	}else {
+        	ShoppingMallOrder order = orderService.findUnPayedOrderByClientId(client.getId());
+        	Product  product = productService.findProductById(Integer.valueOf(goodsid));
+        	orderGoodsService.addGoodsToOrder(order, product);
+        	return "OK";
+    	}
+    } 
+    
     
     @RequestMapping("/product/toAdd2")
     public String toAdd() {

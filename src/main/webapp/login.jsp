@@ -28,54 +28,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
 $(document).ready(
-		
-		function () {
-	        $main = $("#mainBody");
-			$body = $("body");
-	        $cloud1 = $("#cloud1");
-			$cloud2 = $("#cloud2");
+   
+); 
+
+function login(){
+	if($("#clientName").val().length == 0||$("#password").val() == "密码"||$("#password").val().length == 0){
+		$("#loginValidate").html("用户名或密码不能为空");
+		return;
+	}  
+	  
+	$.ajax({
+		type : "POST",
+		url : "client/login.do",
+		data:{
+			"name":     $("#clientName").val(),
+			"password": $("#password").val()
+		},
+		contentType: "application/x-www-form-urlencoded; charset=utf-8", 
+		success : function(data) {
+			if(data != "OK"){
+			     $("#loginValidate").html("用户名或密码不正确");
+				 
+		   }else{
+			   if('${sessionScope.addgoods}' != ''){
+				     alert("转入用户订单页面");
+					 return;
+			     }
+				$("#loginValidate").html("");
+				window.location.href = "mainFrame.jsp";	
+		  }
 			
-	        mainwidth = $main.outerWidth();
-	        
-	    	$('.loginbox').css({'position':'inherit','left':($(window).width()-692)/2});
-	        $(window).resize(function(){$('.loginbox').css({'position':'inherit','left':($(window).width()-692)/2});}) 
-	    }
-		
-	); 
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("error");
+		}
+	}); 
+	
+}
 
-	function login(){
-		if($("#clientName").val().length == 0||$("#password").val() == "密码"||$("#password").val().length == 0){
-			$("#loginValidate").html("用户名或密码不能为空");
-			return;
-		}  
-		  
-		$.ajax({
-			type : "POST",
-			url : "client/login.do",
-			data:{
-				"name":     $("#clientName").val(),
-				"password": $("#password").val()
-			},
-			contentType: "application/x-www-form-urlencoded; charset=utf-8", 
-			success : function(data) {
-				if(data != "OK"){
-					$("#loginValidate").html("用户名或密码不正确");
-				}else{
-					$("#loginValidate").html("");
-					window.location.href = "mainFrame.jsp";	
-				}
-				
-			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				alert("error");
-			}
-		}); 
-		
-	}
-
-	function register(){
-		window.location.href = "client/register.jsp";	
-	}
+function register(){
+	window.location.href = "client/register.jsp";	
+}
 	
 </script> 
 	  

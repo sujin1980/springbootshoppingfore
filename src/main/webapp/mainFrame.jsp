@@ -58,7 +58,7 @@ $(function () {
 });
 
 function initOrderInfo(clientname){
-	alert(clientname);
+	//alert(clientname);
 	$.ajax({
     	dataType: "json",  
         type: "POST",
