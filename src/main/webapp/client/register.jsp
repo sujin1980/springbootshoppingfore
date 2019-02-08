@@ -152,7 +152,7 @@ function register(){
 			    <div class="m-toolbar">
 			        <span class="m-title">用户注册</span>
 			        <div class="m-left">
-		                <a href="#" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">登录</a>
+		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true" onclick="$.mobile.back()">登录</a>
 		            </div>
 			    </div>
 			</header>

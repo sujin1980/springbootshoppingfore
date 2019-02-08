@@ -44,18 +44,16 @@ function login(){
 			"name":     $("#clientName").val(),
 			"password": $("#password").val()
 		},
-		contentType: "application/x-www-form-urlencoded; charset=utf-8", 
 		success : function(data) {
 			if(data != "OK"){
 			     $("#loginValidate").html("用户名或密码不正确");
 				 
 		   }else{
-			   if('${sessionScope.addgoods}' != ''){
-				     alert("转入用户订单页面");
-					 return;
-			     }
-				$("#loginValidate").html("");
-				window.location.href = "mainFrame.jsp";	
+			   /*if('${sessionScope.addgoods}' != ''){
+				   alert("转入用户订单页面");
+				   return;
+			   }*/
+			   window.location.href = "client/Edit2.jsp";	
 		  }
 			
 		},
@@ -79,7 +77,7 @@ function register(){
 	        <div class="m-toolbar">
 	            <span class="m-title">用户登录</span>
 	            <div class="m-left">
-	                <a href="#" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">首页</a>
+	                <a href="javascript::void(0)" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true" onclick="$.mobile.back()">首页</a>
 	            </div>
 	        </div>
 	    </header>

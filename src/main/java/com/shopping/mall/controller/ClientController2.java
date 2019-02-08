@@ -61,6 +61,14 @@ public class ClientController2 {
 		 return "";
     }
 	
+	@RequestMapping("/client/logout")  
+	@ResponseBody
+    public String logout(HttpServletRequest request) {  
+          //userService.findOneByName(param.getName());
+		 request.getSession().removeAttribute("loginClient");
+		 return "";
+    }
+	
 	@RequestMapping("/client/validatename")  
 	@ResponseBody
     public String validatename(HttpServletRequest request, @RequestParam String name) {  
@@ -125,6 +133,51 @@ public class ClientController2 {
         return "client/Add2";
     }
         
+    
+    @RequestMapping(value ="/client/checkPassword", method = { RequestMethod.POST })
+    @ResponseBody
+    public String checkPassword(HttpServletRequest request, @RequestParam String password){  
+    	ShoppingMallClient client = (ShoppingMallClient)request.getSession().getAttribute("loginClient");
+    	
+    	if(password.equals(client.getPassword())) {
+    		return "OK";
+    	}
+    	return "FAIL";
+    }  
+    
+    @RequestMapping(value ="/client/modifyPassword", method = { RequestMethod.POST })
+    @ResponseBody
+    public String modifyPassword(HttpServletRequest request, @RequestParam String password, @RequestParam String currentpassword){  
+    	ShoppingMallClient client = (ShoppingMallClient)request.getSession().getAttribute("loginClient");
+    	
+    	if(!currentpassword.equals(client.getPassword())) {
+    		return "FAIL";
+    	}
+    	
+    	client.setPassword(password);
+    	clientService.updateClient(client);
+    	return "OK";
+    }  
+    
+    @RequestMapping(value ="/client/modifyTelephone", method = { RequestMethod.POST })
+    @ResponseBody
+    public String modifyTelephone(HttpServletRequest request, @RequestParam String telephone){  
+    	ShoppingMallClient client = (ShoppingMallClient)request.getSession().getAttribute("loginClient");
+    	
+    	client.setTelephone(telephone);
+    	clientService.updateClient(client);
+    	return "OK";
+    } 
+    
+    @RequestMapping(value ="/client/modifyAddress", method = { RequestMethod.POST })
+    @ResponseBody
+    public String modifyAddress(HttpServletRequest request, @RequestParam String address){  
+    	ShoppingMallClient client = (ShoppingMallClient)request.getSession().getAttribute("loginClient");
+    	
+    	client.setAddress(address);
+    	clientService.updateClient(client);
+    	return "OK";
+    } 
     
     @RequestMapping(value ="/client/findClientByName", method = { RequestMethod.POST })
     @ResponseBody

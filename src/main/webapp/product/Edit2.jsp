@@ -102,17 +102,17 @@ function buyNow(){
 			       
 						<span class="m-title">
 							<nav>
-								<a href="javascript:void(0)" onclick="goodsBaseInfo()">商品</a>&nbsp;&nbsp;&nbsp; 
-								<a href="javascript:void(0)" onclick="goodsDetails()">详情</a>&nbsp;&nbsp;&nbsp;
-								<a href="javascript:void(0)">推荐</a>
+								<a href="javascript:void(0);" onclick="goodsBaseInfo()">商品</a>&nbsp;&nbsp;&nbsp; 
+								<a href="javascript:void(0);" onclick="goodsDetails()">详情</a>&nbsp;&nbsp;&nbsp;
+								<a href="javascript:void(0);">推荐</a>
 							</nav>
 						</span>
 			        
 			        <div class="m-left">
-		                <a href="#" class="easyui-linkbutton m-back" data-options="plain:true,outline:true">回退</a>
+		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true" onclick="$.mobile.back()">回退</a>
 		            </div>
 		            <div class="m-right">
-		                <a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a>
+		                <a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a>
 		            </div>
 			    </div>
 			    <div id="mm" class="easyui-menu" style="width:150px;" data-options="itemHeight:30,noline:true">

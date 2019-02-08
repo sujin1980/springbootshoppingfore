@@ -88,7 +88,7 @@ function findGoodsByName(){
 			        	<input class="easyui-textbox" id="goodsname" data-options="prompt:'商品名称', iconCls:'icon-search'" style="width:300px">
 			        </div>
 			        <div class="m-left">
-		                <a href="#" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">首页</a>
+		                <a href="javascript::void(0)" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true" onclick="$.mobile.back()">首页</a>
 		            </div>
 		            <div class="m-right">
 		                <a href="javascript:void(0)" onclick="findGoodsByName()" class="easyui-linkbutton" data-options="plain:true,outline:true">搜索</a>
