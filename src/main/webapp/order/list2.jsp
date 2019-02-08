@@ -25,9 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
 <script type="text/javascript">
-
-
-
 $(function(){
 	$('#orderstatus').tabs({
 		onSelect: function(title,index){
@@ -35,7 +32,7 @@ $(function(){
 	  }
 	});
 	
-	updateOrderList({orders});
+	updateOrderList("${ orders }");
 }) 
 
 function getProductById(productid){
@@ -44,6 +41,7 @@ function getProductById(productid){
 }
 	
 function updateOrderList(data){
+	console.log(data);
 	if((data != null) && (data.length != 0)) {
 		$("#order-m-list").html("");
 		var thtmlbody = "";
@@ -52,7 +50,7 @@ function updateOrderList(data){
 			thtmlbody += "<li>";
 			thtmlbody += "<span>美酒商城</span>" + "<span style=\"float:right;\">" + data.status + "</span>" + "|";
 			thtmlbody += "<a href=\"javascript:void(0);\">" ;
-			thtmlbody += "<img src=\"images\delete.png\"" + " style=\"float:right;\"" +  " onerror=\"this.src='common/images/default.gif;this.onerror=null'\"> </a>";
+			thtmlbody += "<img src=\"images/delete.png\"" + " style=\"float:right;\"" +  " onerror=\"this.src='common/images/default.gif;this.onerror=null'\"> </a>";
 			
 			thtmlbody += "<span style=\"float:right;\">共1件商品</span>" + "<span style=\"float:right;\">实付金额：" + data.payment + "</span>";
 		}
@@ -61,56 +59,52 @@ function updateOrderList(data){
 		$("#order-m-list").html(thtmlbody);
 	}
 }
-
-
 </script> 
 
 <body>
 	<div class="easyui-navpanel">
-			<header>
-			    <div class="m-toolbar">
-					<span class="m-title">我的订单</span>
-			        <div class="m-left">
-		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">回退</a>
-		            </div>   
-			    </div>
-			</header>
-
-			<div  style="height:100%;width:100%;z-index:1;" >
-				<div style="padding:10px;height:50px;width:100%;z-index:1;" >
-					<input class="easyui-textbox" id="address" data-options="prompt:'商品名称/商品编号/订单号'  "  style="width:70%;height:38px">
-					<a id="btn" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="margin:10px;height:38px">搜索</a>
-				</div>
-				<br />
-				<div id="orderstatus" class="easyui-tabs" data-options="padding:10px;tabHeight:60,fit:true,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
-					<div style="width:25%;">
-						<div class="panel-header tt-inner">
-							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="">所有订单</a>
-						</div>
-					</div>
-					<div style="width:25%;">
-						<div class="panel-header tt-inner">
-							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="">待付款</a>
-						</div>
-					</div>
-					<div style="width:25%;">
-						<div class="panel-header tt-inner">
-							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="">待收货</a>
-						</div>
-					</div>
-					<div style="width:25%;">
-						<div class="panel-header tt-inner">
-							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="">已完成</a>
-						</div>
+		<header>
+		    <div class="m-toolbar">
+				<span class="m-title">我的订单</span>
+		        <div class="m-left">
+	                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">回退</a>
+	            </div>   
+		    </div>
+		</header>
+		<div  style="height:100%;width:100%;z-index:1;" >
+			<div style="padding:10px;height:50px;width:100%;z-index:1;" >
+				<input class="easyui-textbox" id="address" data-options="prompt:'商品名称/商品编号/订单号'  "  style="width:70%;height:38px">
+				<a id="btn" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="margin:10px;height:38px">搜索</a>
+			</div>
+			<br />
+			<div id="orderstatus" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
+				<div style="padding:10px">
+					<div class="panel-header tt-inner">
+						<span>所有订单</span>
 					</div>
 				</div>
-				<div id="ordersinfo" style="padding:10px;" >
-					<ul class="m-list" id="order-m-list"  style="padding:10px;">
-				    
-				    </ul>
+				<div style="padding:10px">
+					<div class="panel-header tt-inner">
+						<span>待付款</span>
+					</div>
 				</div>
-			</div>		
+				<div style="padding:10px">
+					<div class="panel-header tt-inner">
+						<span>待收货</span>
+					</div>
+				</div>
+				<div style="padding:10px">
+					<div class="panel-header tt-inner">
+						<span>已完成</span>
+					</div>
+				</div>
+			</div>
 			
+			<div id="ordersinfo" style="padding:10px;" >
+				<ul class="m-list" id="order-m-list"  style="padding:10px;">    
+			    </ul>
+			</div>	
+		</div>	
 	</div>
   </body>
   </html>
