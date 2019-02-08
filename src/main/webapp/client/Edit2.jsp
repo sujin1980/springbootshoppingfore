@@ -35,6 +35,23 @@ function baseInfo(){
 	return;	
 }
 
+// /order/toEdit2?id=${order.id}
+// var orderurl = "/order/list2" + "?orderstatus=" + orderstatus;
+
+function findOrder(orderstatus){
+	var orderurl = "order/list2?orderstatus=" + orderstatus;
+	alert("orderurl = " + orderurl);
+	$.ajax({
+		type : "POST",
+		url : orderurl,
+		success : function(data) {	
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("退出登录失败");
+		}
+	});
+}
+
 </script> 
 
 <body>
@@ -77,24 +94,24 @@ function baseInfo(){
 			        <table>
 				     	<tr>
 					    	<td style="width: 30%">
-							    <a href="javascript:void(0);" onclick="">
+							    <a href="javascript:void(0);" onclick="findOrder(3)">
 								<img src='images/unpayed.png'/></ br></ br>待付款
 								</a>
 							</td>
 							
 							<td style="width: 30%">
-							    <a href="javascript:void(0);" onclick=""> 
+							    <a href="javascript:void(0);" onclick="findOrder(4)"> 
 								<img src='images/unrecieved.png'/></ br>待收货
 								</a>
 							</td>
 							
 							<td style="width: 30%">
-								<a href="javascript:void(0);"  onclick="editOrder()">
+								<a href="javascript:void(0);"  onclick="">
 								<img src='images/aftersale.png'/></ br>退货/售后
 								</a>
 							</td>
 							<td style="width: 30%">
-								<a href="javascript:void(0);"  onclick="editOrder()">
+								<a href="order/list2.do"  onclick="findOrder(0)">
 								<img src='images/allorders.png'/></ br>全部订单
 								</a>
 							</td>

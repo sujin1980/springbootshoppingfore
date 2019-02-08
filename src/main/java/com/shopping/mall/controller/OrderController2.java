@@ -51,13 +51,25 @@ public class OrderController2 {
         return "redirect:/order/list2";
     }
 	
+//    @RequestMapping("/order/list2")
+//    public String list(Model model, Integer orderstatus) {
+//    	System.out.println("Thymeleaf查询所有");
+//        List<ShoppingMallOrder> orders = orderService.findAll();
+//        
+//        model.addAttribute("orders", orders);
+//        model.addAttribute("orderstatus", orderstatus);
+//        return "order/list2";
+//    } 
+    
     @RequestMapping("/order/list2")
-    public String list(Model model) {
-    	System.out.println("Thymeleaf查询所有");
-        List<ShoppingMallOrder> orders=orderService.findAll();
-        model.addAttribute("orders", orders);
-        return "order/list2";
-    } 
+    public String list(HttpServletRequest request, Model model, Integer orderstatus) {
+		  System.out.println("Thymeleaf查询所有");
+		  List<ShoppingMallOrder> orders = orderService.findAll();
+		  
+		  model.addAttribute("orders", orders);
+		  model.addAttribute("orderstatus", orderstatus);
+		  return "order/list2";
+    }
     
     @RequestMapping("/order/toAdd2")
     public String toAdd() {
