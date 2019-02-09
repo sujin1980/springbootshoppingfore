@@ -26,29 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
 
-/*var goodsinfo = {
-	goodsId:   Object(),
-	price:     Object(),
-	goodsFee:  Object(),
-	picture:   Object(),
-	price:     Object(),
-	totalFee:  Object(),
-	remarks:   Object(),
-	goodsName: Object()	
-};
 
-var goodsorder = {
-	id:                Object(),
-	clientName:        Object(),
-	status:            Object(),
-	payment:           Object(),
-	paymentTime:       Object(),
-	consignTime:       Object(),
-	receiverMobile:    Object(),
-	receiverAreaName:  Object(),
-	goodsnum:          Object(),
-	goodsList:         new Array()
-};*/
 
 var orderList = new Array();
 
@@ -56,32 +34,84 @@ $(function(){
 	initOrderList();//"${ orders }");*/
 	alert(window.location.href);
 	
+	var ordertype = new Object();
+	if(window.location.href.indexOf("?") > 0 ){
+		var equalPos = window.location.href.indexOf("=");
+		if(equalPos > 0){
+			ordertype = window.location.href.substr(equalPos + 1);
+		}
+	}
+	
+	switch(ordertype)
+	{
+	case "0":
+		$('#orderstatus').tabs('select', 0);
+		break;
+	
+	case "3":
+		$('#orderstatus').tabs('select', 1);
+		break;
+	
+	case "4":
+		$('#orderstatus').tabs('select', 2);
+		break;
+	
+	default:
+		$('#orderstatus').tabs('select', 0);
+		break;
+	}
+	
+	//alert("selected = " + $('#orderstatus').height);
+	//alert("ordertype = " + ordertype);
+	
+	//$('#orderstatus').tabs('select', 1);
+	
+	var tab = $('#orderstatus').tabs('getSelected');
+	var index = $('#orderstatus').tabs('getTabIndex',tab);
+	//alert(index);
+	
+	updateOrdersinfo(index);
+	
+	console.log("selected = " + index);
+	console.log("ordertype = " + ordertype);
 	$('#orderstatus').tabs({
 		onSelect: function(title,index){
-			updateOrdersinfo();
+			updateOrdersinfo(index);
 			//console.log();
 		return;
 	  }
 	});
-
+	
 }) 
 
-function updateOrdersinfo(){
+function updateOrdersinfo(statusfilter){
 	$("#order-m-list").html("");
 	var thtmlbody = "";
 	for(var i = 0; i < orderList.length; i++){
 		if(orderList[i].goodsnum > 0){
-			alert("goodsid = " + orderList[i].goodsList[0].goodsId);
-			thtmlbody += "<li>";
-			thtmlbody += "<a href=\"javascript:void(0);\" style=\"width:100px; \" onclick=\"getProductById(" + orderList[i].goodsList[0].goodsId + ")\" >" ;
-			thtmlbody += "<img src=\"" + orderList[i].goodsList[0].picture + "\"" + " style=\"width:50px;\"" +  " onerror=\"this.src='common/images/default.gif;this.onerror=null'\"> </a>";
-			thtmlbody +=  '&nbsp;&nbsp;&nbsp;' + orderList[i].goodsList[0].goodsName;
-			thtmlbody += "<a href=\"javascript:void(0);\" style=\"width:100px; \" onclick=\"deleteProductById(" + orderList[i].goodsList[0].goodsId + ")\" >" ;
-			thtmlbody += "<img src=\"images/delete.png\"" + " style=\"width:50px; float:right;\"" +  " onerror=\"this.src='common/images/default.gif;this.onerror=null'\"> </a>";
-			thtmlbody += "<span style=\"float:right;\">" + orderList[i].status +  "&nbsp;|&nbsp;" +  "</span> " ;
-			thtmlbody += "<span style=\"float:right;\">&nbsp;实付金额：" + orderList[i].payment + "&nbsp;</span>";
-			thtmlbody += "<span style=\"float:right;\">&nbsp;共1件商品&nbsp;</span>";
-			thtmlbody += "</li>";
+			if((statusfilter == 0) || ((statusfilter == 3) && (orderList[i].status == "未付款"))
+				|| ((statusfilter == 4) && ((orderList[i].status == "已付款") || (orderList[i].status == "未发货") || (orderList[i].status == "已发货") ))) {
+				thtmlbody += "<li>";
+				thtmlbody += "<span style=\"display:inline\">" + orderList[i].clientChineseName + "</span>";
+				thtmlbody += "<a href=\"javascript:void(0);\" style=\"width:90px; float:right;display:block;\" onclick=\"deleteOrderById(" + 
+					orderList[i].id + ")\" >";
+				thtmlbody += "<img src=\"images/delete.png\" style=\"float:right;display:block;\" width=\"50\" height=\"50\""
+					+ "onerror=\"this.src='common/images/default.gif;this.onerror=null'\">";
+				thtmlbody += "</a>";
+				thtmlbody += "<span style=\"float:right;\">&nbsp;&nbsp;&nbsp;" + orderList[i].status + "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>"; 
+				thtmlbody += "<br /><br /><br />";	
+				
+				for(var j = 0; j < orderList[i].goodsnum; j++){
+					thtmlbody += "<a href=\"javascript:void(0);\" style=\"width:100px;display:inline\" onclick=\"getProductById(" + orderList[i].goodsList[j].goodsId + ")\" >";
+					thtmlbody += " <img src=\"" + orderList[i].goodsList[0].picture + "\"" + " width=\"50\" height=\"50\" onerror=\"this.src='common/images/default.gif;this.onerror=null'\">"; 
+					thtmlbody += "</a>&nbsp;&nbsp;&nbsp;" + orderList[i].goodsList[j].goodsName;
+				}
+				thtmlbody += "<br /><br /><br />";
+				
+				thtmlbody += "<span style=\"float:right;\">&nbsp;实付金额：" + orderList[i].payment + "&nbsp;</span>";
+				thtmlbody += "<span style=\"float:right;\">&nbsp;共" + orderList[i].goodsnum + "件商品&nbsp;</span>";
+				thtmlbody += "</li>";
+			}
 		}
 	}
 	console.log(thtmlbody);
@@ -89,8 +119,8 @@ function updateOrdersinfo(){
 	return;	
 }
 
-function deleteProductById(productid){
-	window.location.href = "/product/toEdit2?id=" + productid;
+function deleteOrderById(productid){
+	window.location.href = "/order/toDelete2?id=" + productid;
 	return;
 }
 
@@ -120,6 +150,7 @@ function updateOrderGoodsInfo(data){
 			}
 		}
 	}
+	//updateOrdersinfo($('#orderstatus').selected);
 	
 }
 function updateOrderDetailInfo(data){
@@ -129,6 +160,7 @@ function updateOrderDetailInfo(data){
 		  var  goodsorder = new Object();
 		  goodsorder.id               = data[i].id;
 		  goodsorder.clientName       = data[i].clientName;
+		  goodsorder.clientChineseName = data[i].clientChineseName;
 		  goodsorder.status           = data[i].status;
 		  goodsorder.payment          = data[i].payment;
 		  goodsorder.paymentTime      = data[i].paymentTime;
@@ -145,7 +177,7 @@ function updateOrderDetailInfo(data){
 	        type: "POST",
 	        data: idlist,
 			url : '/ordergoods/findGoodsByOrderList.do',
-			async: true, 
+			async: false, 
 			success : function(data) {
 				 if(data == null){
 					 alert("用户没有订单信息");
@@ -166,7 +198,7 @@ function initOrderList(){
 		data: {
 			"clientName": '${sessionScope.loginClient.name}'
 		},
-		async: true, 
+		async: false, 
 		url : '/order/getOrderListByClientName.do',
 		success : function(data) {
 			 if(data == null){
@@ -226,18 +258,6 @@ function initOrderList(){
 			<div id="ordersinfo" style="padding:10px;" >
 				<ul class="m-list" id="order-m-list"  style="padding:10px;">
 					<li>
-						<span style="display:inline">商家名称</span>
-						<a href="javascript:void(0);" style="width:100px; float:right;display:block;" onclick="deleteProductById(40)" >
-							<img src="images/delete.png" style="float:right;display:block;" width="50" height="50" onerror="this.src='common/images/default.gif;this.onerror=null'">
-						</a>
-						<span style="float:right;">&nbsp;&nbsp;未付款&nbsp;|&nbsp;&nbsp;</span> 
-						<br /><br /><br />	
-						<a href="javascript:void(0);" style="width:100px;display:inline" onclick="getProductById(40)" >
-							<img src="/common/images/default.gif;" width="50" height="50" onerror="this.src='common/images/default.gif;this.onerror=null'"> 
-						</a>&nbsp;&nbsp;&nbsp;梳子1
-						<br /><br /><br />	
-						<span style="float:right;">&nbsp;实付金额：0&nbsp;</span>
-						<span style="float:right;">&nbsp;共1件商品&nbsp;</span>
 						
 					</li>
 			    </ul>

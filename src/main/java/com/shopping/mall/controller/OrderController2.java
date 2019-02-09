@@ -186,9 +186,9 @@ public class OrderController2 {
     }
 
     @RequestMapping("/order/toDelete2")
-    public String delete(int id) {
+    public String delete(Long id) {
         orderService.deleteOrder(id);
-        return "redirect:/order/list2";
+        return "/order/list";
     }
 }
 
