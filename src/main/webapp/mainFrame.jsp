@@ -9,9 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>美酒商城系统</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>美酒商城</title>
 	
-	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
     <link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
@@ -25,18 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		float:left;
 	}
 	a{text-decoration:none;}
-	
-	.tt-inner{
-        display:inline-block;
-        line-height:12px;
-        padding-top:5px;
-    }
-		p{
-			line-height:150%;
-		}
-	
-	.box{width:50px;text-align:center; font-szie:18px;}
-	.box img {width:100%;}
 </style>
 
 <script type="text/javascript">
@@ -49,7 +37,13 @@ $(function () {
 	    }
 	});
 	
-	
+	$('#tt').tabs({
+	    border:false,
+	    onSelect:function(title, index){
+			//alert(title+' is selected');
+			//alert(index);
+	    }
+	});
 	
 	if('${sessionScope.loginClient.name}' != '') {
 		initOrderInfo('${sessionScope.loginClient.name}');
@@ -103,7 +97,7 @@ function updateProductList(data){
 	        	
 			}
 			if(i != (data.length -1)){
-				thtmlbody += "<br /><br /><br /><br /><br />";
+				thtmlbody += "<br><br><br><br><br><br><br><br><br>";
 			}
 		}
 		
@@ -140,51 +134,90 @@ function findGoods(){
 }
 </script> 
 
-<body>
-	<div class="easyui-navpanel">
-	    <header>
-			    <div class="m-toolbar">
-					<div class="m-title">Devices</div>
-				</div>
-		</header>
-	
-		<footer style="margin:5px;height:60px;width:100%;z-index:1">   
-			        <ul style="white-space:nowrap;">
-						<li style="display:inline-block">
-							    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="">
-								<img src='common/images/default.gif'/></ br>首页
-								</a>
-						</li>
+<body class="easyui-layout">
+    <div data-options="region:'north',split:false,border:true" style="justify-content:center;align-items:center;background:#FFC0CB;overflow:hidden;height:40px;width:100%;z-index:1">
+		
+            <div class="m-toolbar">
+                <div class="m-title">
+                	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="findGoods()" data-options="text:'搜索商品请进入'  ,iconCls:'icon-search',plain:true"></a>
+                </div>
+                <div class="m-left">
+                	<a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a>
+                	
+                </div>
+                <div class="m-right">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()" data-options="iconCls:'icon-man',plain:true"></a>
+                </div>
+            </div>
+            <div id="mm" class="easyui-menu" style="width:150px;" data-options="itemHeight:30,noline:true">
+	            <div>易耗品</div>
+	            <div>有偿用品</div>
+	            <div>布草</div>
+	        </div>
+    </div> 
+    
+    <div data-options="region:'south',split:false,border:true" style="padding:5px;height:65px;width:100%;z-index:1">   
+		   
+		        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+					<div style="padding:10px">
+						<div class="panel-header tt-inner">
+						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="">
+							<img src='common/images/default.gif' width="30" height="30" onerror="this.src='common/images/default.gif;this.onerror=null'">首页
+							</a>
+						</div>
+					</div>
+					
+					<div style="padding:10px">
+						<div class="panel-header tt-inner">
+						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
+							<img src='common/images/default.gif' width="30" height="30" onerror="this.src='common/images/default.gif;this.onerror=null'">分类
+							</a>
+						</div>
+					</div>
+					
+					<div style="padding:10px">
+						<div class="panel-header tt-inner">
+							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
+							<img src='common/images/default.gif' width="30" height="30" onerror="this.src='common/images/default.gif;this.onerror=null'">订单
+							<span class="m-badge" id="ordernumber"></span>
+							</a>
+						</div>
 						
-						<li style="display:inline-block">
-							    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
-								<img src='common/images/default.gif'/></ br>分类
-								</a>
-						</li>
-						
-						<li style="display:inline-block">
-								<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
-								<img src='common/images/default.gif'/></ br>订单
-								<span class="m-badge" id="ordernumber"></span>
-								</a>
-							
-						</li>
-						<li style="display:inline-block">
-								<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
-								<img src='common/images/default.gif'/></ br><label id="clientname"></label>
-					    		</a>
-						</li>
-				</ul>
-		</footer>
-	
-		<div  style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
-		    <div id="productlist">
-			    <ul class="m-list" id="product-m-list">
-			    
-			    </ul>
+					</div>
+					<div style="padding:10px">
+						<div class="panel-header tt-inner">
+							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
+							<img src='common/images/default.gif' width="30" height="30" onerror="this.src='common/images/default.gif;this.onerror=null'">
+							<label id="clientname"></label>
+				    		</a>
+				        </div>
+					</div>
 			</div>
+		  
+	</div>
+    
+    <div data-options="region:'center',split:false,border:true" style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
+	    <div id="productlist">
+		    <ul class="m-list" id="product-m-list">
+		    
+		    </ul>
 		</div>
-    </div>	
+	</div>
+	
+    <style scoped>
+    .tt-inner{
+         display:inline-block;
+         line-height:12px;
+         padding-top:5px;
+     }
+		p{
+			line-height:150%;
+		}
+	</style>
+	<style>
+	.box{width:50px;text-align:center; font-size:18px;}
+	.box img {width:100%;}
+	</style>
 	
 	
 </body>

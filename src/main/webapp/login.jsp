@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>欢迎登录后台管理系统</title>
+    <title>商城系统</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -72,33 +72,39 @@ function register(){
 	  
 
 <body>
-	<div class="easyui-navpanel">
-	    <header>
-	        <div class="m-toolbar">
-	            <span class="m-title">用户登录</span>
+	<div class="easyui-navpanel" style="font-size:168px;">
+	    <header >
+	        <div class="m-toolbar" style="justify-content:center;align-items:center;height:80px;font-size:168px;">
+	            <span class="m-title" style="font-size:28px;"><br>用户登录</span>
 	            <div class="m-left">
-	                <a href="javascript::void(0)" class="easyui-linkbutton m-back" data-options="plain:true,outline:true" onclick="$.mobile.back()">首页</a>
+	                <a href="javascript::void(0)" class="easyui-linkbutton m-back"  data-options="plain:true,outline:true" onclick="$.mobile.back()">
+	                	<span style="font-size:28px;">首页</span>
+	                </a>
 	            </div>
 	        </div>
 	    </header>
 	    <div style="margin:20px auto;width:100px;height:100px;border-radius:100px;overflow:hidden">
 	        <img src="common/images/default.gif" style="margin:0;width:100%;height:100%;" onerror="this.src='common/images/default.gif;this.onerror=null'">
 	    </div>
-	    <div style="padding:0 20px">
-	    	<span  style="font-size:14px">用户名</span>
-	        <div style="margin-bottom:10px">
-	            <input class="easyui-textbox" id="clientName" data-options="prompt:'输入 用户名 ',iconCls:'icon-man'" style="width:100%;height:38px">
+	    <div style="text-align:center;margin:0 auto">
+	    	<span  style="font-size:28px">用户名</span>
+	        <div style="margin-top:20px">
+	            <input class="easyui-textbox" id="clientName" data-options="prompt:'输入 用户名 ',iconCls:'icon-man'" style="width:80%;height:48px">
 	        </div>
-	        <span  style="font-size:14px">密码</span>
-	        <div>
-	            <input class="easyui-passwordbox" id="password" data-options="prompt:'输入密码 '  " style="width:100%;height:38px">
+	        <div style="margin-top:40px">
+	        	<span  style="font-size:28px;">密码</span>
 	        </div>
-	        <span id="loginValidate" style="color:red;font-size:14px"></span><br/>
+	        <div style="margin-top:20px">
+	            <input class="easyui-passwordbox" id="password" data-options="prompt:'输入密码 '  " style="width:80%;height:48px">
+	        </div>
+	        <div style="margin-top:40px">
+	        	<span id="loginValidate" style="color:red;font-size:28px"></span>
+	        </div>
+	        <div style="text-align:center;margin-top:50px">
+	            <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="login();" style="width:80%;height:48px"><span style="font-size:28px">登录</span></a>
+	        </div>
 	        <div style="text-align:center;margin-top:30px">
-	            <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="login();" style="width:100%;height:40px"><span style="font-size:16px">登录</span></a>
-	        </div>
-	        <div style="text-align:center;margin-top:30px">
-	            <a href="javascript:void(0);" class="easyui-linkbutton" onclick="register();" plain="true" outline="true" style="width:100px;height:35px"><span style="font-size:16px">注册</span></a> 
+	            <a href="javascript:void(0);" class="easyui-linkbutton" onclick="register();" plain="true" outline="true" style="width:80%;height:48px"><span style="font-size:28px">注册</span></a> 
 	        </div>
 	    </div>
 	</div>
