@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
 
-var goodsinfo = {
+/*var goodsinfo = {
 	goodsId:   Object(),
 	price:     Object(),
 	goodsFee:  Object(),
@@ -48,7 +48,7 @@ var goodsorder = {
 	receiverAreaName:  Object(),
 	goodsnum:          Object(),
 	goodsList:         new Array()
-};
+};*/
 
 var orderList = new Array();
 
@@ -70,19 +70,30 @@ function updateOrdersinfo(){
 	$("#order-m-list").html("");
 	var thtmlbody = "";
 	for(var i = 0; i < orderList.length; i++){
-		thtmlbody += "<li>";
-		thtmlbody += "<span>" + orderList[i].goodsList[0].goodsName + "</span>" + "<span style=\"float:right;\">" + orderList[i].status + "</span>" + "|";
-		thtmlbody += "<a href=\"javascript:void(0);\">" ;
-		thtmlbody += "<img src=\"images/delete.png\"" + " style=\"float:right;\"" +  " onerror=\"this.src='common/images/default.gif;this.onerror=null'\"> </a>";
-		
-		thtmlbody += "<span style=\"float:right;\">共1件商品</span>" + "<span style=\"float:right;\">实付金额：" + orderList[i].payment + "</span>";
-		thtmlbody += "</li>";
-		
+		if(orderList[i].goodsnum > 0){
+			alert("goodsid = " + orderList[i].goodsList[0].goodsId);
+			thtmlbody += "<li>";
+			thtmlbody += "<a href=\"javascript:void(0);\" style=\"width:100px; \" onclick=\"getProductById(" + orderList[i].goodsList[0].goodsId + ")\" >" ;
+			thtmlbody += "<img src=\"" + orderList[i].goodsList[0].picture + "\"" + " style=\"width:50px;\"" +  " onerror=\"this.src='common/images/default.gif;this.onerror=null'\"> </a>";
+			thtmlbody +=  '&nbsp;&nbsp;&nbsp;' + orderList[i].goodsList[0].goodsName;
+			thtmlbody += "<a href=\"javascript:void(0);\" style=\"width:100px; \" onclick=\"deleteProductById(" + orderList[i].goodsList[0].goodsId + ")\" >" ;
+			thtmlbody += "<img src=\"images/delete.png\"" + " style=\"width:50px; float:right;\"" +  " onerror=\"this.src='common/images/default.gif;this.onerror=null'\"> </a>";
+			thtmlbody += "<span style=\"float:right;\">" + orderList[i].status +  "&nbsp;|&nbsp;" +  "</span> " ;
+			thtmlbody += "<span style=\"float:right;\">&nbsp;实付金额：" + orderList[i].payment + "&nbsp;</span>";
+			thtmlbody += "<span style=\"float:right;\">&nbsp;共1件商品&nbsp;</span>";
+			thtmlbody += "</li>";
+		}
 	}
 	console.log(thtmlbody);
 	$("#order-m-list").html(thtmlbody);
 	return;	
 }
+
+function deleteProductById(productid){
+	window.location.href = "/product/toEdit2?id=" + productid;
+	return;
+}
+
 
 function getProductById(productid){
 	window.location.href = "/product/toEdit2?id=" + productid;
@@ -214,7 +225,21 @@ function initOrderList(){
 		
 			<div id="ordersinfo" style="padding:10px;" >
 				<ul class="m-list" id="order-m-list"  style="padding:10px;">
-					
+					<li>
+						<span style="display:inline">商家名称</span>
+						<a href="javascript:void(0);" style="width:100px; float:right;display:block;" onclick="deleteProductById(40)" >
+							<img src="images/delete.png" style="float:right;display:block;" width="50" height="50" onerror="this.src='common/images/default.gif;this.onerror=null'">
+						</a>
+						<span style="float:right;">&nbsp;&nbsp;未付款&nbsp;|&nbsp;&nbsp;</span> 
+						<br /><br /><br />	
+						<a href="javascript:void(0);" style="width:100px;display:inline" onclick="getProductById(40)" >
+							<img src="/common/images/default.gif;" width="50" height="50" onerror="this.src='common/images/default.gif;this.onerror=null'"> 
+						</a>&nbsp;&nbsp;&nbsp;梳子1
+						<br /><br /><br />	
+						<span style="float:right;">&nbsp;实付金额：0&nbsp;</span>
+						<span style="float:right;">&nbsp;共1件商品&nbsp;</span>
+						
+					</li>
 			    </ul>
 			</div>	
 		</div>	
