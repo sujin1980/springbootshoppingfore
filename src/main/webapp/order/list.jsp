@@ -26,26 +26,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
 
-
-var orderList = {
-	id:                Array(),
-	clientName:        Array(),
-	status:            Array(),
-	paymentTime:       Array(),
-	consignTime:       Array(),
-	receiverMobile:    Array(),
-	receiverAreaName:  Array(),
-	
-	goodsId:   Array(),
-	price:     Array(),
-	goodsFee:  Array(),
-	picture:   Array(),
-	price:     Array(),
-	totalFee:  Array(),
-	remarks:   Array(),
-	goodsName: Array(),
-	goodsnum:  Array(),
+var goodsinfo = {
+	goodsId:   Object(),
+	price:     Object(),
+	goodsFee:  Object(),
+	picture:   Object(),
+	price:     Object(),
+	totalFee:  Object(),
+	remarks:   Object(),
+	goodsName: Object()	
 };
+
+var goodsorder = {
+	id:                Object(),
+	clientName:        Object(),
+	status:            Object(),
+	payment:           Object(),
+	paymentTime:       Object(),
+	consignTime:       Object(),
+	receiverMobile:    Object(),
+	receiverAreaName:  Object(),
+	goodsnum:          Object(),
+	goodsList:         new Array()
+};
+
+var orderList = new Array();
 
 $(function(){
 	initOrderList();//"${ orders }");*/
@@ -54,6 +59,7 @@ $(function(){
 	$('#orderstatus').tabs({
 		onSelect: function(title,index){
 			updateOrdersinfo();
+			//console.log();
 		return;
 	  }
 	});
@@ -65,7 +71,7 @@ function updateOrdersinfo(){
 	var thtmlbody = "";
 	for(var i = 0; i < orderList.length; i++){
 		thtmlbody += "<li>";
-		thtmlbody += "<span>" + orderList[i].goodsName[0] + "</span>" + "<span style=\"float:right;\">" + orderList[i].status + "</span>" + "|";
+		thtmlbody += "<span>" + orderList[i].goodsList[0].goodsName + "</span>" + "<span style=\"float:right;\">" + orderList[i].status + "</span>" + "|";
 		thtmlbody += "<a href=\"javascript:void(0);\">" ;
 		thtmlbody += "<img src=\"images/delete.png\"" + " style=\"float:right;\"" +  " onerror=\"this.src='common/images/default.gif;this.onerror=null'\"> </a>";
 		
@@ -84,18 +90,21 @@ function getProductById(productid){
 }
 	
 function updateOrderGoodsInfo(data){
+	
 	for(var i= 0; i< orderList.length; i++){
 		orderList[i].goodsnum = 0;
 		for(var j = 0; j < data.length; j++){
 			if(orderList[i].id == data[j].orderId){
-				orderList[i].goodsId[goodsnum]   = data[j].goodsId;
-				orderList[i].price[goodsnum]     = data[j].price;
-				orderList[i].goodsFee[goodsnum]  = data[j].goodsFee;
-				orderList[i].picture[goodsnum]   = data[j].picture;
-				orderList[i].price[goodsnum]     = data[j].price;
-				orderList[i].totalFee[goodsnum]  = data[j].totalFee;
-				orderList[i].remarks[goodsnum]   = data[j].remarks;
-				orderList[i].goodsName[goodsnum] = data[j].goodsName;
+				var  goodsinfo = new Object();
+				goodsinfo.goodsId   = data[j].goodsId;
+				goodsinfo.price     = data[j].price;
+				goodsinfo.goodsFee  = data[j].goodsFee;
+				goodsinfo.picture   = data[j].picture;
+				goodsinfo.price     = data[j].price;
+				goodsinfo.totalFee  = data[j].totalFee;
+				goodsinfo.remarks   = data[j].remarks;
+				goodsinfo.goodsName = data[j].goodsName;
+				orderList[i].goodsList.push(goodsinfo);
 				orderList[i].goodsnum++;
 			}
 		}
@@ -104,30 +113,19 @@ function updateOrderGoodsInfo(data){
 }
 function updateOrderDetailInfo(data){
 	 var idlist = {};
-	 /*
-	 var s_keySearch = {
-	      key_name:Array(),
-	      key_index:Array(),
-	      key_count:Array(),
-	      key_scount:Array()
-	   };
-	  
-	  for(i=0;i<3;i++){
-	   s_keySearch.key_name[i]="内衣"+i;
-	   s_keySearch.clientName[i]= i;
-	   s_keySearch.status[i]= i*100;
-	   s_keySearch.paymentTime[i]=i*10;
-	  }*/
 		  
 	 for(var i= 0; i< data.length; i++){
-		  orderList.id[i]               = data[i].id;
-		  orderList.clientName[i]       = data[i].clientName;
-		  orderList.status[i]           = data[i].status;
-		  orderList.paymentTime[i]      = data[i].paymentTime;
-		  orderList.consignTime[i]      = data[i].consignTime;
-		  orderList.receiverMobile[i]   =  data[i].receiverMobile;
-		  orderList.receiverAreaName[i] = data[i].receiverAreaName; 
-		  
+		  var  goodsorder = new Object();
+		  goodsorder.id               = data[i].id;
+		  goodsorder.clientName       = data[i].clientName;
+		  goodsorder.status           = data[i].status;
+		  goodsorder.payment          = data[i].payment;
+		  goodsorder.paymentTime      = data[i].paymentTime;
+		  goodsorder.consignTime      = data[i].consignTime;
+		  goodsorder.receiverMobile   =  data[i].receiverMobile;
+		  goodsorder.receiverAreaName = data[i].receiverAreaName; 
+		  goodsorder.goodsList = new Array();
+		  orderList.push(goodsorder);
 		  idlist[i] = data[i].id;
 	}
 	 

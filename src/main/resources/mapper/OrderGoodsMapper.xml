@@ -57,10 +57,10 @@
 
 	</select>
 	
-	<select id="findGoods"  parameterType="java.util.List"> 
+	<select id="findGoods"  parameterType="java.util.List" resultMap="OrderGoodsBaseResultMap"> 
 		select * from t_ordergoods where orderid in 
 		<foreach collection="idList" index="index" item="id" open="(" separator="," close=")">
-				#{orderId}
+				#{id}
 		</foreach>
 
 	</select>
