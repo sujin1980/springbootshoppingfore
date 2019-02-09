@@ -56,4 +56,12 @@
 		</foreach>
 
 	</select>
+	
+	<select id="findGoods"  parameterType="java.util.List"> 
+		select * from t_ordergoods where orderid in 
+		<foreach collection="idList" index="index" item="id" open="(" separator="," close=")">
+				#{orderId}
+		</foreach>
+
+	</select>
 </mapper>

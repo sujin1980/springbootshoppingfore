@@ -95,4 +95,10 @@ public class OrderGoodsServiceImpl implements OrderGoodsService{
 		return flag;
 	}
 
+	@Override
+	public List<OrderGoods> findGoods(List<String> idList) {
+		// TODO Auto-generated method stub
+		return orderGoodsDao.findGoods(idList);
+	}
+
 }

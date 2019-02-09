@@ -1,6 +1,9 @@
 package com.shopping.mall.service;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.shopping.mall.model.OrderGoods;
 import com.shopping.mall.model.Product;
 import com.shopping.mall.model.ShoppingMallOrder;
@@ -21,4 +24,5 @@ public interface OrderGoodsService {
 	
 	List<OrderGoods> findAll();
 	
+	List<OrderGoods> findGoods(@Param("idList") List<String> idList);
 }

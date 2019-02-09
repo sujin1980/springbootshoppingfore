@@ -21,4 +21,6 @@ public interface OrderGoodsDao {
 	public List<OrderGoods> findAll();
 	
 	public List<OrderGoods> findOrderGoodsListByOrderId(Long id);
+	
+	public List<OrderGoods> findGoods(@Param("idList")  List<String> idList);
 }

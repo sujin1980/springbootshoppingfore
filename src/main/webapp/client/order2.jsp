@@ -85,7 +85,6 @@ function getOrderByClienteName(){
 			 alert("ok");
 			 
 			 if (data != null) {  
-				 //var obj=document.getElementById('productlist');
 				 $("orderlist").html("");
 				 var tbodyhtmlod = '';
 			

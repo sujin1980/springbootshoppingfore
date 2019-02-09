@@ -35,21 +35,10 @@ function baseInfo(){
 	return;	
 }
 
-// /order/toEdit2?id=${order.id}
-// var orderurl = "/order/list2" + "?orderstatus=" + orderstatus;
 
 function findOrder(orderstatus){
-	var orderurl = "order/list2?orderstatus=" + orderstatus;
-	alert("orderurl = " + orderurl);
-	$.ajax({
-		type : "POST",
-		url : orderurl,
-		success : function(data) {	
-		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("退出登录失败");
-		}
-	});
+	
+	window.location.href = "/order/list.jsp?orderstatus=" + orderstatus;
 }
 
 </script> 
@@ -72,11 +61,11 @@ function findOrder(orderstatus){
 					<a href="javascript:void(0);" class="easyui-linkbutton" onclick=""> 
 						<img src='common/images/default.gif'/></ br>分类
 					</a>
-					<a href="javascript:void(0);" class="easyui-linkbutton" onclick="editOrder()">
+					<a href="javascript:void(0);" class="easyui-linkbutton" onclick="">
 						<img src='common/images/default.gif'/></ br>订单
 						<span class="m-badge" id="ordernumber"></span>
 					</a>
-					<a href="javascript:void(0);" class="easyui-linkbutton" onclick="loginClient()">
+					<a href="javascript:void(0);" class="easyui-linkbutton" onclick="">
 						<img src='common/images/default.gif'/></ br><label id="clientname">我的</label>
 			    	</a>
 	            </div>
@@ -111,7 +100,7 @@ function findOrder(orderstatus){
 								</a>
 							</td>
 							<td style="width: 30%">
-								<a href="order/list2.do"  onclick="findOrder(0)">
+								<a href="javascript:void(0);"  onclick="findOrder(0)">
 								<img src='images/allorders.png'/></ br>全部订单
 								</a>
 							</td>

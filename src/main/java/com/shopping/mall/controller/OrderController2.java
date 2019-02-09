@@ -62,12 +62,11 @@ public class OrderController2 {
 //    } 
     
     @RequestMapping("/order/list2")
-    public String list(HttpServletRequest request, Model model, Integer orderstatus) {
+    public String list(HttpServletRequest request, Model model) {
 		  System.out.println("Thymeleaf查询所有");
 		  List<ShoppingMallOrder> orders = orderService.findAll();
 		  
 		  model.addAttribute("orders", orders);
-		  model.addAttribute("orderstatus", orderstatus);
 		  return "order/list2";
     }
     
@@ -88,6 +87,7 @@ public class OrderController2 {
         return  orderService.findOrderListByClientName(clientName);
     } 
     
+
     
     @RequestMapping(value ="/order/add2", method = { RequestMethod.POST })
     public String add(HttpServletRequest request, @RequestBody String idlistJson) throws Exception{  

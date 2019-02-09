@@ -3,6 +3,7 @@ package com.shopping.mall.controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,6 +74,23 @@ public class OrderGoodsController2 {
         return "redirect:/product/list2";
     }
 
+    @RequestMapping(value = "/ordergoods/findGoodsByOrderList", method = { RequestMethod.POST })
+    @ResponseBody
+    public List<OrderGoods> findGoodsByOrderList(HttpServletRequest request, @RequestBody String idlistJson){  
+        System.out.println(idlistJson);  
+        List<String> jsonStrlist = Arrays.asList(idlistJson.split("&"));
+        List<String>  idlist = new ArrayList<String>();
+        for(String jsonStr: jsonStrlist) {
+        	
+        	//Long.valueOf(jsonStr.substring(jsonStr.indexOf("=") + 1, jsonStr.length()));
+        	idlist.add(jsonStr.substring(jsonStr.indexOf("=") + 1, jsonStr.length()));
+        	
+        }
+        System.out.println(idlist);
+        
+        return orderGoodsService.findGoods(idlist);
+    }  
+    
     @RequestMapping(value ="/ordergoods/decGoodsNumber", method = { RequestMethod.POST })
     @ResponseBody
     public List<OrderGoods> decGoodsNumber(HttpServletRequest request, 
