@@ -137,7 +137,11 @@ function getProductType(categoryname){
 }
 
 function loginClient(){
-	window.location.href = "login.jsp";	
+	if('${sessionScope.loginClient.name}' != ''){
+		window.location.href = "client/Edit2.jsp";
+	}else{
+		window.location.href = "login.jsp";	
+	}
 	return;
 }
 

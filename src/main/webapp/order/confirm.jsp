@@ -77,12 +77,8 @@ function updateOrderGoodsInfo(data){
 	return;	
 }
 
-function addGoods(){
-	window.location.href = "mainFrame.jsp";
-}
-
-function confirmOrder(){
-	window.location.href = "order/confirm.jsp";
+function account(){
+	//window.location.href = "order/account.jsp";
 }
 
 </script> 
@@ -99,28 +95,11 @@ function confirmOrder(){
 	            </div>   
 		    </div>
 		</header>
-		<footer >
-	        <div class="m-buttongroup m-buttongroup-justified" style="height:90px;width:100%">
-			    
-	            <input type="checkbox" class="shopping-checkbox" style="margin:20px; height:30px;width:30px;" name="goodsall" >
-	            <span class="shopping-client-text">全选</span>
-		       
-	            <span class="shopping-client-text" style="margin-left:50px;">总计： ${sessionScope.clientorder.payment}</span>
-	            
-	            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addGoods()" style="background-color:#3CB371;width:200px;" data-options="size:'large',iconAlign:'top',plain:true">
-	            	<span class="shopping-client-text" style="color:#FFFFFF">继续添加商品</span>
-	            </a>
-	            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="confirmOrder()" style="background-color:#FF1493;width:200px;" data-options="size:'large',iconAlign:'top',plain:true">
-	            	<span class="shopping-client-text" style="color:#FFFFFF">去结算</span>
-	            </a>
-	        </div>
-	    </footer>
 		<div  style="height:100%;width:100%;z-index:1;" >
-			
-			
 			<div id="orderstatus" style="margin-top:60px" data-options="tabHeight:60,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
 				<div style="padding:20px">
-					<span class="shopping-client-text">美酒商城</span>
+					<span class="shopping-client-text">${sessionScope.clientorder.clientChineseName}&nbsp;&nbsp;</span>
+					<span class="shopping-client-text">${sessionScope.clientorder.receiverMobile}&nbsp;&nbsp;</span>
 				</div>
 				
 			</div>	
@@ -132,6 +111,15 @@ function confirmOrder(){
 					</li>
 			    </ul>
 			</div>	
+			<div margin-top:30px">
+				<span class="shopping-client-text" style="margin-left:50px;">总计： ${sessionScope.clientorder.payment}</span>
+			</div>	
+			<div style="text-align:center;margin-top:30px">
+		        <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="account();" style="width:80%;height:60px;background:#FF1493">
+					<span  class="shopping-client-text">去支付</span>
+				</a>
+		    </div>
+		    
 		</div>	
 	</div>
   </body>

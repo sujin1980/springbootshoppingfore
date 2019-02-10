@@ -49,7 +49,7 @@ function findOrder(orderstatus){
 }
 
 function initOrderInfo(clientname){
-	alert(clientname);
+	//alert(clientname);
 	$.ajax({
     	dataType: "json",  
         type: "POST",
