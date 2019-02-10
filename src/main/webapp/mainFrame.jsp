@@ -132,6 +132,11 @@ function findGoods(){
 	window.location.href = "/product/search.jsp";
 	return;
 }
+
+function toHomePage(){
+	window.location.href = "mainFrame.jsp";
+}
+
 </script> 
 
 <body class="easyui-layout">
@@ -149,10 +154,16 @@ function findGoods(){
                     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()" data-options="iconCls:'icon-man',plain:true"></a>
                 </div>
             </div>
-            <div id="mm" class="easyui-menu" style="width:150px;" data-options="itemHeight:30,noline:true">
-	            <div>易耗品</div>
-	            <div>有偿用品</div>
-	            <div>布草</div>
+            <div id="mm" class="easyui-menu" style="width:10px;" data-options="itemHeight:16,noline:true">
+	            <div>
+	            	<span style="font-size:14px;">易耗品</span>
+	            </div>
+	            <div>
+	            	<span style="font-size:14px;">有偿用品</span>
+	            </div>
+	            <div>
+	            	<span style="font-size:14px;">布草</span>
+	            </div>
 	        </div>
     </div> 
     
@@ -161,7 +172,7 @@ function findGoods(){
 		        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
-						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="">
+						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
 							<img src='common/images/default.gif' width="30" height="30" onerror="this.src='common/images/default.gif;this.onerror=null'">首页
 							</a>
 						</div>

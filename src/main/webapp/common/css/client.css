@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+.m-title{
+	font-size:28px;
+}
+
+.shopping-client-text{
+	font-size:28px;
+}
+
+.shopping-client-text-div{
+	text-align:center;
+	margin-top:40px;
+}
+
+.shopping-client-hint{
+	font-size:28px;
+	color:red;
+}
+
+.shopping-client-hint-div{
+	text-align:center;
+	margin-top:40px;
+}
+
+.shopping-main-frame-icon{
+	width:50;
+	height:50;
+}
+.easyui-textbox{
+	width:80%;
+	height:60px;
+	font-size:28px;
+}
+

@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	
+	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
 	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
@@ -32,7 +33,7 @@ var orderList = new Array();
 
 $(function(){
 	initOrderList();//"${ orders }");*/
-	alert(window.location.href);
+	//alert(window.location.href);
 	
 	var ordertype = new Object();
 	if(window.location.href.indexOf("?") > 0 ){
@@ -61,10 +62,7 @@ $(function(){
 		break;
 	}
 	
-	//alert("selected = " + $('#orderstatus').height);
-	//alert("ordertype = " + ordertype);
-	
-	//$('#orderstatus').tabs('select', 1);
+
 	
 	var tab = $('#orderstatus').tabs('getSelected');
 	var index = $('#orderstatus').tabs('getTabIndex',tab);
@@ -82,6 +80,7 @@ $(function(){
 	  }
 	});
 	
+	$("#querycondition").textbox('textbox').css("font-size", "28px");
 }) 
 
 function updateOrdersinfo(statusfilter){
@@ -92,24 +91,24 @@ function updateOrdersinfo(statusfilter){
 			if((statusfilter == 0) || ((statusfilter == 3) && (orderList[i].status == "未付款"))
 				|| ((statusfilter == 4) && ((orderList[i].status == "已付款") || (orderList[i].status == "未发货") || (orderList[i].status == "已发货") ))) {
 				thtmlbody += "<li>";
-				thtmlbody += "<span style=\"display:inline\">" + orderList[i].clientChineseName + "</span>";
+				thtmlbody += "<span class=\"shopping-client-text\" style=\"display:inline\">" + orderList[i].clientChineseName + "</span>";
 				thtmlbody += "<a href=\"javascript:void(0);\" style=\"width:90px; float:right;display:block;\" onclick=\"deleteOrderById(" + 
 					orderList[i].id + ")\" >";
 				thtmlbody += "<img src=\"images/delete.png\" style=\"float:right;display:block;\" width=\"50\" height=\"50\""
 					+ "onerror=\"this.src='common/images/default.gif;this.onerror=null'\">";
 				thtmlbody += "</a>";
-				thtmlbody += "<span style=\"float:right;\">&nbsp;&nbsp;&nbsp;" + orderList[i].status + "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>"; 
+				thtmlbody += "<span class=\"shopping-client-text\" style=\"float:right;\">&nbsp;&nbsp;&nbsp;" + orderList[i].status + "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>"; 
 				thtmlbody += "<br /><br /><br />";	
 				
 				for(var j = 0; j < orderList[i].goodsnum; j++){
 					thtmlbody += "<a href=\"javascript:void(0);\" style=\"width:100px;display:inline\" onclick=\"getProductById(" + orderList[i].goodsList[j].goodsId + ")\" >";
 					thtmlbody += " <img src=\"" + orderList[i].goodsList[0].picture + "\"" + " width=\"50\" height=\"50\" onerror=\"this.src='common/images/default.gif;this.onerror=null'\">"; 
-					thtmlbody += "</a>&nbsp;&nbsp;&nbsp;" + orderList[i].goodsList[j].goodsName;
+					thtmlbody += "<span class=\"shopping-client-text\"" + orderList[i].goodsList[j].goodsName + "&nbsp;</span>" + "</a>";
 				}
 				thtmlbody += "<br /><br /><br />";
 				
-				thtmlbody += "<span style=\"float:right;\">&nbsp;实付金额：" + orderList[i].payment + "&nbsp;</span>";
-				thtmlbody += "<span style=\"float:right;\">&nbsp;共" + orderList[i].goodsnum + "件商品&nbsp;</span>";
+				thtmlbody += "<span class=\"shopping-client-text\" style=\"float:right;\">&nbsp;实付金额：" + orderList[i].payment + "&nbsp;</span>";
+				thtmlbody += "<span class=\"shopping-client-text\" style=\"float:right;\">&nbsp;共" + orderList[i].goodsnum + "件商品&nbsp;</span>";
 				thtmlbody += "</li>";
 			}
 		}
@@ -218,39 +217,42 @@ function initOrderList(){
 <body>
 	<div class="easyui-navpanel">
 		<header>
-		    <div class="m-toolbar">
-				<span class="m-title">我的订单</span>
+			<div class="m-toolbar" style="justify-content:center;align-items:center;height:80px;">
+				<span class="m-title" style="font-size:28px;"><br>我的订单</span>
 		        <div class="m-left">
-	                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">回退</a>
+	                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">
+	                	<span class="shopping-client-text">回退</span>
+	                </a>
 	            </div>   
 		    </div>
 		</header>
 		<div  style="height:100%;width:100%;z-index:1;" >
-			<div style="padding:10px;height:50px;width:100%;z-index:1;" >
-				<input class="easyui-textbox" id="address" data-options="prompt:'商品名称/商品编号/订单号'  "  style="width:70%;height:38px">
-				<a id="btn" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="margin:10px;height:38px">搜索</a>
+			<div style="padding:30px;height:50px;width:100%;z-index:1;" >
+				<input class="easyui-textbox" id="querycondition" data-options="prompt:'商品名称/商品编号/订单号'  "  style="width:70%;height:60px">
+					<a id="btn" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="margin:10px;height:60px">
+						<span class="shopping-client-text">搜索</span>
+	                </a>
 			</div>
-			<br />
 			
-			<div id="orderstatus" class="easyui-tabs" data-options="tabHeight:60,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
+			<div id="orderstatus" class="easyui-tabs" style="margin-top:60px" data-options="tabHeight:60,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
 				<div style="padding:10px">
 					<div class="panel-header tt-inner">
-						<span>所有订单</span>
+						<span class="shopping-client-text">所有订单</span>
 					</div>
 				</div>
 				<div style="padding:10px">
 					<div class="panel-header tt-inner">
-						<span>待付款</span>
+						<span class="shopping-client-text">待付款</span>
 					</div>
 				</div>
 				<div style="padding:10px">
 					<div class="panel-header tt-inner">
-						<span>待收货</span>
+						<span class="shopping-client-text">待收货</span>
 					</div>
 				</div>
 				<div style="padding:10px">
 					<div class="panel-header tt-inner">
-						<span>已完成</span>
+						<span class="shopping-client-text">已完成</span>
 					</div>
 				</div>
 			</div>	

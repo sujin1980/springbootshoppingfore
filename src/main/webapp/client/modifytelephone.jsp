@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	
+	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
 	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
@@ -32,6 +33,8 @@ $(function(){
 	    	  checktelephone(newvalue);
 	     }
 	});	
+	
+	$("#telephone").textbox('textbox').css("font-size", "28px");
 }) 
 
 function checktelephone(newvalue){
@@ -77,29 +80,34 @@ function cancelTelephone(){
 <body>
 	<div class="easyui-navpanel">
 			<header>
-			    <div class="m-toolbar">
-					<span class="m-title">账号管理</span>
+				<div class="m-toolbar" style="justify-content:center;align-items:center;height:80px;">
+					<span class="m-title" style="font-size:28px;"><br>账号管理</span>
 			        <div class="m-left">
-		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true" onclick="$.mobile.back()">回退</a>
+		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true" onclick="$.mobile.back()">
+			        		<span class="shopping-client-text">回退</span>
+			        	</a>
 		            </div>   
 			    </div>
 			</header>
 			
-			<div id="telephonegroup" style="padding:10px;height:100%;width:100%;z-index:1;">
-				<div>
-				    <br />
-				    <span  style="font-size:14px">电话</span>
-				    <div style="margin-bottom:10px">
-				        <input class="easyui-textbox" id="telephone" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "  style="width:100%;height:38px">
-				    </div>
-				    <span id="telephoneValidate" style="color:red;font-size:14px"></span><br/>
-				    <div style="text-align:center;margin-top:30px">
-				        <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="modifyTelephone();" style="width:100%;height:40px"><span style="font-size:16px">确认</span></a>
-				    </div>    
-				    <div style="text-align:center;margin-top:30px">
-				        <a href="javascript:void(0);" class="easyui-linkbutton" onclick="cancelTelephone();" plain="true" outline="true" style="width:100px;height:35px"><span style="font-size:16px">重置</span></a> 
-				    </div>
-			    </div>  
+			<div id="telephonegroup" style="padding:50px;text-align:center;margin:0 auto">
+				
+			    <br />
+			    <span  class="shopping-client-text">电话</span>
+			    <div style="margin-top:20px">
+			        <input class="easyui-textbox" id="telephone" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "  style="width:80%;height:60px;">
+			    </div>
+			    <span id="telephoneValidate" class="shopping-client-hint"></span><br/>
+			    <div style="text-align:center;margin-top:30px">
+			        <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="modifyTelephone();" style="width:80%;height:60px;">
+			        	<span class="shopping-client-text">确认</span>
+			        </a>
+			    </div>    
+			    <div style="text-align:center;margin-top:30px">
+			        <a href="javascript:void(0);" class="easyui-linkbutton" onclick="cancelTelephone();" plain="true" outline="true" style="width:80%;height:60px;">
+			        	<span class="shopping-client-text">重置</span>
+			        </a> 
+			    </div>
 		  </div>
 		 
 	</div>

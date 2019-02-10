@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	
+	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
 	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
@@ -39,7 +40,8 @@ $(function(){
 		textField: 'item',
 		groupField: 'group',
 		textFormatter: function(value){
-			return '<a href="javascript:void(0);" class="datalist-link">' + value + '</a>';
+			return '<a href="javascript:void(0);" class="datalist-link">' 
+			+ '<span class="shopping-client-text">' + value + '</span></a>';
 		},
 		onClickRow: function(index,row){
 			switch(index)
@@ -83,10 +85,12 @@ function logout(){
 <body>
 	<div class="easyui-navpanel">
 			<header>
-			    <div class="m-toolbar">
-					<span class="m-title">账号管理</span>
+			 	<div class="m-toolbar" style="justify-content:center;align-items:center;height:80px;">
+					<span class="m-title" style="font-size:28px;"><br>账号管理</span>
 			        <div class="m-left">
-		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true" onclick="$.mobile.back()">回退</a>
+		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true" onclick="$.mobile.back()">
+		                	<span class="shopping-client-text">回退</span>
+		                </a>
 		            </div>   
 			    </div>
 			</header>
@@ -94,9 +98,10 @@ function logout(){
 			<div id="clientsinfo" style="padding:10px;height:100%;width:100%;z-index:1;" >
 				<div>
 				    <br />
-			    	<span>当前登录账号</span>
+				    <span class="shopping-client-text">当前登录账号</span>
 			    	<a href="javascript:void(0);" onclick="logout()" style="float:right"> 
-						<img src='images/smallman.png'/>退出登录
+						<img src='images/smallman.png'/>
+						<span class="shopping-client-text">退出登录</span>
 					</a>
 					<br /> <br />
 			    </div> 
@@ -105,7 +110,7 @@ function logout(){
 			        <hr style="height:1px;border:none;border-top:1px solid #555555;" />
 			        <br />
 			    	<img src='images/man.png'/>
-			    	<span id="clientname">${sessionScope.loginClient.name}</span> 
+			    	<span id="clientname" class="shopping-client-text">${sessionScope.loginClient.name}</span> 
 			    </div> 
 			    <div id="dl" data-options="
 					fit: true,
