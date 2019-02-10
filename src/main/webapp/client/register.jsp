@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	
+	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
 	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
@@ -25,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
 <script type="text/javascript">
-$(document).ready(function (){
+$(function () {
 	$('#clientName').textbox({
 	      onChange: function (newvalue, oldvalue) {
 	    	  checkduplicatename(newvalue);
@@ -56,7 +57,15 @@ $(document).ready(function (){
 	     }
 	});
 	
-	
+	$("#password").textbox('textbox').css("font-size", "28px");
+	$("#confirmpassword").textbox('textbox').css("font-size", "28px");
+	$("#clientName").textbox('textbox').css("font-size", "28px");
+	$("#chineseName").textbox('textbox').css("font-size", "28px");
+	$("#telephone").textbox('textbox').css("font-size", "28px");
+	$("#address").textbox('textbox').css("font-size", "28px");
+	$("#weixin").textbox('textbox').css("font-size", "28px");
+	$("#qq").textbox('textbox').css("font-size", "28px");
+	$("#remarks").textbox('textbox').css("font-size", "28px");
 }); 
 
 function checkchinesename(newvalue){
@@ -144,65 +153,72 @@ function register(){
 	});
 }
 
+function login(){
+	window.location.href = "login.jsp";
+}
+
 </script> 
     
 <body>
 		<div class="easyui-navpanel">
 			<header>
-			    <div class="m-toolbar">
-			        <span class="m-title">用户注册</span>
+			    <div class="m-toolbar" style="justify-content:center;align-items:center;height:80px;">
+			        <span class="m-title" style="font-size:28px;"><br>用户注册</span>
 			        <div class="m-left">
-		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true" onclick="$.mobile.back()">登录</a>
+		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true" onclick="login()">
+		                	<span class="shopping-client-text">登录</span>
+		                </a>
 		            </div>
 			    </div>
 			</header>
 			<div style="margin:20px auto;width:100px;height:100px;border-radius:100px;overflow:hidden">
 			    <img src="common/images/default.gif" style="margin:0;width:100%;height:100%;" onerror="this.src='common/images/default.gif;this.onerror=null'">
 			</div>
-			<div style="padding:0 20px">
-			    <span  style="font-size:14px">用户名</span>
-			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="clientName" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "  style="width:100%;height:38px">
+			<div style="text-align:center;margin:0 auto">
+			    <span class="shopping-client-text">用户名</span>
+			    <div style="margin-top:20px">
+			        <input class="easyui-textbox" id="clientName" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "  style="width:80%;height:60px;">
 			    </div>
-			    <span  style="font-size:14px">中文名称</span>
+			    <span class="shopping-client-text">中文名称</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="chineseName" data-options="prompt:'请输入中文 '  "  style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="chineseName" data-options="prompt:'请输入中文 '  "  style="width:80%;height:60px;">
 			    </div>
-			    <span  style="font-size:14px">密码</span>
+			    <span class="shopping-client-text">密码</span>
 			    <div>
-			        <input class="easyui-passwordbox" name="password"   id="password" data-options="prompt:'输入6至20位密码 '  " style="width:100%;height:38px">
+			        <input class="easyui-passwordbox" name="password"   id="password" data-options="prompt:'输入6至20位密码 '  " style="width:80%;height:60px;">
 			    </div>
-			    <span  style="font-size:14px">确认密码</span>
+			    <span class="shopping-client-text">确认密码</span>
 			    <div>
-			        <input class="easyui-passwordbox" name="confirmpassword" id="confirmpassword" data-options="prompt:'输入6至20位密码'  " style="width:100%;height:38px">
+			        <input class="easyui-passwordbox" name="confirmpassword" id="confirmpassword" data-options="prompt:'输入6至20位密码'  " style="width:80%;height:60px;">
 			    </div>
-			    <span  style="font-size:14px">电话</span>
+			    <span  class="shopping-client-text">电话</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="telephone" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "  style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="telephone" data-options="prompt:'请输入正确的电话号码'  "  style="width:80%;height:60px;">
 			    </div>
-			    <span  style="font-size:14px">地址</span>
+			    <span  class="shopping-client-text">地址</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="address" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "  style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="address" data-options="prompt:'请输入地址信息'  "  style="width:80%;height:60px;">
 			    </div>
-			    <span  style="font-size:14px">微信</span>
+			    <span  class="shopping-client-text">微信</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="weixin" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "   style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="weixin" data-options="prompt:'请输入微信号'  "   style="width:80%;height:60px;">
 			    </div>
-			    <span  style="font-size:14px">QQ</span>
+			    <span  class="shopping-client-text">QQ</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="qq" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "   style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="qq" data-options="prompt:'请输入QQ号'  "   style="width:80%;height:60px;">
 			    </div>
-			    <span  style="font-size:14px">自我介绍</span>
+			    <span  class="shopping-client-text">自我介绍</span>
 			    <div style="margin-bottom:10px">
-			        <input class="easyui-textbox" id="remarks" data-options="prompt:'请输入至少6个字符。包括英文字符和数字以及_'  "   style="width:100%;height:38px">
+			        <input class="easyui-textbox" id="remarks" data-options="prompt:'请输入自我介绍'  "   style="width:80%;height:60px;">
 			    </div>
 			    
-			    <span id="registerValidate" style="color:red;font-size:14px"></span><br/>
+			    <span id="registerValidate"  class="shopping-client-hint"></span><br/>
 			    <div style="text-align:center;margin-top:30px">
-			        <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="register();" style="width:100%;height:40px"><span style="font-size:16px">注册</span></a>
+			        <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="register();" style="width:80%;height:60px;"><span  class="shopping-client-text">注册</span></a>
 			    </div>
 			    <div style="text-align:center;margin-top:30px">
-			        <a href="javascript:void(0);" class="easyui-linkbutton" onclick="cancel();" plain="true" outline="true" style="width:100px;height:35px"><span style="font-size:16px">重置</span></a> 
+			        <a href="javascript:void(0);" class="easyui-linkbutton" onclick="cancel();" plain="true" outline="true" style="width:80%;height:60px;">
+			        <span  class="shopping-client-text">重置</span></a> 
 			    </div>
 			</div>							
 		</div>

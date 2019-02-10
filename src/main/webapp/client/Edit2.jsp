@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	
+	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
 	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
@@ -47,9 +48,11 @@ function findOrder(orderstatus){
 		<div class="easyui-navpanel">
 			<header>
 			    <div class="m-toolbar">
-					<span class="m-title">我的商城</span>
+					<span class="m-title" style="font-size:28px;">我的商城</span>
 			        <div class="m-left">
-		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true" onclick="$.mobile.back()">回退</a>
+		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true" onclick="$.mobile.back()">
+		                   <span class="shopping-client-text">回退</span>  	
+		                 </a>
 		            </div>   
 			    </div>
 			</header>
@@ -73,35 +76,40 @@ function findOrder(orderstatus){
         
 			<div id="clientsinfo" style="padding:10px;height:100%;width:100%;z-index:1">
 			    <div id="baseinfo" style="padding-top:20px;height:200px;width:100%;background:transparent;background-color:#FF1493;color:#ffffff;border-radius:5px;text-align:center; align-items:center;">
-			    	<span id="">用户名：</span> 
-			    	<span id="clientname">'${sessionScope.loginClient.name}'</span>&nbsp; &nbsp; &nbsp; 
+			    	<span class = "shopping-client-text">用户名：</span> 
+			    	<span id="clientname" class = "shopping-client-text">'${sessionScope.loginClient.name}'</span>&nbsp; &nbsp; &nbsp; 
 			    	<a href="javascript:void(0);" onclick="baseInfo()" style="color:#ffffff;">
-			    		<img src='images/setting.png'/>账号管理
+			    		<img src='images/setting.png' class="shopping-main-frame-icon"/>
+			    		<span class = "shopping-client-text">账号管理</span>
 					</a>
 			    </div>
-			     <div id="orderinfo" style="height:100%;width:100%;">
+			     <div id="orderinfo" style="padding:20px;text-align:center;margin:0 auto;">
 			        <table>
 				     	<tr>
-					    	<td style="width: 30%">
+					    	<td style="width:29%">
 							    <a href="javascript:void(0);" onclick="findOrder(3)">
-								<img src='images/unpayed.png'/></ br></ br>待付款
+								<img src='images/unpayed.png' class="shopping-main-frame-icon" />
+									<span class="shopping-client-text"><br />待付款</span>
 								</a>
 							</td>
 							
-							<td style="width: 30%">
+							<td style="width:29%">
 							    <a href="javascript:void(0);" onclick="findOrder(4)"> 
-								<img src='images/unrecieved.png'/></ br>待收货
+								<img src='images/unrecieved.png' class="shopping-main-frame-icon"/>
+									<span class="shopping-client-text"><br />待收货</span>
 								</a>
 							</td>
 							
-							<td style="width: 30%">
+							<td style="width:29%">
 								<a href="javascript:void(0);"  onclick="">
-								<img src='images/aftersale.png'/></ br>退货/售后
+								<img src='images/aftersale.png' class="shopping-main-frame-icon"/>
+									<span class="shopping-client-text"><br />退货/售后</span>
 								</a>
 							</td>
-							<td style="width: 30%">
+							<td style="width:29%">
 								<a href="javascript:void(0);"  onclick="findOrder(0)">
-								<img src='images/allorders.png'/></ br>全部订单
+								<img src='images/allorders.png' class="shopping-main-frame-icon"/>
+									<span class="shopping-client-text"><br />全部订单</span>
 								</a>
 							</td>
 						</tr>
