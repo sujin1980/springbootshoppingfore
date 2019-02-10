@@ -66,7 +66,7 @@ $(function(){
 	
 	var tab = $('#orderstatus').tabs('getSelected');
 	var index = $('#orderstatus').tabs('getTabIndex',tab);
-	//alert(index);
+
 	
 	updateOrdersinfo(index);
 	
@@ -75,7 +75,6 @@ $(function(){
 	$('#orderstatus').tabs({
 		onSelect: function(title,index){
 			updateOrdersinfo(index);
-			//console.log();
 		return;
 	  }
 	});
@@ -103,7 +102,7 @@ function updateOrdersinfo(statusfilter){
 				for(var j = 0; j < orderList[i].goodsnum; j++){
 					thtmlbody += "<a href=\"javascript:void(0);\" style=\"width:100px;display:inline\" onclick=\"getProductById(" + orderList[i].goodsList[j].goodsId + ")\" >";
 					thtmlbody += " <img src=\"" + orderList[i].goodsList[0].picture + "\"" + " width=\"50\" height=\"50\" onerror=\"this.src='common/images/default.gif;this.onerror=null'\">"; 
-					thtmlbody += "<span class=\"shopping-client-text\"" + orderList[i].goodsList[j].goodsName + "&nbsp;</span>" + "</a>";
+					thtmlbody += "<span class=\"shopping-client-text\">" + orderList[i].goodsList[j].goodsName + "&nbsp;</span>" + "</a>";
 				}
 				thtmlbody += "<br /><br /><br />";
 				
@@ -149,8 +148,6 @@ function updateOrderGoodsInfo(data){
 			}
 		}
 	}
-	//updateOrdersinfo($('#orderstatus').selected);
-	
 }
 function updateOrderDetailInfo(data){
 	 var idlist = {};
