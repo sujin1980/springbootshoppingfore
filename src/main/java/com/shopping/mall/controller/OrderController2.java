@@ -81,10 +81,14 @@ public class OrderController2 {
     @ResponseBody
     public List<ShoppingMallOrder> getOrderListByClientName(HttpServletRequest request, @RequestParam String clientName) throws Exception{  
     	if((clientName == null) || (clientName.trim().length() == 0)) {
-    		return orderService.findAll();
+    		return null;
     	}
         
-        return  orderService.findOrderListByClientName(clientName);
+    	List<ShoppingMallOrder> orderList = orderService.findUnPayedOrderByClientName(clientName);
+    	if(orderList.size() == 1) {
+    		request.getSession().setAttribute("clientorder", orderList.get(0));
+    	}
+        return  orderList;
     } 
     
 

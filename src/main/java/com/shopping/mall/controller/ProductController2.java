@@ -126,7 +126,16 @@ public class ProductController2 {
     	}else {
         	ShoppingMallOrder order = orderService.findUnPayedOrderByClientId(client.getId());
         	Product  product = productService.findProductById(Integer.valueOf(goodsid));
-        	orderGoodsService.addGoodsToOrder(order, product);
+        	
+        	OrderGoods orderGoods = orderGoodsService.findOrderGoodsById(order.getId(), product.getId());
+        	
+        	System.out.println("order id = " + order.getId() + ", product id = " + product.getId() + "======================");
+        	if(orderGoods == null) {
+        		orderGoodsService.addGoodsToOrder(order, product);
+        	}else {
+        		orderGoods.setGoodsNumber(orderGoods.getGoodsNumber() + 1);
+        		orderGoodsService.updateOrderGoods(orderGoods);
+        	}
         	return "OK";
     	}
     } 

@@ -46,4 +46,6 @@ public interface OrderService {
 	List<ShoppingMallOrder> findOrderListByClientName(String clientName);
 	
 	ShoppingMallOrder findUnPayedOrderByClientId(int clientId);
+	
+	List<ShoppingMallOrder> findUnPayedOrderByClientName(String clientName);
 }

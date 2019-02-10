@@ -66,7 +66,13 @@ function initOrderInfo(clientname){
 		},
 		url : '/order/getOrderListByClientName.do',
 		success : function(data) {
-			 if (data != null) {  
+			 if(data == null){
+				 return;
+			 }
+			   
+			 if(data.length > 1){
+				 alert("未付款订单为" + data.length + "条。系统错误，请联系客服解决！");
+			 }else if(data.length == 1){
 				 document.getElementById("ordernumber").innerText = data.length;
 		     }
 		},
@@ -80,6 +86,13 @@ function getProductById(productid){
 	window.location.href = "/product/toEdit2?id=" + productid;
 	return;
 }
+
+function editOrder(){
+	if('${sessionScope.clientorder.id}' != ''){
+		window.location.href = "order/Edit.jsp";
+	}
+}
+
 
 function updateProductList(data){
 	if((data != null) && (data.length != 0)) {
@@ -154,16 +167,10 @@ function toHomePage(){
                     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()" data-options="iconCls:'icon-man',plain:true"></a>
                 </div>
             </div>
-            <div id="mm" class="easyui-menu" style="width:10px;" data-options="itemHeight:16,noline:true">
-	            <div>
-	            	<span style="font-size:14px;">易耗品</span>
-	            </div>
-	            <div>
-	            	<span style="font-size:14px;">有偿用品</span>
-	            </div>
-	            <div>
-	            	<span style="font-size:14px;">布草</span>
-	            </div>
+            <div id="mm" class="easyui-menu" style="width:10px;font-size:14px;" data-options="itemHeight:16,noline:true">
+	            <div>易耗品</div>
+	            <div>有偿用品</div>
+	            <div>布草</div>
 	        </div>
     </div> 
     

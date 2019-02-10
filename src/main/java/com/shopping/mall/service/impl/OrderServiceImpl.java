@@ -89,5 +89,11 @@ public class OrderServiceImpl implements OrderService{
 		return orderDao.findUnPayedOrderByClientId(clientId);
 	}
 
+	@Override
+	public List<ShoppingMallOrder> findUnPayedOrderByClientName(String clientName) {
+		// TODO Auto-generated method stub
+		return orderDao.findUnPayedOrderByClientName(clientName);
+	}
+
 
 }

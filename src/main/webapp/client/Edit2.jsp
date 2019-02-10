@@ -49,7 +49,7 @@ function findOrder(orderstatus){
 }
 
 function initOrderInfo(clientname){
-	//alert(clientname);
+	alert(clientname);
 	$.ajax({
     	dataType: "json",  
         type: "POST",
@@ -70,6 +70,12 @@ function initOrderInfo(clientname){
 
 function toHomePage(){
 	window.location.href = "mainFrame.jsp";
+}
+
+function editOrder(){
+	if('${sessionScope.clientorder.id}' != ''){
+		window.location.href = "order/Edit.jsp";
+	}
 }
 
 </script> 

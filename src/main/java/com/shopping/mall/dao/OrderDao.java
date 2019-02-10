@@ -25,9 +25,11 @@ public interface OrderDao {
 	
 	public void deleteOrders(@Param("idList") List<String> idList);
 	
-	public List<ShoppingMallOrder> findOrderListByClientId(int clientId);
+	public List<ShoppingMallOrder> findOrderListByClientId(@Param("clientId")int clientId);
 	
-	public List<ShoppingMallOrder> findOrderListByClientName(String clientName);
+	public List<ShoppingMallOrder> findOrderListByClientName(@Param("clientName") String clientName);
 
-	public ShoppingMallOrder findUnPayedOrderByClientId(int clientId);
+	public ShoppingMallOrder findUnPayedOrderByClientId(@Param("clientId") int clientId);
+	
+	public List<ShoppingMallOrder> findUnPayedOrderByClientName(@Param("clientName") String clientName);
 }
