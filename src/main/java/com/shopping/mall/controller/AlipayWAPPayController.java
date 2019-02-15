@@ -80,7 +80,7 @@ public class AlipayWAPPayController {
         
         // 封装请求支付信息
         AlipayTradeWapPayModel model=new AlipayTradeWapPayModel();
-        model.setOutTradeNo(order.getId() + "");
+        model.setOutTradeNo(UUID.randomUUID().toString());
         		
         model.setSubject("支付");
         //model.setSubject("支付测试");
@@ -97,7 +97,7 @@ public class AlipayWAPPayController {
         alipay_request.setBizModel(model);
         
 
-        alipay_request.setReturnUrl("http://132.232.131.129:8081/returnUrl.jsp");   
+        alipay_request.setReturnUrl(alipayProperties.getReturnUrl());   
         
         // 设置异步通知地址
         alipay_request.setNotifyUrl(alipayProperties.getNotifyUrl());
