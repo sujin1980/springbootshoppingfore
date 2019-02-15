@@ -78,7 +78,23 @@ function updateOrderGoodsInfo(data){
 }
 
 function account(){
-	//window.location.href = "order/account.jsp";
+	$.ajax({
+        type: "POST",
+        data:{
+        	"outTradeNo": "1546879879888",
+        	"subject": "订单名称",
+    		"payment": "123.50", 
+    		"description": "订单描述"
+        },
+        async: false,
+		url : '/alipay/wap/alipage.do',
+		success : function(data) {
+			 alert("OK");
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			 alert("fail");
+		}
+	});
 }
 
 </script> 
