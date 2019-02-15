@@ -217,26 +217,6 @@ function  editRow(obj){
 	</div>
 	</div>
 	</div>
-	
-	
-	<div id="dlg-buttons">
-	<input name="" type="button"  class="sure"     id="saveOrUpdateConfirm"  value="确定" />&nbsp;
-	<input name="" type="button"  class="cancel"   onclick="javascript:$('#dlg').dialog('close')" value="取消" />
-	</div>
-	<div class="tip" id="deleteNoticeTipDiv">
-	<div class="tiptop"><span>删除公告</span><a id="tiptopA"></a></div>
-	  	<div class="tipinfo">
-	        <span><img src="common/images/ticon.png" /></span>
-	        <div class="tipright">
-	        <p>是否确认对信息的删除？</p>
-	        <cite>如果是请点击确定按钮 ，否则请点取消。</cite>
-	    </div>
-	</div>
-	<div class="tipbtn">
-	    <input name="" type="button"  id="deleteNoticeSure"  class="sure" value="确定" />&nbsp;
-	    <input name="" type="button"  id="deleteNoticeCancel" class="cancel" value="取消" />
-	</div>
-	</div>
 </body>
 
 </html>

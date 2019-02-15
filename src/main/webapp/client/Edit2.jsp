@@ -27,6 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
 
+var ordernum = 0;
 $(document).ready(function (){
 	if('${sessionScope.loginClient.name}' != '') {
 		initOrderInfo('${sessionScope.loginClient.name}');
@@ -59,7 +60,8 @@ function initOrderInfo(clientname){
 		url : '/order/getOrderListByClientName.do',
 		success : function(data) {
 			 if (data != null) {  
-				 document.getElementById("ordernumber").innerText = data.length;
+				 ordernum = data.length;
+				 document.getElementById("ordernumber").innerText = ordernum;
 		     }
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -73,7 +75,7 @@ function toHomePage(){
 }
 
 function editOrder(){
-	if('${sessionScope.clientorder.id}' != ''){
+	if(ordernum != 0){
 		window.location.href = "order/Edit.jsp";
 	}
 }

@@ -32,6 +32,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 支付宝-手机网站支付.
@@ -45,7 +47,8 @@ import java.util.UUID;
 @Controller
 @RequestMapping("/alipay/wap")
 public class AlipayWAPPayController {
-
+	private static Logger LOGGER = LoggerFactory.getLogger(AlipayWAPPayController.class);
+	
     @Autowired
     private AlipayProperties alipayProperties;
 
@@ -80,7 +83,10 @@ public class AlipayWAPPayController {
         
         // 封装请求支付信息
         AlipayTradeWapPayModel model=new AlipayTradeWapPayModel();
-        model.setOutTradeNo(UUID.randomUUID().toString());
+        
+        String orderNo = UUID.randomUUID().toString();
+        LOGGER.info("支付订单号 = " + orderNo);
+        model.setOutTradeNo(orderNo);
         		
         model.setSubject("支付");
         //model.setSubject("支付测试");
@@ -154,6 +160,9 @@ public class AlipayWAPPayController {
             //请在这里加上商户的业务逻辑程序代码，如保存支付宝交易号
             //商户订单号
             String out_trade_no = new String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),"UTF-8");
+            
+            LOGGER.info("返回订单号 = " + out_trade_no);
+            
             //支付宝交易号
             String trade_no = new String(request.getParameter("trade_no").getBytes("ISO-8859-1"),"UTF-8");
 

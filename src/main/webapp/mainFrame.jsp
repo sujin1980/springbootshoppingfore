@@ -20,12 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
 </head>
-<style  type="text/css">
-	#productlist li{
-		float:left;
-	}
-	a{text-decoration:none;}
-</style>
+
 
 <script type="text/javascript">
 
@@ -226,21 +221,7 @@ function toHomePage(){
 		    </ul>
 		</div>
 	</div>
-	
-    <style scoped>
-    .tt-inner{
-         display:inline-block;
-         line-height:12px;
-         padding-top:5px;
-     }
-		p{
-			line-height:150%;
-		}
-	</style>
-	<style>
-	.box{width:50px;text-align:center; font-size:18px;}
-	.box img {width:100%;}
-	</style>
+
 	
 	
 </body>
