@@ -9,19 +9,27 @@ import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
 import com.shopping.mall.config.AlipayProperties;
+import com.shopping.mall.model.OrderGoods;
+import com.shopping.mall.model.ShoppingMallOrder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -52,30 +60,64 @@ public class AlipayWAPPayController {
      * @param response
      * @throws Exception
      */
+   
     @PostMapping("/alipage")
-    public void gotoPayPage(HttpServletResponse response) throws AlipayApiException, IOException {
+    public void gotoPayPage(HttpServletRequest request, HttpServletResponse response) throws AlipayApiException, IOException {
         // 订单模型
-        String productCode="QUICK_WAP_WAY";
-        AlipayTradeWapPayModel model = new AlipayTradeWapPayModel();
-        model.setOutTradeNo(UUID.randomUUID().toString());
-        model.setSubject("支付测试");
-        model.setTotalAmount("0.01");
+        String timeout_express="5m";
+        // 销售产品码 必填
+        String product_code="QUICK_WAP_WAY";
+        /**********************/
+        // SDK 公共请求类，包含公共请求参数，以及封装了签名与验签，开发者无需关注签名与验签     
+        //调用RSA签名方式
+        AlipayClient client = new DefaultAlipayClient(alipayProperties.getGatewayUrl(), 
+        		alipayProperties.getAppid(), alipayProperties.getAppPrivateKey(), alipayProperties.getFormate(), 
+        		alipayProperties.getCharset(), alipayProperties.getAlipayPublicKey(),
+        		alipayProperties.getSignType());
+        AlipayTradeWapPayRequest alipay_request=new AlipayTradeWapPayRequest();
+
+        ShoppingMallOrder order = (ShoppingMallOrder)request.getSession().getAttribute("clientorder");
+        
+        // 封装请求支付信息
+        AlipayTradeWapPayModel model=new AlipayTradeWapPayModel();
+        model.setOutTradeNo(order.getId() + "");
+        		
+        model.setSubject("支付");
+        //model.setSubject("支付测试");
+        if(order.getPayment().toString().equals("0.0")) {
+        	model.setTotalAmount("0.01");
+        }else {
+        	model.setTotalAmount("0.01"); //model.setTotalAmount(order.getPayment().toString());
+        }
+        //model.setBody("支付，共" + order.getPayment().toString() + "元");
         model.setBody("支付测试，共0.01元");
         model.setTimeoutExpress("5m");
-        model.setProductCode(productCode);
+        model.setTimeoutExpress(timeout_express);
+        model.setProductCode(product_code);
+        alipay_request.setBizModel(model);
+        
 
-        AlipayTradeWapPayRequest wapPayRequest =new AlipayTradeWapPayRequest();
-        wapPayRequest.setReturnUrl(alipayProperties.getReturnUrl());
-        wapPayRequest.setNotifyUrl(alipayProperties.getNotifyUrl());
-        wapPayRequest.setBizModel(model);
+        alipay_request.setReturnUrl("http://132.232.131.129:8081/returnUrl.jsp");   
+        
+        // 设置异步通知地址
+        alipay_request.setNotifyUrl(alipayProperties.getNotifyUrl());
+        // 设置同步地址
 
-        // 调用SDK生成表单, 并直接将完整的表单html输出到页面
-        String form = alipayClient.pageExecute(wapPayRequest).getBody();
-        System.out.println(form);
-        response.setContentType("text/html;charset=" + alipayProperties.getCharset());
-        response.getWriter().write(form);
-        response.getWriter().flush();
-        response.getWriter().close();
+        // form表单生产
+        String form = "";
+    	try {
+    		// 调用SDK生成表单
+    		form = client.pageExecute(alipay_request).getBody();
+    		response.setContentType("text/html;charset=" +  alipayProperties.getCharset()); 
+    	    response.getWriter().write(form);//直接将完整的表单html输出到页面 
+    	    response.getWriter().flush(); 
+    	    response.getWriter().close();
+    	} catch (AlipayApiException e) {
+    		// TODO Auto-generated catch block
+    		System.out.println(e.toString());
+    		System.out.println("APPID = " + alipayProperties.getAppid());
+    		e.printStackTrace();
+    	} 
     }
 
 

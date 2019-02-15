@@ -141,6 +141,7 @@ function loginClient(){
 		window.location.href = "client/Edit2.jsp";
 	}else{
 		window.location.href = "login.jsp";	
+		//window.location.href = "returnUrl.jsp";
 	}
 	return;
 }

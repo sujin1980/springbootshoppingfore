@@ -78,25 +78,9 @@ function updateOrderGoodsInfo(data){
 }
 
 function account(){
-	window.location.href = "toPay.jsp";
+	window.location.href = "/order/account.jsp";
 	
-	/*$.ajax({
-        type: "POST",
-        data:{
-        	"outTradeNo": "1546879879888",
-        	"subject": "订单名称",
-    		"payment": "123.50", 
-    		"description": "订单描述"
-        },
-        async: false,
-		url : '/alipay/wap/alipage.do',
-		success : function(data) {
-			 alert("OK");
-		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			 alert("fail");
-		}
-	});*/
+	
 }
 
 </script> 
@@ -132,12 +116,19 @@ function account(){
 			<div margin-top:30px">
 				<span class="shopping-client-text" style="margin-left:50px;">总计： ${sessionScope.clientorder.payment}</span>
 			</div>	
+			
+			<div style="text-align:center;margin-top:30px">
+				<form method="post" action="/alipay/wap/alipage">
+					<button style="width:80%;height:60px;background:#FF1493" type="submit">支付</button>
+				</form>
+			</div>
+			<!---
 			<div style="text-align:center;margin-top:30px">
 		        <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="account();" style="width:80%;height:60px;background:#FF1493">
 					<span  class="shopping-client-text">去支付</span>
 				</a>
 		    </div>
-		    
+		    --->
 		</div>	
 	</div>
   </body>
