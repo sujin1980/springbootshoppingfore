@@ -78,7 +78,9 @@ function updateOrderGoodsInfo(data){
 }
 
 function account(){
-	$.ajax({
+	window.location.href = "toPay.jsp";
+	
+	/*$.ajax({
         type: "POST",
         data:{
         	"outTradeNo": "1546879879888",
@@ -94,7 +96,7 @@ function account(){
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			 alert("fail");
 		}
-	});
+	});*/
 }
 
 </script> 

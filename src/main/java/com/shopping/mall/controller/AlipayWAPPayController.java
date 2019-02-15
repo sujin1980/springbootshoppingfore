@@ -3,8 +3,10 @@ package com.shopping.mall.controller;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
+import com.alipay.api.domain.AlipayTradePagePayModel;
 import com.alipay.api.domain.AlipayTradeWapPayModel;
 import com.alipay.api.internal.util.AlipaySignature;
+import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
 import com.shopping.mall.config.AlipayProperties;
 
@@ -39,6 +41,8 @@ public class AlipayWAPPayController {
     @Autowired
     private AlipayProperties alipayProperties;
 
+    @Autowired
+    private AlipayClient alipayClient;
 
     /**
      * 去支付
@@ -49,52 +53,29 @@ public class AlipayWAPPayController {
      * @throws Exception
      */
     @PostMapping("/alipage")
-    public void gotoPayPage(HttpServletResponse response, @RequestParam String outTradeNo, @RequestParam String subject,
-    		@RequestParam String payment, @RequestParam String description) throws AlipayApiException, IOException {
-    
-        
-        // 超时时间 可空
-       String timeout_express="5m";
-        // 销售产品码 必填
-        String product_code="QUICK_WAP_WAY";
-        /**********************/
-        // SDK 公共请求类，包含公共请求参数，以及封装了签名与验签，开发者无需关注签名与验签     
-        //调用RSA签名方式
-        AlipayClient client = new DefaultAlipayClient(alipayProperties.getGatewayUrl(), 
-        		alipayProperties.getAppid(), alipayProperties.getAppPrivateKey(), alipayProperties.getFormate(), 
-        		alipayProperties.getCharset(), alipayProperties.getAlipayPublicKey(),
-        		alipayProperties.getSignType());
-        AlipayTradeWapPayRequest alipay_request=new AlipayTradeWapPayRequest();
-        
-        // 封装请求支付信息
-        AlipayTradeWapPayModel model=new AlipayTradeWapPayModel();
-        model.setOutTradeNo(outTradeNo);
-        model.setSubject(subject);
-        model.setTotalAmount(payment);
-        model.setBody(description);
-        model.setTimeoutExpress(timeout_express);
-        model.setProductCode(product_code);
-        alipay_request.setBizModel(model);
-        // 设置异步通知地址
-        alipay_request.setNotifyUrl(alipayProperties.getNotifyUrl());
-        // 设置同步地址
-        alipay_request.setReturnUrl(alipayProperties.getReturnUrl());   
-        
-        // form表单生产
-        String form = "";
-    	try {
-    		// 调用SDK生成表单
-    		form = client.pageExecute(alipay_request).getBody();
-    		response.setContentType("text/html;charset=" +  alipayProperties.getCharset()); 
-    	    response.getWriter().write(form);//直接将完整的表单html输出到页面 
-    	    response.getWriter().flush(); 
-    	    response.getWriter().close();
-    	} catch (AlipayApiException e) {
-    		// TODO Auto-generated catch block
-    		System.out.println(e.toString());
-    		System.out.println("APPID = " + alipayProperties.getAppid());
-    		e.printStackTrace();
-    	} 
+    public void gotoPayPage(HttpServletResponse response) throws AlipayApiException, IOException {
+        // 订单模型
+        String productCode="QUICK_WAP_WAY";
+        AlipayTradeWapPayModel model = new AlipayTradeWapPayModel();
+        model.setOutTradeNo(UUID.randomUUID().toString());
+        model.setSubject("支付测试");
+        model.setTotalAmount("0.01");
+        model.setBody("支付测试，共0.01元");
+        model.setTimeoutExpress("5m");
+        model.setProductCode(productCode);
+
+        AlipayTradeWapPayRequest wapPayRequest =new AlipayTradeWapPayRequest();
+        wapPayRequest.setReturnUrl(alipayProperties.getReturnUrl());
+        wapPayRequest.setNotifyUrl(alipayProperties.getNotifyUrl());
+        wapPayRequest.setBizModel(model);
+
+        // 调用SDK生成表单, 并直接将完整的表单html输出到页面
+        String form = alipayClient.pageExecute(wapPayRequest).getBody();
+        System.out.println(form);
+        response.setContentType("text/html;charset=" + alipayProperties.getCharset());
+        response.getWriter().write(form);
+        response.getWriter().flush();
+        response.getWriter().close();
     }
 
 
