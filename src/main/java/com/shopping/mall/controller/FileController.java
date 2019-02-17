@@ -40,7 +40,7 @@ public class FileController {
         }
         
         String filePath = "upload/" + fileName + "." + ext;
-        System.out.println("会话路径： " + session.getServletContext().getContextPath());
+        //System.out.println("会话路径： " + session.getServletContext().getContextPath());
         String uploadSessionPath = session.getServletContext().getRealPath("/");
 
         System.out.println("上传路径： " + uploadSessionPath);

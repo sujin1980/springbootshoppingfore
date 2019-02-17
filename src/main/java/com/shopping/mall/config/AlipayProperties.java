@@ -1,7 +1,6 @@
 package com.shopping.mall.config;
 
-//import lombok.Data;
-//import lombok.extern.slf4j.Slf4j;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -12,8 +11,7 @@ import javax.annotation.PostConstruct;
  *
  * @author mengday zhang
  */
-//@Data
-//@Slf4j
+
 @ConfigurationProperties(prefix = "pay.alipay")
 public class AlipayProperties {
 

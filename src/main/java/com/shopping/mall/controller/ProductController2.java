@@ -56,13 +56,7 @@ public class ProductController2 {
         return "redirect:/product/list2";
     }
 	
-//    @RequestMapping("/product/list2")
-//    public String list(Model model) {
-//    	System.out.println("Thymeleaf查询所有");
-//        List<Product> products=productService.findAll();
-//        model.addAttribute("products", products);
-//        return "product/list2";
-//    }
+
     @RequestMapping("/product/list2")
     public String list(Model model) {
     	System.out.println("Thymeleaf查询所有");
