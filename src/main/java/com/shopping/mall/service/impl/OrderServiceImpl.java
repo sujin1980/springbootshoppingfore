@@ -3,7 +3,10 @@ package com.shopping.mall.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.shopping.mall.config.ImageServerProperties;
 import com.shopping.mall.dao.OrderDao;
+import com.shopping.mall.model.Product;
 import com.shopping.mall.model.ShoppingMallOrder;
 import com.shopping.mall.service.OrderService;
 
@@ -13,7 +16,7 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
     private OrderDao orderDao;
-	
+		
 	@Override
 	public boolean addOrder(ShoppingMallOrder order) {
 		boolean flag=false;

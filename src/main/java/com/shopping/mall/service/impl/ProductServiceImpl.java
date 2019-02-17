@@ -3,6 +3,8 @@ package com.shopping.mall.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.shopping.mall.config.ImageServerProperties;
 import com.shopping.mall.dao.ProductDao;
 import com.shopping.mall.model.Product;
 import com.shopping.mall.service.ProductService;
@@ -13,6 +15,9 @@ public class ProductServiceImpl implements ProductService{
 	
 	@Autowired
     private ProductDao productDao;
+	
+	@Autowired
+	private ImageServerProperties  imageServerProperties;
 	
 	@Override
 	public boolean addProduct(Product product) {
@@ -55,17 +60,23 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public Product findProductById(int id) {
-		return productDao.findOne(id);
+		Product product = productDao.findOne(id);
+		product.setIcon(imageServerProperties.getAddress() + product.getIcon());
+		return  product;
 	}
 
 	@Override
 	public List<Product> findByName(String name) {
-		return productDao.findByName(name);
+		List<Product> productList = productDao.findByName(name);
+		productList.forEach(product -> product.setIcon(imageServerProperties.getAddress() + product.getIcon()));
+		return productList;
 	}
 	
 	@Override
 	public List<Product> findAll() {
-		return productDao.findAll();
+		List<Product> productList = productDao.findAll();
+		productList.forEach(product -> product.setIcon(imageServerProperties.getAddress() + product.getIcon()));
+		return productList;
 		
 	}
 
@@ -78,7 +89,9 @@ public class ProductServiceImpl implements ProductService{
 	
 	@Override
 	public List<Product> findProductListByTypeId(int typeid){
-		return productDao.findProductListByTypeId(typeid);
+		List<Product> productList = productDao.findProductListByTypeId(typeid);
+		productList.forEach(product -> product.setIcon(imageServerProperties.getAddress() + product.getIcon()));
+		return productList;
 	}
 	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.shopping.mall.config.ImageServerProperties;
 import com.shopping.mall.dao.OrderGoodsDao;
 import com.shopping.mall.model.OrderGoods;
 import com.shopping.mall.model.Product;
@@ -16,6 +17,9 @@ public class OrderGoodsServiceImpl implements OrderGoodsService{
 
 	@Autowired
     private OrderGoodsDao orderGoodsDao;
+	
+	@Autowired
+	private ImageServerProperties  imageServerProperties;
 	
 	@Override
 	public boolean addOrderGoods(OrderGoods orderGoods) {
@@ -57,23 +61,6 @@ public class OrderGoodsServiceImpl implements OrderGoodsService{
 	}
 
 	@Override
-	public List<OrderGoods> findAll() {
-		return orderGoodsDao.findAll();
-	}
-
-	@Override
-	public List<OrderGoods> findOrderGoodsListByOrderId(long id) {
-		// TODO Auto-generated method stub
-		return orderGoodsDao.findOrderGoodsListByOrderId(id);
-	}
-
-	@Override
-	public OrderGoods findOrderGoodsById(long orderId, int goodsId) {
-		// TODO Auto-generated method stub
-		return orderGoodsDao.findOne(orderId, goodsId);
-	}
-
-	@Override
 	public boolean addGoodsToOrder(ShoppingMallOrder order, Product product) {
 		boolean flag=false;
 		try{  
@@ -95,10 +82,35 @@ public class OrderGoodsServiceImpl implements OrderGoodsService{
 		return flag;
 	}
 
+	
+	@Override
+	public List<OrderGoods> findAll() {
+		List<OrderGoods> orderGoodsList = orderGoodsDao.findAll();
+		orderGoodsList.forEach(orderGoods -> orderGoods.setPicture(imageServerProperties.getAddress() + orderGoods.getPicture()));
+		return orderGoodsList;
+	}
+
+	@Override
+	public List<OrderGoods> findOrderGoodsListByOrderId(long id) {
+		List<OrderGoods> orderGoodsList = orderGoodsDao.findOrderGoodsListByOrderId(id);
+		orderGoodsList.forEach(orderGoods -> orderGoods.setPicture(imageServerProperties.getAddress() + orderGoods.getPicture()));
+		return orderGoodsList; 
+	}
+
+	@Override
+	public OrderGoods findOrderGoodsById(long orderId, int goodsId) {
+		// TODO Auto-generated method stub
+		OrderGoods orderGoods = orderGoodsDao.findOne(orderId, goodsId);
+		orderGoods.setPicture(imageServerProperties.getAddress() + orderGoods.getPicture());
+		return orderGoods;
+	}
+
 	@Override
 	public List<OrderGoods> findGoods(List<String> idList) {
-		// TODO Auto-generated method stub
-		return orderGoodsDao.findGoods(idList);
+		 List<OrderGoods> orderGoodsList = orderGoodsDao.findGoods(idList);
+		 orderGoodsList.forEach(orderGoods -> orderGoods.setPicture(imageServerProperties.getAddress() + orderGoods.getPicture()));
+		 return orderGoodsList;
+
 	}
 
 }

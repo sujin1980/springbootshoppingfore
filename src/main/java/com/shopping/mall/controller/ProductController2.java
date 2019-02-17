@@ -24,6 +24,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.shopping.mall.config.ImageServerProperties;
 import com.shopping.mall.model.OrderGoods;
 import com.shopping.mall.model.Product;
 import com.shopping.mall.model.ProductCategory;

@@ -103,7 +103,7 @@ function updateProductList(data){
 				thtmlbody += "<li><a href=\"javascript:void(0);\" onclick=\"getProductById("
 					+ data[i].productList[j].id +  ")\">";
 				thtmlbody += "<img src=\""+ data[i].productList[j].icon + "\"" + 
-				    "alt=\"" + data[i].productList[j].name + "的图片\"  onerror=\"this.src='common/images/default.gif;this.onerror=null'\"> </a>";
+				    "alt=\"" + data[i].productList[j].name + "的图片\"   height=\"40\" width=\"40\" onerror=\"this.src='common/images/default.gif;this.onerror=null'\"><br /></a>";
 				thtmlbody += "<span style=\"position: absolute; bottom: 0; left: 0;\">"
 					 + data[i].productList[j].name +"</span></li>";
 	        	

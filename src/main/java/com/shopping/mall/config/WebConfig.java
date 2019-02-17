@@ -29,11 +29,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class WebConfig extends WebMvcConfigurerAdapter {
 	@Autowired
 	LoginInterceptor loginInterceptor;
-	   
+	
 	@Override
     public void addViewControllers( ViewControllerRegistry registry ) {
         registry.addViewController( "/" ).setViewName( "forward:/mainFrame.jsp" );
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE );
+        
         super.addViewControllers( registry );
     } 
 	
