@@ -49,7 +49,7 @@
 	<select id="findUnPayedOrderByClientId" parameterType="java.lang.Integer" resultMap="OrderBaseResultMap">
 		SELECT order_id, payment, status, create_time, payment_time, consign_time, 
 		receiver_mobile, receiver_area_name,  client_id, client_name, client_chinesename
-		 FROM t_order t where t.client_id  = #{id,jdbcType=INTEGER} and status in('未付款')
+		 FROM t_order t where t.client_id  = #{clientId,jdbcType=INTEGER} and status in('未付款')
 	</select>
 	
 	<select id="findUnPayedOrderByClientName" parameterType="java.lang.String" resultMap="OrderBaseResultMap">

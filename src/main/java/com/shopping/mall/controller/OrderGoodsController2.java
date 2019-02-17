@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,7 @@ import com.shopping.mall.service.ProductService;
 
 @Controller
 public class OrderGoodsController2 {
-	//private static Logger logger = Logger.getLogger(OrderGoodsController.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(AlipayWAPPayController.class);
 	
 	@Autowired
 	private OrderGoodsService orderGoodsService;
@@ -57,20 +59,21 @@ public class OrderGoodsController2 {
     		orderGoods.setGoodsNumber(orderGoods.getGoodsNumber() + 1);
     		orderGoods.setGoodsFee(orderGoods.getPrice().multiply(new BigDecimal(orderGoods.getGoodsNumber())));
     		orderGoodsService.updateOrderGoods(orderGoods);
+    		return "redirect:/product/list2";
     	}
     	 
     	Product product = productService.findProductById(id);
   
-    	OrderGoods  orderGoods2 = new OrderGoods();
-    	orderGoods2.setOrderId(order.getId());
-    	orderGoods2.setGoodsId(product.getId());
-    	orderGoods2.setGoodsName(product.getName());
-    	orderGoods2.setGoodsNumber(1);
-    	orderGoods2.setPrice(product.getPrice());
-    	orderGoods2.setPicture(product.getIcon());
-    	orderGoods2.setGoodsFee(product.getPrice());
+    	orderGoods = new OrderGoods();
+    	orderGoods.setOrderId(order.getId());
+    	orderGoods.setGoodsId(product.getId());
+    	orderGoods.setGoodsName(product.getName());
+    	orderGoods.setGoodsNumber(1);
+    	orderGoods.setPrice(product.getPrice());
+    	orderGoods.setPicture(product.getIcon());
+    	orderGoods.setGoodsFee(product.getPrice());
     	
-    	orderGoodsService.addOrderGoods(orderGoods2);
+    	orderGoodsService.addOrderGoods(orderGoods);
         return "redirect:/product/list2";
     }
 
@@ -90,30 +93,6 @@ public class OrderGoodsController2 {
         
         return orderGoodsService.findGoods(idlist);
     }  
-    
-    @RequestMapping(value ="/ordergoods/decGoodsNumber", method = { RequestMethod.POST })
-    @ResponseBody
-    public List<OrderGoods> decGoodsNumber(HttpServletRequest request, 
-    		@RequestParam String orderid, @RequestParam String goodsid, @RequestParam String number){  
-      
-        
-    	System.out.println("开始添加1");
-
-    	int goodsnum = Integer.valueOf(number);
-    	int goodsId = Integer.valueOf(goodsid);
-    	long orderId = Long.valueOf(orderid);
-    	
-    	OrderGoods orderGoods = orderGoodsService.findOrderGoodsById(orderId, goodsId);
-    	orderGoods.setGoodsNumber(orderGoods.getGoodsNumber() + goodsnum);
-    	orderGoods.setGoodsFee(orderGoods.getPrice().multiply(new BigDecimal(orderGoods.getGoodsNumber())));
-    	
-    	if(orderGoods.getGoodsNumber() == 0) {
-    		orderGoodsService.deleteOrderGoods(orderId, goodsId);
-    	}else {
-    		orderGoodsService.updateOrderGoods(orderGoods);
-    	}
-        return orderGoodsService.findOrderGoodsListByOrderId(orderId);
-    } 
     
     @RequestMapping(value ="/ordergoods/modifyGoodsNumber", method = { RequestMethod.POST })
     @ResponseBody

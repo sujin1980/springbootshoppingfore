@@ -2,6 +2,9 @@ package com.shopping.mall.controller;
 
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +14,7 @@ import com.shopping.mall.service.BrandService;
 
 @Controller
 public class BrandController2 {
-	//private static Logger logger = Logger.getLogger(BrandController.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(AlipayWAPPayController.class);
 	
 	@Autowired
 	private BrandService brandService;

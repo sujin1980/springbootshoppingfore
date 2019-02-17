@@ -61,6 +61,10 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public Product findProductById(int id) {
 		Product product = productDao.findOne(id);
+		
+		if(product == null) {
+			return null;
+		}
 		product.setIcon(imageServerProperties.getAddress() + product.getIcon());
 		return  product;
 	}
@@ -68,6 +72,10 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> findByName(String name) {
 		List<Product> productList = productDao.findByName(name);
+		
+		if(productList == null) {
+			return null;
+		}
 		productList.forEach(product -> product.setIcon(imageServerProperties.getAddress() + product.getIcon()));
 		return productList;
 	}
@@ -75,6 +83,10 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> findAll() {
 		List<Product> productList = productDao.findAll();
+		
+		if(productList == null) {
+			return null;
+		}
 		productList.forEach(product -> product.setIcon(imageServerProperties.getAddress() + product.getIcon()));
 		return productList;
 		
@@ -90,6 +102,10 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> findProductListByTypeId(int typeid){
 		List<Product> productList = productDao.findProductListByTypeId(typeid);
+		
+		if(productList == null) {
+			return null;
+		}
 		productList.forEach(product -> product.setIcon(imageServerProperties.getAddress() + product.getIcon()));
 		return productList;
 	}

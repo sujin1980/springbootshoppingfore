@@ -81,9 +81,12 @@ function buyNow(){
 		url : '/product/buyNow.do',
 		success : function(data) {
 			if(data == "OK"){
-				alert("转入客户订单页面");
-			}else{
-				alert("转入客户登录");
+				window.location.href = "order/Edit.jsp";
+			}else if(data == "NOORDER"){
+				alert("目前没有订单，请联系客服添加 ");
+				//window.location.href = "client/Edit2.jsp";
+			}else if(data == "NOLOGIN"){
+				//alert("转入客户登录");
 				window.location.href = "login.jsp";
 			}
 		},

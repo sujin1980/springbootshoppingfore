@@ -86,6 +86,9 @@ public class OrderGoodsServiceImpl implements OrderGoodsService{
 	@Override
 	public List<OrderGoods> findAll() {
 		List<OrderGoods> orderGoodsList = orderGoodsDao.findAll();
+		if(orderGoodsList == null) {
+			 return null;
+		 }
 		orderGoodsList.forEach(orderGoods -> orderGoods.setPicture(imageServerProperties.getAddress() + orderGoods.getPicture()));
 		return orderGoodsList;
 	}
@@ -93,6 +96,9 @@ public class OrderGoodsServiceImpl implements OrderGoodsService{
 	@Override
 	public List<OrderGoods> findOrderGoodsListByOrderId(long id) {
 		List<OrderGoods> orderGoodsList = orderGoodsDao.findOrderGoodsListByOrderId(id);
+		if(orderGoodsList == null) {
+			 return null;
+		 }
 		orderGoodsList.forEach(orderGoods -> orderGoods.setPicture(imageServerProperties.getAddress() + orderGoods.getPicture()));
 		return orderGoodsList; 
 	}
@@ -101,6 +107,10 @@ public class OrderGoodsServiceImpl implements OrderGoodsService{
 	public OrderGoods findOrderGoodsById(long orderId, int goodsId) {
 		// TODO Auto-generated method stub
 		OrderGoods orderGoods = orderGoodsDao.findOne(orderId, goodsId);
+		
+		if(orderGoods == null) {
+			return null;
+		}
 		orderGoods.setPicture(imageServerProperties.getAddress() + orderGoods.getPicture());
 		return orderGoods;
 	}
@@ -108,6 +118,10 @@ public class OrderGoodsServiceImpl implements OrderGoodsService{
 	@Override
 	public List<OrderGoods> findGoods(List<String> idList) {
 		 List<OrderGoods> orderGoodsList = orderGoodsDao.findGoods(idList);
+		 
+		 if(orderGoodsList == null) {
+			 return null;
+		 }
 		 orderGoodsList.forEach(orderGoods -> orderGoods.setPicture(imageServerProperties.getAddress() + orderGoods.getPicture()));
 		 return orderGoodsList;
 

@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +40,7 @@ import com.shopping.mall.service.ProductTypeService;
 
 @Controller
 public class ProductController2 {
-	//private static Logger logger = Logger.getLogger(ProductController.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(AlipayWAPPayController.class);
 	
 	@Autowired
 	private ProductService productService;
@@ -117,9 +119,14 @@ public class ProductController2 {
     	ShoppingMallClient client = (ShoppingMallClient)request.getSession().getAttribute("loginClient");
     	if(client == null) {
     		request.getSession().setAttribute("addgoods", goodsid);
-    		return "FAIL";
+    		LOGGER.info("用户没有登录");
+    		return "NOLOGIN";
     	}else {
         	ShoppingMallOrder order = orderService.findUnPayedOrderByClientId(client.getId());
+        	if(order == null) {
+        		LOGGER.info("用户还没有订单");
+        		return "NOORDER";
+        	}
         	Product  product = productService.findProductById(Integer.valueOf(goodsid));
         	
         	OrderGoods orderGoods = orderGoodsService.findOrderGoodsById(order.getId(), product.getId());

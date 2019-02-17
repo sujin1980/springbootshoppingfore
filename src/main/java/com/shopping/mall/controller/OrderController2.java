@@ -11,6 +11,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +37,7 @@ import com.shopping.mall.service.OrderService;
 
 @Controller
 public class OrderController2 {
-	//private static Logger logger = Logger.getLogger(OrderController.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(AlipayWAPPayController.class);
 	
 	@Autowired
 	private OrderService orderService;
