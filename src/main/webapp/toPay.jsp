@@ -49,12 +49,12 @@ function account(){
 			async: false, 
 			success : function(data) {
 				 if(data == null){
-					 alert("用户没有订单信息");
+					 console.log("用户没有订单信息");
 					 return;
 				 }
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				alert("fail==");
+				console.log("fail==");
 			}
 	}); 
 }
@@ -68,10 +68,10 @@ function login() {
 			url : '/alipay/wap/alipage.do',
 			async: true, 
 			success : function(data) {
-				alert("OK");
+				console.log("OK");
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				alert("fail");
+				console.log("fail");
 			}
 		});
 }

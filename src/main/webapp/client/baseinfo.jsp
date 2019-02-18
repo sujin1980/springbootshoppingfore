@@ -74,7 +74,7 @@ function logout(){
 			window.location.href = "mainFrame.jsp";
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("退出登录失败");
+			console.log("退出登录失败");
 		}
 	}); 
 	return;	

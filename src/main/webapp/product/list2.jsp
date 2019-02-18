@@ -45,7 +45,7 @@ function deleteRows(){
 		data: idlist,
 		url : '/product/deleteProducts.do',
 		success : function(data) {
-			 alert("ok");
+			 console.log("ok");
 			 if (data != null) {
 				var obj=document.getElementById('producttypesel');
 				obj.options.length=0;
@@ -89,7 +89,7 @@ function allcheck() {
      
 function  editRow(obj){
     var i = 1;
-	alert(i);
+	console.log(i);
 	return;	 
 }
 
@@ -134,7 +134,7 @@ function getProductByName(){
 		},
 		url : '/product/getproductbyname.do',
 		success : function(data) {
-			 alert("ok");
+			 console.log("ok");
 			 if (data != null) {  
 				 //var obj=document.getElementById('productlist');
 				 $("productlist").html("");
@@ -162,7 +162,7 @@ function getProductByName(){
 		   }
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			 alert("fail");
+			 console.log("fail");
 		}
 	});
 	

@@ -142,13 +142,13 @@ function register(){
 			if(data == "OK"){
 				window.location.href = "login.jsp";	
 			}else{
-				alert("注册失败");
+				console.log("注册失败");
 			}
 			$("#registerValidate").html("");
 			
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("注册失败");
+			console.log("注册失败");
 		}
 	});
 }

@@ -46,7 +46,7 @@ function modifyAddress(){
 		},
 		success : function(data) {
 			if(data != "OK"){
-				alert("修改地址失败");
+				console.log("修改地址失败");
 				$("#address").textbox('setValue',''); 
 				return;
 			}
@@ -54,7 +54,7 @@ function modifyAddress(){
 			
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("修改地址失败");
+			console.log("修改地址失败");
 		}
 	});
 }

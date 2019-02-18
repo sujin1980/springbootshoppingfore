@@ -53,7 +53,7 @@ function login(){
 				 
 		   }else{
 			   /*if('${sessionScope.addgoods}' != ''){
-				   alert("转入用户订单页面");
+				   console.log("转入用户订单页面");
 				   return;
 			   }*/
 			   window.location.href = "client/Edit2.jsp";	
@@ -61,7 +61,7 @@ function login(){
 			
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("error");
+			console.log("error");
 		}
 	}); 
 	

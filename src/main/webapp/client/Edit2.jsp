@@ -33,7 +33,7 @@ $(document).ready(function (){
 		initOrderInfo('${sessionScope.loginClient.name}');
 		document.getElementById('clientname').innerHTML = "登录";
 	}else{
-		//alert("=========================");
+		//console.log("=========================");
 		document.getElementById('clientname').innerHTML = "未登录";
 	}
 }); 
@@ -50,7 +50,7 @@ function findOrder(orderstatus){
 }
 
 function initOrderInfo(clientname){
-	//alert(clientname);
+	//console.log(clientname);
 	$.ajax({
     	dataType: "json",  
         type: "POST",
@@ -65,7 +65,7 @@ function initOrderInfo(clientname){
 		     }
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("fail");
+			console.log("fail");
 		}
 	});
 }

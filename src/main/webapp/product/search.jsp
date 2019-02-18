@@ -29,8 +29,8 @@ $(document).ready(function (){
 
 	$('#goodsname').textbox({
 	    onChange:function(newvalue, oldvalue){
-			//alert(title+' is selected');
-			alert(newvalue);
+			//console.log(title+' is selected');
+			console.log(newvalue);
 			findGoodsByName(newvalue);
 	    }
 	});
@@ -69,12 +69,12 @@ function findGoodsByName(){
 			if(data != null){
 				updateProductList(data);
 			}else{
-				alert("未找到商品");
+				console.log("未找到商品");
 			}
 			
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("error");
+			console.log("error");
 		}
 	});
 }

@@ -61,7 +61,7 @@ var getTypeList = function (val)
 		},
 		url : 'producttype/getTypeListByCategoryStrId.do',	
 		success : function(data) {
-			//alert("ok");			
+			//console.log("ok");			
 			if (data != null) {
 				var obj=document.getElementById('producttypesel');
 				obj.options.length=0;
@@ -77,7 +77,7 @@ var getTypeList = function (val)
 			}
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("checkField fail");
+			console.log("checkField fail");
 		}
 	});
 	 
@@ -113,10 +113,10 @@ function uploadimage(fileData) {
 		success : function(data) {
 		    var $img = $("#productimg");
 		    $img.attr('src',data); 
-			alert(data);		
+			console.log(data);		
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("checkField fail");
+			console.log("checkField fail");
 		}
 	});
 }
@@ -140,15 +140,15 @@ function addRow()
 	var obj = new Object;
 	var $img = $("#productimg");
 	var testsrc = $("#productimg").attr('src');
-	//alert("addRow begin");
-	//alert(testsrc);
+	//console.log("addRow begin");
+	//console.log(testsrc);
 	obj.name   =$("#name").val();
 	obj.typeid = $("#producttypesel").val();
 	obj.price  = $("#price").val();
 	obj.icon   = $("#productimg").attr('src');
 	obj.remarks = $("#remarks").val();
 	
-	alert("addRow");
+	console.log("addRow");
 	
 	$.ajax({
     	contentType : "application/json;charset=UTF-8",
@@ -163,10 +163,10 @@ function addRow()
 		},
 		url : '/product/add2.do',
 		success : function(data) {			
-			alert("addRow success");
+			console.log("addRow success");
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("addRow fail");
+			console.log("addRow fail");
 			//window.location.replace("https://www.runoob.com");
 		}
 	});

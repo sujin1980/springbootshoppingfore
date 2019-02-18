@@ -62,11 +62,11 @@ function deleteRows(){
 		data: idlist,
 		url : '/order/deleteOrders.do',
 		success : function(data) {
-			 alert("ok");
+			 console.log("ok");
 			 window.location.reload();
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("fail");
+			console.log("fail");
 			 window.location.reload();
 		}
 	});
@@ -82,7 +82,7 @@ function getOrderByClienteName(){
 		},
 		url : '/order/getOrderListByClientName.do',
 		success : function(data) {
-			 alert("ok");
+			 console.log("ok");
 			 
 			 if (data != null) {  
 				 $("orderlist").html("");
@@ -109,7 +109,7 @@ function getOrderByClienteName(){
 		   }
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("fail");
+			console.log("fail");
 		}
 	});
 }
@@ -137,7 +137,7 @@ function allcheck() {
      
 function  editRow(obj){
     var i = 1;
-	alert(i);
+	console.log(i);
 	return;	 
 }
 

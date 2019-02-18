@@ -45,10 +45,10 @@ function addRow()
 		},
 		url : '/client/add2.do',
 		success : function(data) {			
-			//alert("addRow success");
+			//console.log("addRow success");
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			//alert("addRow fail");
+			//console.log("addRow fail");
 			window.close();
 			//window.location.replace("https://www.runoob.com");
 		}

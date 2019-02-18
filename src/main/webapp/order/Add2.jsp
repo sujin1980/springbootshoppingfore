@@ -41,15 +41,15 @@ function addRow()
 	var obj = new Object;
 	var $img = $("#orderimg");
 	var testsrc = $("#orderimg").attr('src');
-	//alert("addRow begin");
-	//alert(testsrc);
+	//console.log("addRow begin");
+	//console.log(testsrc);
 	obj.name   =$("#name").val();
 	obj.typeid = $("#ordertypesel").val();
 	obj.price  = $("#price").val();
 	obj.icon   = $("#orderimg").attr('src');
 	obj.remarks = $("#remarks").val();
 	
-	alert("addRow");
+	console.log("addRow");
 	
 	$.ajax({
     	contentType : "application/json;charset=UTF-8",
@@ -64,10 +64,10 @@ function addRow()
 		},
 		url : '/order/add2.do',
 		success : function(data) {			
-			alert("addRow success");
+			console.log("addRow success");
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("addRow fail");
+			console.log("addRow fail");
 			//window.location.replace("https://www.runoob.com");
 		}
 	});

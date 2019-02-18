@@ -58,14 +58,14 @@ function modifyTelephone(){
 		},
 		success : function(data) {
 			if(data != "OK"){
-				alert("修改电话失败");
+				console.log("修改电话失败");
 				$("#telephone").textbox('setValue',''); 
 				return;
 			}
 			$.mobile.back();
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("修改电话失败");
+			console.log("修改电话失败");
 		}
 	});
 }

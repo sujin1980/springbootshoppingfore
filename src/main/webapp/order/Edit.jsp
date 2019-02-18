@@ -43,13 +43,13 @@ function initOrderGoodsinfo(){
 		async: false, 
 		success : function(data) {
 			 if(data == null){
-				 alert("用户没有订单信息");
+				 console.log("用户没有订单信息");
 				 return;
 			 }
 			 updateOrderGoodsInfo(data); 
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("fail");
+			console.log("fail");
 		}
 	}); 
 }

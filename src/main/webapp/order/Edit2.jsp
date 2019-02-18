@@ -52,13 +52,13 @@ function decGoodsNumber(goodsId){
 	    dataType : 'json',
 		url : '/ordergoods/modifyGoodsNumber.do',
 		success : function(data) {
-			 alert("ok");
+			 console.log("ok");
 			 if (data != null) {  
 				 modifygoodstable(data);
 		   }
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			 alert("fail");
+			 console.log("fail");
 		}
 	});
 }
@@ -98,13 +98,13 @@ function addGoodsNumber(goodsId){
 	    dataType : 'json',
 		url : '/ordergoods/modifyGoodsNumber.do',
 		success : function(data) {
-			 alert("ok");
+			 console.log("ok");
 			 if (data != null) {  
 				 modifygoodstable(data);
 		   }
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			 alert("fail");
+			 console.log("fail");
 		}
 	});
 }

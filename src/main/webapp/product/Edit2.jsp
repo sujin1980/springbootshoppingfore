@@ -33,9 +33,9 @@ $(document).ready(function (){
 	    	if(item.index == "首页"){
 	    		window.location.href = "mainFrame.jsp";
 	    	}else if(item.index == "我的商城"){
-	    		alert("登录用户基本信息页");
+	    		console.log("登录用户基本信息页");
 	    	}else{
-	    		alert("登录分享");
+	    		console.log("登录分享");
 	    	}
 	    }
 	});
@@ -49,7 +49,7 @@ function getProductById(productid){
 }
 
 function initProductInfo(){
-	//alert('${product.name}');
+	//console.log('${product.name}');
 	$('#goodsbaseinfo').css("display","block");
 	$('#goodsdetails').css("display","none");
 	return;	
@@ -72,7 +72,7 @@ function addGoodsToOrder(){
 }
 
 function buyNow(){
-	alert("productid = " + ${product.id});
+	console.log("productid = " + ${product.id});
 	$.ajax({
         type: "POST",
 		data: {
@@ -83,15 +83,15 @@ function buyNow(){
 			if(data == "OK"){
 				window.location.href = "order/Edit.jsp";
 			}else if(data == "NOORDER"){
-				alert("目前没有订单，请联系客服添加 ");
+				console.log("目前没有订单，请联系客服添加 ");
 				//window.location.href = "client/Edit2.jsp";
 			}else if(data == "NOLOGIN"){
-				//alert("转入客户登录");
+				//console.log("转入客户登录");
 				window.location.href = "login.jsp";
 			}
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("fail");
+			console.log("fail");
 		}
 	});
 	return;

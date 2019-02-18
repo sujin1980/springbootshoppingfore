@@ -45,7 +45,7 @@ function deleteRows(){
 		data: idlist,
 		url : '/client/deleteClients.do',
 		success : function(data) {
-			 alert("ok");
+			 console.log("ok");
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 		}
@@ -75,7 +75,7 @@ function allcheck() {
      
 function  editRow(obj){
     var i = 1;
-	alert(i);
+	console.log(i);
 	return;	 
 }
 
@@ -90,7 +90,7 @@ function getClientByName(){
 	    dataType : 'json',
 		url : '/client/findClientByName.do',
 		success : function(data) {
-			 alert("ok");
+			 console.log("ok");
 			 if (data != null) {  
 				 //var obj=document.getElementById('productlist');
 				 $("clientlist").html("");
@@ -127,9 +127,9 @@ function getClientByName(){
 function client_confirm(obj) 
 {
 	var mymessage = new Object;
-	//alert("============");
-	alert(obj);
-	alert(event.srcElement.outerText);
+	//console.log("============");
+	console.log(obj);
+	console.log(event.srcElement.outerText);
     if (event.srcElement.outerText == "删除") {
         event.returnValue = confirm("删除是不可恢复的，你确认要删除吗？");
     }else if(event.srcElement.outerText == "创建订单") {
@@ -149,10 +149,10 @@ function client_confirm(obj)
     		    dataType : 'json',
     			url : '/order/create2.do',
     			success : function(data) {
-    				 alert("ok");
+    				 console.log("ok");
     			},
     			error : function(XMLHttpRequest, textStatus, errorThrown) {
-    				alert("fail");
+    				console.log("fail");
     			}
     		});
     		event.returnValue = true;		 

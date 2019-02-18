@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 var orderList = new Array();
 $(function(){
 	initOrderList();//"${ orders }");*/
-	//alert(window.location.href);
+	//console.log(window.location.href);
 	
 	var ordertype = new Object();
 	if(window.location.href.indexOf("?") > 0 ){
@@ -173,13 +173,13 @@ function updateOrderDetailInfo(data){
 			async: false, 
 			success : function(data) {
 				 if(data == null){
-					 alert("用户没有订单信息");
+					 console.log("用户没有订单信息");
 					 return;
 				 }
 				 updateOrderGoodsInfo(data); 
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				alert("fail");
+				console.log("fail");
 			}
 	}); 
 }
@@ -195,13 +195,13 @@ function initOrderList(){
 		url : '/order/getOrderListByClientName.do',
 		success : function(data) {
 			 if(data == null){
-				 alert("用户没有订单信息");
+				 console.log("用户没有订单信息");
 				 return;
 			 }
 			 updateOrderDetailInfo(data); 
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("fail");
+			console.log("fail");
 		}
 	});
 }

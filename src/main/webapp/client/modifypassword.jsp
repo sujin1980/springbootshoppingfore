@@ -82,15 +82,15 @@ function checkcurrentpassword(){
 			
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("修改密码失败");
+			console.log("修改密码失败");
 		}
 	});
 	return;
 }
 
 function modifyPassword(){
-	alert("新密码为" + $("#newpassword").val());
-	alert("当前密码为" + $("#currentpassword").val());
+	console.log("新密码为" + $("#newpassword").val());
+	console.log("当前密码为" + $("#currentpassword").val());
 	$.ajax({
 		type : "POST",
 		url : "client/modifyPassword.do",
@@ -110,7 +110,7 @@ function modifyPassword(){
 			
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("修改密码失败");
+			console.log("修改密码失败");
 			$("#currentpassword").textbox('setValue',''); 
 			$("#newpassword").textbox('setValue',''); 
 			$("#confirmpassword").textbox('setValue',''); 

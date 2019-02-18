@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 $(function () {
 	$('#mm').menu({
 	    onClick:function(item){
-			//alert(item.text);
+			//console.log(item.text);
 			getProductType(item.text);
 	    }
 	});
@@ -39,8 +39,8 @@ $(function () {
 	$('#tt').tabs({
 	    border:false,
 	    onSelect:function(title, index){
-			//alert(title+' is selected');
-			//alert(index);
+			//console.log(title+' is selected');
+			//console.log(index);
 	    }
 	});
 	
@@ -48,7 +48,7 @@ $(function () {
 		initOrderInfo('${sessionScope.loginClient.name}');
 		document.getElementById('clientname').innerHTML = "登录";
 	}else{
-		//alert("=========================");
+		//console.log("=========================");
 		document.getElementById('clientname').innerHTML = "未登录";
 	}
 	
@@ -56,7 +56,7 @@ $(function () {
 });
 
 function initOrderInfo(clientname){
-	//alert(clientname);
+	//console.log(clientname);
 	$.ajax({
     	dataType: "json",  
         type: "POST",
@@ -70,13 +70,13 @@ function initOrderInfo(clientname){
 			 }
 			   
 			 if(data.length > 1){
-				 alert("未付款订单为" + data.length + "条。系统错误，请联系客服解决！");
+				 console.log("未付款订单为" + data.length + "条。系统错误，请联系客服解决！");
 			 }else if(data.length == 1){
 				 document.getElementById("ordernumber").innerText = data.length;
 		     }
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("fail");
+			console.log("fail");
 		}
 	});
 }
@@ -126,11 +126,11 @@ function getProductType(categoryname){
 		},
 		url : 'producttype/getTypeListByCategoryName.do',	
 		success : function(data) {
-			//alert("ok");			
+			//console.log("ok");			
 			updateProductList(data);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert("checkField fail");
+			console.log("checkField fail");
 		}
 	});
 }
