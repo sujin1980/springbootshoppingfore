@@ -46,10 +46,10 @@ $(function () {
 	
 	if('${sessionScope.loginClient.name}' != '') {
 		initOrderInfo('${sessionScope.loginClient.name}');
-		document.getElementById('clientname').innerHTML = "登录";
+		document.getElementById('clientname').innerHTML = "我的";
 	}else{
 		//console.log("=========================");
-		document.getElementById('clientname').innerHTML = "未登录";
+		document.getElementById('clientname').innerHTML = "登录";
 	}
 	
 	
@@ -184,7 +184,7 @@ function toHomePage(){
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
-							<img src='common/images/default.gif' width="30" height="30" onerror="this.src='common/images/default.gif;this.onerror=null'">首页
+							首页
 							</a>
 						</div>
 					</div>
@@ -192,7 +192,7 @@ function toHomePage(){
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
-							<img src='common/images/default.gif' width="30" height="30" onerror="this.src='common/images/default.gif;this.onerror=null'">分类
+							分类
 							</a>
 						</div>
 					</div>
@@ -200,7 +200,7 @@ function toHomePage(){
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
-							<img src='common/images/default.gif' width="30" height="30" onerror="this.src='common/images/default.gif;this.onerror=null'">订单
+							订单
 							<span class="m-badge" id="ordernumber"></span>
 							</a>
 						</div>
@@ -209,7 +209,6 @@ function toHomePage(){
 					<div style="padding:10px">
 						<div class="panel-header tt-inner">
 							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
-							<img src='common/images/default.gif' width="30" height="30" onerror="this.src='common/images/default.gif;this.onerror=null'">
 							<label id="clientname"></label>
 				    		</a>
 				        </div>
