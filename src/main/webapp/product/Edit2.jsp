@@ -87,7 +87,7 @@ function buyNow(){
 				//window.location.href = "client/Edit2.jsp";
 			}else if(data == "NOLOGIN"){
 				//console.log("转入客户登录");
-				window.location.href = "login.jsp";
+				window.location.href = "client/login.jsp";
 			}
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {

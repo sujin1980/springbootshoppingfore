@@ -46,13 +46,23 @@ $(function () {
 	
 	if('${sessionScope.loginClient.name}' != '') {
 		initOrderInfo('${sessionScope.loginClient.name}');
-		document.getElementById('clientname').innerHTML = "我的";
+		$("#clientimage").attr('src', "images/login.png");
 	}else{
-		//console.log("=========================");
-		document.getElementById('clientname').innerHTML = "登录";
+		$("#clientimage").attr('src', "images/loginman.png");
 	}
 	
-	
+	/*alert(
+			"屏幕分辨率为："+screen.width+"*"+screen.height //最好是window.screen
+			+" "+
+			"屏幕可用大小："+screen.availWidth+"*"+screen.availHeight
+			+" "+
+			"网页可见区域宽："+document.body.clientWidth
+			+" "+
+			"网页可见区域高："+document.body.clientHeight
+			+" "+
+			"网页可见区域宽(包括边线的宽)："+document.body.offsetWidth
+			+" "+
+			"网页可见区域高(包括边线的宽)："+document.body.offsetHeight); */
 });
 
 function initOrderInfo(clientname){
@@ -139,7 +149,7 @@ function loginClient(){
 	if('${sessionScope.loginClient.name}' != ''){
 		window.location.href = "client/Edit2.jsp";
 	}else{
-		window.location.href = "login.jsp";	
+		window.location.href = "client/login.jsp";	
 		//window.location.href = "wapPaySuccess.jsp";
 	}
 	return;
@@ -178,38 +188,38 @@ function toHomePage(){
 	        </div>
     </div> 
     
-    <div data-options="region:'south',split:false,border:true" style="padding:5px;height:65px;width:100%;z-index:1">   
+    <div data-options="region:'south',split:false,border:true" style="height:65px;width:100%;z-index:1">   
 		   
 		        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
-					<div style="padding:10px">
+					<div >
 						<div class="panel-header tt-inner">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
-							首页
+							<img src='images/homepage.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
 							</a>
 						</div>
 					</div>
 					
-					<div style="padding:10px">
+					<div >
 						<div class="panel-header tt-inner">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
-							分类
+							<img src='images/categroy.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
 							</a>
 						</div>
 					</div>
 					
-					<div style="padding:10px">
+					<div >
 						<div class="panel-header tt-inner">
 							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
-							订单
+							<img src='images/cart.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
 							<span class="m-badge" id="ordernumber"></span>
 							</a>
 						</div>
 						
 					</div>
-					<div style="padding:10px">
+					<div >
 						<div class="panel-header tt-inner">
 							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
-							<label id="clientname"></label>
+							<img src='images/login.png' id="clientimage" width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
 				    		</a>
 				        </div>
 					</div>

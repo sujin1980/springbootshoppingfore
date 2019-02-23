@@ -1,20 +1,18 @@
 @charset "utf-8";
 
-.m-title{
-	font-size:28px;
-}
+
 
 .shopping-client-text{
-	font-size:28px;
+	font-size:50px;
 }
 
 .shopping-client-text-div{
 	text-align:center;
-	margin-top:40px;
+	margin-top:60px;
 }
 
 .shopping-client-hint{
-	font-size:28px;
+	font-size:50px;
 	color:red;
 }
 
@@ -27,9 +25,16 @@
 	width:50;
 	height:50;
 }
+
+#clientName{
+	width:80%;
+	height:60px;
+	font-size:60px;
+}
+
 .easyui-textbox{
 	width:80%;
 	height:60px;
-	font-size:28px;
+	font-size:48px;
 }
 
