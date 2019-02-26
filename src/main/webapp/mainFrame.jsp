@@ -166,10 +166,10 @@ function toHomePage(){
 
 </script> 
 
-<body class="easyui-layout">
-    <div data-options="region:'north',split:false,border:true" style="justify-content:center;align-items:center;background:#FFC0CB;overflow:hidden;height:40px;width:100%;z-index:1">
-		
-            <div class="m-toolbar">
+<body>
+	<div class="easyui-navpanel" >
+		<header >
+            <div class="m-toolbar" style="justify-content:center;align-items:center;height:40px;">
                 <div class="m-title">
                 	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="findGoods()" data-options="text:'搜索商品请进入'  ,iconCls:'icon-search',plain:true"></a>
                 </div>
@@ -186,48 +186,46 @@ function toHomePage(){
 	            <div>有偿用品</div>
 	            <div>布草</div>
 	        </div>
-    </div> 
+	    </header>    
+   
     
-    <div data-options="region:'south',split:false,border:true" style="height:65px;width:100%;z-index:1">   
-		   
-		        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
-					<div >
-						<div class="panel-header tt-inner">
-						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
-							<img src='images/homepage.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
-							</a>
-						</div>
-					</div>
-					
-					<div >
-						<div class="panel-header tt-inner">
-						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
-							<img src='images/categroy.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
-							</a>
-						</div>
-					</div>
-					
-					<div >
-						<div class="panel-header tt-inner">
-							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
-							<img src='images/cart.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
-							<span class="m-badge" id="ordernumber"></span>
-							</a>
-						</div>
-						
-					</div>
-					<div >
-						<div class="panel-header tt-inner">
-							<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
-							<img src='images/login.png' id="clientimage" width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
-				    		</a>
-				        </div>
-					</div>
+ 
+        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+			<div >
+				<div class="panel-header tt-inner">
+				    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
+					<img src='images/homepage.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+					</a>
+				</div>
 			</div>
-		  
+			
+			<div >
+				<div class="panel-header tt-inner">
+				    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
+					<img src='images/categroy.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+					</a>
+				</div>
+			</div>
+			
+			<div >
+				<div class="panel-header tt-inner">
+					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
+					<img src='images/cart.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+					<span class="m-badge" id="ordernumber"></span>
+					</a>
+				</div>
+				
+			</div>
+			<div >
+				<div class="panel-header tt-inner">
+					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
+					<img src='images/login.png' id="clientimage" width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+		    		</a>
+		        </div>
+			</div>
 	</div>
-    
-    <div data-options="region:'center',split:false,border:true" style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
+
+    <div style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
 	    <div id="productlist">
 		    <ul class="m-list" id="product-m-list">
 		    
