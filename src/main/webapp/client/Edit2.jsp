@@ -4,13 +4,15 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <base href="<%=basePath%>">
+    <title>商城系统</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>美酒商城</title>
 	
 	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
 	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
@@ -22,6 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
 </head>
+
+
 
 <script type="text/javascript">
 
@@ -47,6 +51,13 @@ $(document).ready(function (){
 	"  网页可见区域宽(包括边线的宽)："+document.body.offsetWidth
 	+" "+
 	"  网页可见区域高(包括边线的宽)："+document.body.offsetHeight); 
+	
+	var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+	var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; 
+	
+	console.log("  网页可见区域宽：" + w
+			+" "+
+			"  网页可见区域高：" + h);
 }); 
 
 function baseInfo(){
@@ -96,22 +107,18 @@ function editOrder(){
 <body>
 	<div class="easyui-navpanel" >
 		<header >
-		    <div class="m-toolbar" style="justify-content:center;align-items:center;height:40px;">
+		    <div class="m-toolbar" style="justify-content:center;align-items:center;height:100px;">
 		    	<div class="m-title">
 				    <span style="font-size:48px;"><br>我的商城</span>
 				</div>
-				<div class="m-left">
-		            <a href="javascript::void(0)" onclick="$.mobile.back()">
-		            	<img src="images/back.png" style="margin-top:20;" width="64px" height="64px" onerror="this.src='common/images/default.gif;this.onerror=null'">
-		            </a>
-		        </div>
+				
 		    </div>
 	    </header>  
-        <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+	    <div id="tt" class="easyui-tabs" data-options="tabHeight:160,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
 				<div>
 					<div class="panel-header tt-inner">
 					    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
-						<img src='images/homepage.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+						<img src='images/homepage.png' width="245.25" height="160"  onerror="this.src='common/images/default.gif;this.onerror=null'">
 						</a>
 					</div>
 				</div>
@@ -119,16 +126,17 @@ function editOrder(){
 				<div>
 					<div class="panel-header tt-inner">
 					    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
-						<img src='images/categroy.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+						<img src='images/categroy.png' width="245.25" height="160" onerror="this.src='common/images/default.gif;this.onerror=null'">
 						</a>
 					</div>
 				</div>
 				
 				<div>
 					<div class="panel-header tt-inner">
+						<span class="m-badge" id="ordernumber" style="font-size:48px;"></span>
 						<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
-						<img src='images/cart.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
-						<span class="m-badge" id="ordernumber"></span>
+						<img src='images/cart.png' width="245.25" height="160" onerror="this.src='common/images/default.gif;this.onerror=null'">
+						
 						</a>
 					</div>
 					
@@ -136,7 +144,7 @@ function editOrder(){
 				<div>
 					<div class="panel-header tt-inner">
 						<a href="javascript:void(0)" class="easyui-linkbutton" onclick="">
-						<img src='images/redman.png' width="93.75" height="60" id="clientimage" onerror="this.src='common/images/default.gif;this.onerror=null'">
+						<img src='images/redman.png' width="245.25" height="160" id="clientimage" onerror="this.src='common/images/default.gif;this.onerror=null'">
 			    		</a>
 			        </div>
 				</div>

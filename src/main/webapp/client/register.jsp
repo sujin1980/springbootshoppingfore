@@ -65,6 +65,27 @@ $(function () {
 	$("#address").textbox('textbox').css("font-size", "38px");
 	$("#weixin").textbox('textbox').css("font-size", "38px");
 	$("#remarks").textbox('textbox').css("font-size", "38px");
+			
+	console.log(
+			"屏幕分辨率为："+screen.width+"*"+screen.height 
+			+" "+
+			"  屏幕可用大小："+screen.availWidth+"*"+screen.availHeight
+			+" "+
+			"  网页可见区域宽："+document.body.clientWidth
+			+" "+
+			"  网页可见区域高："+document.body.clientHeight
+			+" "+
+			"  网页可见区域宽(包括边线的宽)："+document.body.offsetWidth
+			+" "+
+			"  网页可见区域高(包括边线的宽)："+document.body.offsetHeight); 
+	
+	
+	var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+	var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; 
+	
+	console.log("  网页可见区域宽：" + w
+			+" "+
+			"  网页可见区域高：" + h);
 }); 
 
 function checkchinesename(newvalue){
