@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 $(function () {
 	$('#mm').menu({
 	    onClick:function(item){
-			//console.log(item.text);
+			console.log(item.text);
 			getProductType(item.text);
 	    }
 	});
@@ -45,9 +45,9 @@ $(function () {
 	
 	if('${sessionScope.loginClient.name}' != '') {
 		initOrderInfo('${sessionScope.loginClient.name}');
-		$("#clientimage").attr('src', "images/login.png");
-	}else{
 		$("#clientimage").attr('src', "images/loginman.png");
+	}else{
+		$("#clientimage").attr('src', "images/login.png");
 	}
 	
 	console.log(
@@ -190,13 +190,13 @@ function toHomePage(){
             </div>
             <div id="mm" class="easyui-menu" style="width:20px;" data-options="itemHeight:30, itemWidth:50, noline:true">
 	            <div>
-	             	<span style="font-size:18px;"> 易耗品 </span>
+	             	易耗品
 	             </div>
 	            <div>
-	                <span style="font-size:18px;">有偿用品 </span>
+	                有偿用品
 	            </div>
 	            <div>
-	            	<span style="font-size:18px;">布草 </span>
+	            	布草
 	            </div>
 	        </div>
 	    </header>    

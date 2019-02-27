@@ -7,15 +7,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    <title>订单商品信息</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+  <base href="<%=basePath%>">
+  <meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>美酒商城</title>
 	
-	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
-	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/client.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
@@ -65,11 +64,11 @@ function updateOrderGoodsInfo(data){
 	for(var i = 0; i < data.length; i++){
 		thtmlbody += "<li>";
 		thtmlbody += "<a href=\"javascript:void(0);\" style=\"width:100px;display:inline\" onclick=\"getProductById(" + data[i].goodsId + ")\" >";
-		thtmlbody += " <img src=\"" + data[i].picture + "\"" + " width=\"50\" height=\"50\" onerror=\"this.src='common/images/default.gif;this.onerror=null'\">"; 
-		thtmlbody += "<span class=\"shopping-client-text\">" +  data[i].goodsName + "*" + data[i].goodsNumber + "&nbsp;</span>" + "</a>";
+		thtmlbody += " <img src=\"" + data[i].picture + "\"" + " width=\"34\" height=\"34\" onerror=\"this.src='common/images/default.gif;this.onerror=null'\">"; 
+		thtmlbody += "<span class=\"shopping-client-smalltext\">" +  data[i].goodsName + "*" + data[i].goodsNumber + "&nbsp;</span>" + "</a>";
 		thtmlbody += "<br>";
-		thtmlbody += "<span class=\"shopping-client-text\" style=\"float:right;\">" +  data[i].remarks + "&nbsp;</span>";
-		thtmlbody += "<span class=\"shopping-client-text\" style=\"float:right;\">&nbsp;&nbsp;" +  "金额：" + data[i].totalFee + "&nbsp;&nbsp;</span>";
+		thtmlbody += "<span class=\"shopping-client-smalltext\" style=\"float:right;\">" +  data[i].remarks + "&nbsp;</span>";
+		thtmlbody += "<span class=\"shopping-client-smalltext\" style=\"float:right;\">&nbsp;&nbsp;" +  "金额：" + data[i].totalFee + "&nbsp;&nbsp;</span>";
 		thtmlbody += "</li>";	
 	}
 	console.log(thtmlbody);
@@ -88,25 +87,25 @@ function account(){
 <body>
 	<div class="easyui-navpanel">
 		<header>
-			<div class="m-toolbar" style="justify-content:center;align-items:center;height:80px;">
-				<span class="m-title" style="font-size:28px;"><br>订单商品信息</span>
-		        <div class="m-left">
-	                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">
-	                	<span class="shopping-client-text">回退</span>
+			<div class="m-toolbar" style="justify-content:center;align-items:center;height:40px;">
+			    <span class="m-title" style="font-size:20px;">订单商品信息</span>
+			    <div class="m-left">
+	                <a href="javascript::void(0)" onclick="$.mobile.back()">
+	                	<img src="images/back.png" style="margin-top:5;" width="34px" height="34px" onerror="this.src='common/images/default.gif;this.onerror=null'">
 	                </a>
 	            </div>   
 		    </div>
 		</header>
 		<div  style="height:100%;width:100%;z-index:1;" >
-			<div id="orderstatus" style="margin-top:60px" data-options="tabHeight:60,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
-				<div style="padding:20px">
+			<div id="orderstatus" style="margin-top:10px" data-options="tabHeight:60,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
+				<div style="padding:10px">
 					<span class="shopping-client-text">${sessionScope.clientorder.clientChineseName}&nbsp;&nbsp;</span>
 					<span class="shopping-client-text">${sessionScope.clientorder.receiverMobile}&nbsp;&nbsp;</span>
 				</div>
 				
 			</div>	
 		
-			<div id="ordersinfo" style="padding:10px;" >
+			<div id="ordersinfo" style="padding:5px;" >
 				<ul class="m-list" id="order-m-list"  style="padding:10px;">
 					<li>
 						

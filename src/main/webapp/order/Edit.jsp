@@ -120,24 +120,29 @@ function confirmOrder(){
 		    </div>
 		</header>
 		<footer  style="height:60px">  
-			<div >
-	            <input type="checkbox" class="shopping-checkbox" style="padding-top:20px;height:20px;width:30px;" name="goodsall" >
-	            <span class="shopping-client-text">全选</span>
-				<span class="shopping-client-text" style="margin-left:10px;">总计： ${sessionScope.clientorder.payment}</span>
-	            
-	            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addGoods()" style="background-color:#3CB371;width:90px;height:60px" data-options="size:'large',iconAlign:'top',plain:true">
-	            	<span class="shopping-client-text" style="color:#FFFFFF">继续添加</span>
-	            </a>
-	            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="confirmOrder()" style="background-color:#FF1493;width:87px;height:60px" data-options="size:'large',iconAlign:'top',plain:true">
-	            	<span class="shopping-client-text" style="color:#FFFFFF">去结算</span>
+			<div style=" float:left;width:40%">
+		        <div> 
+		            <input type="checkbox" class="shopping-checkbox" style="padding-top:20px;height:20px;width:30px;" name="goodsall" >
+		            <span class="shopping-client-text">全选</span>
+	            </div> 
+	            <div>
+					<span class="shopping-client-text" style="padding:10px">总计： ${sessionScope.clientorder.payment}</span>
+			    </div>	
+	         </div>   
+	         <div style="float:left;width:60%">  
+			     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addGoods()" style="background-color:#3CB371;width:50%;height:60px" data-options="size:'large',iconAlign:'top',plain:true">
+		         	<span class="shopping-client-text" style="color:#FFFFFF">继续添加</span>
+		         </a> 
+	            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="confirmOrder()" style="background-color:#FF1493;width:46%;height:60px" data-options="size:'large',iconAlign:'top',plain:true">
+	            	<span class="shopping-client-text" style="color:#FFFFFF">去结算</span> 
 	            </a>
 	        </div>
 	        
 	    </footer>
 	    
 		<div  style="height:100%;width:100%;z-index:1;" >
-			<div id="orderstatus" style="margin-top:40px" data-options="tabHeight:40,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
-				<div style="padding:20px">
+			<div id="orderstatus" style="margin-top:10px" data-options="tabHeight:40,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
+				<div style="padding:10px">
 					<span class="shopping-client-text">美酒商城</span>
 				</div>
 				

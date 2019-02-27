@@ -32,12 +32,11 @@ var ordernum = 0;
 $(document).ready(function (){
 	if('${sessionScope.loginClient.name}' != '') {
 		initOrderInfo('${sessionScope.loginClient.name}');
-		//document.getElementById('clientname').innerHTML = "登录";
+		$("#clientimage").attr('src', "images/loginman.png");
 	}else{
-		//console.log("=========================");
-		//document.getElementById('clientname').innerHTML = "未登录";
+		$("#clientimage").attr('src', "images/login.png");
 	}
-	
+		
 	console.log(
 	"屏幕分辨率为："+screen.width+"*"+screen.height 
 	+" "+

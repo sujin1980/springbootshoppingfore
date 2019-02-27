@@ -9,10 +9,10 @@
 		<relativePath /> 
 	</parent>
 	<groupId>com.shopping.mall.foreground</groupId>
-	<artifactId>shoppingmallforeground</artifactId>
+	<artifactId>shoppingmallfore</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-version</version>
-	<name>shoppingmallforeground</name>
+	<version>1.0.0-version</version>
+	<name>shoppingmallfore</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
