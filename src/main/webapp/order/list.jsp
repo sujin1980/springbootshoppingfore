@@ -7,22 +7,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    <title>我的商城</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+  <base href="<%=basePath%>">
+  <meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>美酒商城</title>
 	
-	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
-	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
-	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
-	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
-
-	<script type="text/javascript" src="common/easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/client.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
+		<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
+		<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
+			
+		<script type="text/javascript" src="common/easyui/jquery.min.js"></script>
+		<script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
   </head>
 
 <script type="text/javascript">
@@ -76,7 +75,7 @@ $(function(){
 	  }
 	});
 	
-	$("#querycondition").textbox('textbox').css("font-size", "28px");
+	$("#querycondition").textbox('textbox').css("font-size", "18px");
 }) 
 
 function updateOrdersinfo(statusfilter){
@@ -211,42 +210,42 @@ function initOrderList(){
 <body>
 	<div class="easyui-navpanel">
 		<header>
-			<div class="m-toolbar" style="justify-content:center;align-items:center;height:80px;">
-				<span class="m-title" style="font-size:28px;"><br>我的订单</span>
-		        <div class="m-left">
-	                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">
-	                	<span class="shopping-client-text">回退</span>
+			<div class="m-toolbar" style="justify-content:center;align-items:center;height:40px;">
+	        	<span class="m-title" style="font-size:20px;">我的订单</span>
+	        	<div class="m-left">
+	                <a href="javascript::void(0)" onclick="$.mobile.back()">
+	                	<img src="images/back.png" style="margin-top:5;" width="34px" height="34px" onerror="this.src='common/images/default.gif;this.onerror=null'">
 	                </a>
 	            </div>   
 		    </div>
 		</header>
 		<div  style="height:100%;width:100%;z-index:1;" >
 			<div style="padding:30px;height:50px;width:100%;z-index:1;" >
-				<input class="easyui-textbox" id="querycondition" data-options="prompt:'商品名称/商品编号/订单号'  "  style="width:70%;height:60px">
-					<a id="btn" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="margin:10px;height:60px">
+				<input class="easyui-textbox" id="querycondition" data-options="prompt:'商品名称/商品编号/订单号'  "  style="width:70%;height:40px">
+					<a id="btn" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="margin:10px;height:40px">
 						<span class="shopping-client-text">搜索</span>
 	                </a>
 			</div>
 			
-			<div id="orderstatus" class="easyui-tabs" style="margin-top:60px" data-options="tabHeight:60,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
+			<div id="orderstatus" class="easyui-tabs" style="margin-top:60px" data-options="tabHeight:40,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
 				<div style="padding:10px">
-					<div class="panel-header tt-inner">
-						<span class="shopping-client-text">所有订单</span>
+					<div class="panel-header tt-inner" >
+						<span class="shopping-client-smalltext">所有订单</span>
 					</div>
 				</div>
 				<div style="padding:10px">
 					<div class="panel-header tt-inner">
-						<span class="shopping-client-text">待付款</span>
+						<span class="shopping-client-smalltext">待付款</span>
 					</div>
 				</div>
 				<div style="padding:10px">
 					<div class="panel-header tt-inner">
-						<span class="shopping-client-text">待收货</span>
+						<span class="shopping-client-smalltext">待收货</span>
 					</div>
 				</div>
 				<div style="padding:10px">
 					<div class="panel-header tt-inner">
-						<span class="shopping-client-text">已完成</span>
+						<span class="shopping-client-smalltext">已完成</span>
 					</div>
 				</div>
 			</div>	

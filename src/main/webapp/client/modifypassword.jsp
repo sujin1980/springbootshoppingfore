@@ -7,22 +7,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    <title>我的商城</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+  <base href="<%=basePath%>">
+  <meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>美酒商城</title>
 	
-	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
-	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
-	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
-	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
-
-	<script type="text/javascript" src="common/easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/client.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
+		<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
+		<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
+			
+		<script type="text/javascript" src="common/easyui/jquery.min.js"></script>
+		<script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
   </head>
 
 <script type="text/javascript">
@@ -46,9 +45,9 @@ $(function(){
 	     }
 	});	
 	
-	$("#currentpassword").textbox('textbox').css("font-size", "28px");
-	$("#newpassword").textbox('textbox').css("font-size", "28px");
-	$("#confirmpassword").textbox('textbox').css("font-size", "28px");
+	$("#currentpassword").textbox('textbox').css("font-size", "18px");
+	$("#newpassword").textbox('textbox').css("font-size", "18px");
+	$("#confirmpassword").textbox('textbox').css("font-size", "18px");
 }) 
 
 function checkpassword1(newvalue){
@@ -130,47 +129,46 @@ function cancelPassword(){
 <body>
 	<div class="easyui-navpanel">
 			<header>
-				<div class="m-toolbar" style="justify-content:center;align-items:center;height:80px;">
-					<span class="m-title" style="font-size:28px;"><br>账号管理</span>
-			        <div class="m-left">
-		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true" onclick="$.mobile.back()">
-		                	<span class="shopping-client-text">回退</span>
+				<div class="m-toolbar" style="justify-content:center;align-items:center;height:40px;">
+		           <span class="m-title" style="font-size:20px;">账号管理</span>
+		           <div class="m-left">
+		                <a href="javascript::void(0)" onclick="$.mobile.back()">
+		                	<img src="images/back.png" style="margin-top:5;" width="34px" height="34px" onerror="this.src='common/images/default.gif;this.onerror=null'">
 		                </a>
-		            </div>   
+		            </div>
 			    </div>
 			</header>
 
 					
-			<div id="passwordgroup" style="padding:50px;text-align:center;margin:0 auto">
-				
+			<div id="passwordgroup" style="text-align:center;margin:0 auto">
 					<div class="shopping-client-text-div">
 			    		<span class="shopping-client-text">当前密码</span>
 			    	</div>	
-			    	<div style="text-align:center;margin-top:20px">
-				        <input class="easyui-passwordbox" name="currentpassword"   id="currentpassword" data-options="prompt:'请输入当前密码 '  " style="width:80%;height:60px;">
+			    	<div style="text-align:center;margin-top:10px">
+				        <input class="easyui-passwordbox" name="currentpassword"   id="currentpassword" data-options="prompt:'请输入当前密码 '  " style="width:80%;height:40px;">
 				    </div>
 				    <div class="shopping-client-text-div">
 			    		<span class="shopping-client-text">新密码密码</span>
 			    	</div>	
-			    	<div style="text-align:center;margin-top:20px">
-				        <input class="easyui-passwordbox" name="newpassword"   id="newpassword" data-options="prompt:'输入6至20位密码 '  " style="width:80%;height:60px;">
+			    	<div style="text-align:center;margin-top:10px">
+				        <input class="easyui-passwordbox" name="newpassword"   id="newpassword" data-options="prompt:'输入6至20位密码 '  " style="width:80%;height:40px;">
 				    </div>
 				    <div class="shopping-client-text-div">
 				    	<span class="shopping-client-text" >确认密码</span>
 				    </div>	
-				    <div style="text-align:center;margin-top:20px">
-				        <input class="easyui-passwordbox" name="confirmpassword" id="confirmpassword" data-options="prompt:'输入6至20位密码'  " style="width:80%;height:60px;">
+				    <div style="text-align:center;margin-top:10px">
+				        <input class="easyui-passwordbox" name="confirmpassword" id="confirmpassword" data-options="prompt:'输入6至20位密码'  " style="width:80%;height:40px;">
 				    </div>
 				    <div class="shopping-client-text-div">
 				    	<span id="passwordValidate" class="shopping-client-hint"></span>
 				    </div>
-				    <div style="text-align:center;margin-top:30px">
-				        <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="modifyPassword();" style="width:80%;height:60px;">
+				    <div style="text-align:center;margin-top:10px">
+				        <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="modifyPassword();" style="width:80%;height:40px;">
 				        	<span class="shopping-client-text">确认</span>
 				        </a>
 				    </div>    
-				    <div style="text-align:center;margin-top:30px">
-				        <a href="javascript:void(0);" class="easyui-linkbutton" onclick="cancelPassword();" plain="true" outline="true" style="width:80%;height:60px;">
+				    <div style="text-align:center;margin-top:10px">
+				        <a href="javascript:void(0);" class="easyui-linkbutton" onclick="cancelPassword();" plain="true" outline="true" style="width:80%;height:40px;">
 				        	<span class="shopping-client-text">重置</span>
 				        </a> 
 				    </div>  

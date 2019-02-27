@@ -8,14 +8,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>订单商品信息</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+  	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  	<title>美酒商城</title>
 	
-	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
-	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/client.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
@@ -29,6 +28,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 $(function(){
 	initOrderGoodsinfo();
+	
+	console.log(
+			"屏幕分辨率为："+screen.width+"*"+screen.height 
+			+" "+
+			"  屏幕可用大小："+screen.availWidth+"*"+screen.availHeight
+			+" "+
+			"  网页可见区域宽："+document.body.clientWidth
+			+" "+
+			"  网页可见区域高："+document.body.clientHeight
+			+" "+
+			"  网页可见区域宽(包括边线的宽)："+document.body.offsetWidth
+			+" "+
+			"  网页可见区域高(包括边线的宽)："+document.body.offsetHeight); 
+	
+	
+	var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+	var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; 
+	
+	console.log("  网页可见区域宽：" + w
+			+" "+
+			"  网页可见区域高：" + h);
 }) 
 
 function initOrderGoodsinfo(){
@@ -90,35 +110,33 @@ function confirmOrder(){
 <body>
 	<div class="easyui-navpanel">
 		<header>
-			<div class="m-toolbar" style="justify-content:center;align-items:center;height:80px;">
-				<span class="m-title" style="font-size:28px;"><br>订单商品信息</span>
-		        <div class="m-left">
-	                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true,back:true">
-	                	<span class="shopping-client-text">回退</span>
+			<div class="m-toolbar" style="justify-content:center;align-items:center;height:40px;">
+	    	    <span class="m-title" style="font-size:20px;">订单商品信息</span>
+	    	    <div class="m-left">
+	                <a href="javascript::void(0)" onclick="$.mobile.back()">
+	                	<img src="images/back.png" style="margin-top:5;" width="34px" height="34px" onerror="this.src='common/images/default.gif;this.onerror=null'">
 	                </a>
 	            </div>   
 		    </div>
 		</header>
-		<footer >
-	        <div class="m-buttongroup m-buttongroup-justified" style="height:90px;width:100%">
-			    
-	            <input type="checkbox" class="shopping-checkbox" style="margin:20px; height:30px;width:30px;" name="goodsall" >
+		<footer  style="height:60px">  
+			<div >
+	            <input type="checkbox" class="shopping-checkbox" style="padding-top:20px;height:20px;width:30px;" name="goodsall" >
 	            <span class="shopping-client-text">全选</span>
-		       
-	            <span class="shopping-client-text" style="margin-left:50px;">总计： ${sessionScope.clientorder.payment}</span>
+				<span class="shopping-client-text" style="margin-left:10px;">总计： ${sessionScope.clientorder.payment}</span>
 	            
-	            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addGoods()" style="background-color:#3CB371;width:200px;" data-options="size:'large',iconAlign:'top',plain:true">
-	            	<span class="shopping-client-text" style="color:#FFFFFF">继续添加商品</span>
+	            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addGoods()" style="background-color:#3CB371;width:90px;height:60px" data-options="size:'large',iconAlign:'top',plain:true">
+	            	<span class="shopping-client-text" style="color:#FFFFFF">继续添加</span>
 	            </a>
-	            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="confirmOrder()" style="background-color:#FF1493;width:200px;" data-options="size:'large',iconAlign:'top',plain:true">
+	            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="confirmOrder()" style="background-color:#FF1493;width:87px;height:60px" data-options="size:'large',iconAlign:'top',plain:true">
 	            	<span class="shopping-client-text" style="color:#FFFFFF">去结算</span>
 	            </a>
 	        </div>
+	        
 	    </footer>
+	    
 		<div  style="height:100%;width:100%;z-index:1;" >
-			
-			
-			<div id="orderstatus" style="margin-top:60px" data-options="tabHeight:60,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
+			<div id="orderstatus" style="margin-top:40px" data-options="tabHeight:40,tabPosition:'top',border:false,pill:true,narrow:true,justified:true">
 				<div style="padding:20px">
 					<span class="shopping-client-text">美酒商城</span>
 				</div>

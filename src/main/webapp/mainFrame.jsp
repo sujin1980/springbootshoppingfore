@@ -8,13 +8,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>商城系统</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+    <meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>美酒商城</title>
 	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/client.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
     <link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
@@ -24,32 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
 </head>
 
-<style type="text/css">
-#test .l-btn{
-    color:red;
-    color: #fff;
-    border-color: #3c8b3c;
-    background: #4cae4c;
-    background: -webkit-linear-gradient(top,#4cae4c 0,#449d44 100%);
-    background: -moz-linear-gradient(top,#4cae4c 0,#449d44 100%);
-    background: -o-linear-gradient(top,#4cae4c 0,#449d44 100%);
-    background: linear-gradient(to bottom,#4cae4c 0,#449d44 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4cae4c,endColorstr=#449d44,GradientType=0);
 
-}
-#test .l-btn-selected, .l-btn-selected:hover{
-    background:rgb(230, 126, 34);
-    color:#fff;
-    border:0px;
-}
-
-#test .l-btn-text{
-	font-size:38px;
-}
-
-
-
-</style>
 <script type="text/javascript">
 
 $(function () {
@@ -201,9 +176,9 @@ function toHomePage(){
 <body>
 	<div class="easyui-navpanel" >
 		<header>
-            <div class="m-toolbar" style="justify-content:center;align-items:center;height:100px">
-                <div class="m-title" id="test" style="padding:20px;">
-                	<input class="easyui-searchbox" data-options="prompt:'搜索商品请进入'" style="width:80%;height:70px">
+            <div class="m-toolbar" style="justify-content:center;align-items:center;height:40px">
+                <div class="m-title" id="test" style="padding:8px" >
+                	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="findGoods()" data-options="text:'搜索商品请进入'  ,iconCls:'icon-search',plain:true"></a>
                 </div>
                 <div class="m-left">
                 	<a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a>
@@ -213,66 +188,62 @@ function toHomePage(){
                     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()" data-options="iconCls:'icon-man',plain:true"></a>
                 </div>
             </div>
-            <div id="mm" class="easyui-menu" style="width:250px;font-size:48px;" data-options="itemHeight:50,itemHeight:50, noline:true">
+            <div id="mm" class="easyui-menu" style="width:20px;" data-options="itemHeight:30, itemWidth:50, noline:true">
 	            <div>
-	             	<span style="font-size:48px;"> 易耗品 </span>
+	             	<span style="font-size:18px;"> 易耗品 </span>
 	             </div>
 	            <div>
-	                <span style="font-size:48px;">有偿用品 </span>
+	                <span style="font-size:18px;">有偿用品 </span>
 	            </div>
 	            <div>
-	            	<span style="font-size:48px;">布草 </span>
+	            	<span style="font-size:18px;">布草 </span>
 	            </div>
 	        </div>
 	    </header>    
-   
-    
- 
-        <div id="tt" class="easyui-tabs"  data-options="tabHeight:160,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
-			<div >
-				<div class="panel-header tt-inner">
-				    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
-					<img src='images/homepage.png' width="245.25" height="160" onerror="this.src='common/images/default.gif;this.onerror=null'">
-					</a>
-				</div>
-			</div>
-			
-			<div >
-				<div class="panel-header tt-inner">
-				    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
-					<img src='images/categroy.png' width="245.25" height="160" onerror="this.src='common/images/default.gif;this.onerror=null'">
-					</a>
-				</div>
-			</div>
-			
-			<div >
-				<div class="panel-header tt-inner">
-				<span class="m-badge" id="ordernumber" style="font-size:48px;"></span>
-					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
-					<img src='images/cart.png' width="245.25" height="160" onerror="this.src='common/images/default.gif;this.onerror=null'">
-					
-					</a>
+  
+	    <footer style="height:60px">
+	        <div id="tt" class="easyui-tabs"  data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+				<div >
+					<div class="panel-header tt-inner" >
+					    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
+						<img src='images/homepage.png'  width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+						</a>
+					</div>
 				</div>
 				
+				<div >
+					<div class="panel-header tt-inner">
+					    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
+						<img src='images/categroy.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+						</a>
+					</div>
+				</div>
+				
+				<div >
+					<div class="panel-header tt-inner">
+						<span class="m-badge" id="ordernumber" style="font-size:18px;"></span>
+						<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
+						<img src='images/cart.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+						</a>
+					</div>
+					
+				</div>
+				<div >
+					<div class="panel-header tt-inner">
+						<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
+						<img src='images/login.png' id="clientimage" width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+			    		</a>
+			        </div>
+				</div>
+		    </div>
+	  </footer>		
+	  
+	  <div style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
+		    <div id="productlist">
+			    <ul class="m-list" id="product-m-list">
+			    
+			    </ul>
 			</div>
-			<div >
-				<div class="panel-header tt-inner">
-					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
-					<img src='images/login.png' id="clientimage" width="245.25" height="160" onerror="this.src='common/images/default.gif;this.onerror=null'">
-		    		</a>
-		        </div>
-			</div>
-	</div>
-
-    <div style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
-	    <div id="productlist">
-		    <ul class="m-list" id="product-m-list">
-		    
-		    </ul>
-		</div>
-	</div>
-
-	
-	
+	  </div>
 </body>
 </html>

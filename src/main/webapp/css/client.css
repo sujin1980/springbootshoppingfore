@@ -1,26 +1,31 @@
 @charset "utf-8";
 
 .shopping-client-smalltext{
-	font-size:18px;
+	font-size:10px;
 }
 
 .shopping-client-text{
-	font-size:28px;
+	font-size:18px;
 }
 
 .shopping-client-text-div{
 	text-align:center;
-	margin-top:60px;
+	margin-top:20px;
 }
 
 .shopping-client-hint{
-	font-size:50px;
+	font-size:18px;
 	color:red;
 }
 
 .shopping-client-hint-div{
 	text-align:center;
-	margin-top:40px;
+	margin-top:20px;
+}
+
+.shopping-main-setting-icon{
+	width:14;
+	height:14;
 }
 
 .shopping-main-frame-icon{
@@ -31,7 +36,9 @@
 #clientName{
 	width:80%;
 	height:60px;
-	font-size:60px;
+	font-size:18px;
 }
 
-
+#panel-header tt-inner{
+	
+}
