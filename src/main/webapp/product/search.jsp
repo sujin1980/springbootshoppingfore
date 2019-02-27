@@ -7,15 +7,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    <title>欢迎登录后台管理系统</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	
-	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
+	 <base href="<%=basePath%>">
+	    <meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title>美酒商城</title>
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/client.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
@@ -36,7 +35,28 @@ $(function () {
 			findGoodsByName();
 	    }
 	});
-	$("#goodsname").textbox('textbox').css("font-size", "48px");
+	$("#goodsname").textbox('textbox').css("font-size", "18px");
+			
+	console.log(
+			"屏幕分辨率为："+screen.width+"*"+screen.height 
+			+" "+
+			"  屏幕可用大小："+screen.availWidth+"*"+screen.availHeight
+			+" "+
+			"  网页可见区域宽："+document.body.clientWidth
+			+" "+
+			"  网页可见区域高："+document.body.clientHeight
+			+" "+
+			"  网页可见区域宽(包括边线的宽)："+document.body.offsetWidth
+			+" "+
+			"  网页可见区域高(包括边线的宽)："+document.body.offsetHeight); 
+	
+	
+	var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+	var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth; 
+	
+	console.log("  网页可见区域宽：" + w
+			+" "+
+			"  网页可见区域高：" + h);
 }); 
 
 function getProductById(productid){
@@ -87,18 +107,18 @@ function findGoodsByName(){
 <body>
 		<div class="easyui-navpanel">
 			<header>
-			    <div class="m-toolbar" style="justify-content:center;align-items:center;height:100px;">
-			        <div class="m-title" style="padding-top:20px;font-size:48px;">
-			        	<input class="easyui-textbox" id="goodsname" data-options="prompt:'商品名称', iconCls:'icon-search'" style="width:60%;height:70px;font-size:48px">
+			    <div class="m-toolbar" style="height:40px;">
+			        <div class="m-title" style="padding:5px">
+			        	<input class="easyui-textbox" id="goodsname" data-options="prompt:'商品名称', iconCls:'icon-search'" style="width:60%" >
 			        </div>
 			        <div class="m-left">
 					    <a href="javascript::void(0)" onclick="$.mobile.back()">
-		                	<img src="images/back.png" style="margin-top:20;" width="64px" height="64px" onerror="this.src='common/images/default.gif;this.onerror=null'">
+		                	<img src="images/back.png" style="margin-top:5;" width="34px" height="34px" onerror="this.src='common/images/default.gif;this.onerror=null'">
 		                </a>
 		            </div>
 		            <div class="m-right" >
 		                <a href="javascript:void(0)" onclick="findGoodsByName()" class="easyui-linkbutton" data-options="plain:true,outline:true">
-		                	<span  class="shopping-client-text">搜索</span>
+		                	<span  class="shopping-client-smalltext">搜索</span>
 		                </a>
 		            </div>
 			    </div>

@@ -7,15 +7,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    <title>商城系统</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+  <base href="<%=basePath%>">
+  <meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>美酒商城</title>
 
-	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
+	<link rel="stylesheet" type="text/css" href="css/client.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
@@ -30,8 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 
 $(function () {
-	$("#clientName").textbox('textbox').css("font-size", "48px");
-	$("#password").textbox('textbox').css("font-size", "48px");
+	$("#clientName").textbox('textbox').css("font-size", "18px");
+	$("#password").textbox('textbox').css("font-size", "18px");
 			
 	console.log(
 			"屏幕分辨率为："+screen.width+"*"+screen.height 
@@ -100,36 +99,34 @@ function register(){
 <body>
 	<div class="easyui-navpanel" >
 	    <header >
-	        <div class="m-toolbar" style="justify-content:center;align-items:center;height:100px;">
-	            <span class="m-title" style="font-size:48px;"><br>用户登录</span>
+	        <div class="m-toolbar" style="justify-content:center;align-items:center;height:40px;">
+	            <span class="m-title" style="font-size:28px;">用户登录</span>
 	            <div class="m-left">
 	                <a href="javascript::void(0)" onclick="$.mobile.back()">
-	                	<img src="images/back.png" style="margin-top:20;" width="64px" height="64px" onerror="this.src='common/images/default.gif;this.onerror=null'">
+	                	<img src="images/back.png" style="margin-top:5;" width="34px" height="34px" onerror="this.src='common/images/default.gif;this.onerror=null'">
 	                </a>
 	            </div>
 	        </div>
 	    </header>
-	    <div style="margin:20px auto;width:100px;height:100px;border-radius:100px;overflow:hidden">
-	    </div>
-	    <div style="text-align:center;margin:20px auto">
+	    <div style="text-align:center;margin:10px auto">
 	    	<span class="shopping-client-text" style="">用户名</span>
-	        <div style="margin-top:20px">
-	            <input class="easyui-textbox" id="clientName" data-options="prompt:'输入 用户名 ',iconCls:'icon-man'" style="width:80%;height:70px;">
+	        <div style="margin-top:10px">
+	            <input class="easyui-textbox" id="clientName" data-options="prompt:'输入 用户名 ',iconCls:'icon-man'" style="width:80%;height:40px;">
 	        </div>
-	        <div style="margin-top:40px">
+	        <div style="margin-top:10px">
 	        	<span  class="shopping-client-text">密码</span>
 	        </div>
-	        <div style="margin-top:20px">
-	            <input class="easyui-passwordbox" id="password" data-options="prompt:'输入密码 '  " style="width:80%;height:70px;">
+	        <div style="margin-top:10px">
+	            <input class="easyui-passwordbox" id="password" data-options="prompt:'输入密码 '  " style="width:80%;height:40px;">
 	        </div>
-	        <div style="margin-top:40px">
+	        <div style="margin-top:10px">
 	        	<span id="loginValidate" class="shopping-client-hint"></span>
 	        </div>
-	        <div style="text-align:center;margin-top:80px">
-	            <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="login();" style="width:80%;height:80px"><span class="shopping-client-text">登录</span></a>
+	        <div style="text-align:center;margin-top:20px">
+	            <a href="javascript:void(0);" class="easyui-linkbutton"  onclick="login();" style="width:80%;height:40px"><span class="shopping-client-text">登录</span></a>
 	        </div>
-	        <div style="text-align:center;margin-top:30px">
-	            <a href="javascript:void(0);" class="easyui-linkbutton" onclick="register();" plain="true" outline="true" style="width:80%;height:80px"><span class="shopping-client-text">注册</span></a> 
+	        <div style="text-align:center;margin-top:20px">
+	            <a href="javascript:void(0);" class="easyui-linkbutton" onclick="register();" plain="true" outline="true" style="width:80%;height:40px"><span class="shopping-client-text">注册</span></a> 
 	        </div>
 	    </div>
 	</div>

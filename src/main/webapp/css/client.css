@@ -1,11 +1,11 @@
 @charset "utf-8";
 
 .shopping-client-smalltext{
-	font-size:18px;
+	font-size:10px;
 }
 
 .shopping-client-text{
-	font-size:28px;
+	font-size:18px;
 }
 
 .shopping-client-text-div{
@@ -14,7 +14,7 @@
 }
 
 .shopping-client-hint{
-	font-size:50px;
+	font-size:18px;
 	color:red;
 }
 
