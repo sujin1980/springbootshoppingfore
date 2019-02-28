@@ -189,16 +189,29 @@ function toHomePage(){
             </div>
             <div id="mm" class="easyui-menu" style="width:20px;" data-options="itemHeight:30, itemWidth:50, noline:true">
 	            <div>
+<<<<<<< HEAD
 	             	易耗品
+=======
+	             	<span style="font-size:18px;"> 易耗品 </span>
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 	             </div>
 	            <div>
+<<<<<<< HEAD
 	                有偿用品
+=======
+	                <span style="font-size:18px;">有偿用品 </span>
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 	            </div>
 	            <div>
+<<<<<<< HEAD
 	            	布草
+=======
+	            	<span style="font-size:18px;">布草 </span>
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 	            </div>
 	        </div>
 	    </header>    
+<<<<<<< HEAD
   
 	    <footer style="height:60px">
 	        <div id="tt" class="easyui-tabs"  data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
@@ -208,6 +221,34 @@ function toHomePage(){
 						<img src='images/homepage.png'  width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
 						</a>
 					</div>
+=======
+   
+    
+ 
+        <div id="tt" class="easyui-tabs"  data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+			<div >
+				<div class="panel-header tt-inner" >
+				    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
+					<img src='images/homepage.png'  width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+					</a>
+				</div>
+			</div>
+			
+			<div >
+				<div class="panel-header tt-inner">
+				    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
+					<img src='images/categroy.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+					</a>
+				</div>
+			</div>
+			
+			<div >
+				<div class="panel-header tt-inner">
+					<span class="m-badge" id="ordernumber" style="font-size:18px;"></span>
+					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
+					<img src='images/cart.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+					</a>
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 				</div>
 				
 				<div >
@@ -243,6 +284,28 @@ function toHomePage(){
 			    
 			    </ul>
 			</div>
+<<<<<<< HEAD
 	  </div>
+=======
+			<div >
+				<div class="panel-header tt-inner">
+					<a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()">
+					<img src='images/login.png' id="clientimage" width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+		    		</a>
+		        </div>
+			</div>
+	</div>
+
+    <div style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
+	    <div id="productlist">
+		    <ul class="m-list" id="product-m-list">
+		    
+		    </ul>
+		</div>
+	</div>
+
+	
+	
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 </body>
 </html>

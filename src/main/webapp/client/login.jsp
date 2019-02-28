@@ -14,7 +14,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<title>美酒商城</title>
 
 	<link rel="stylesheet" type="text/css" href="css/client.css"/>
+<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+=======
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
@@ -100,7 +104,11 @@ function register(){
 	<div class="easyui-navpanel" >
 	    <header >
 	        <div class="m-toolbar" style="justify-content:center;align-items:center;height:40px;">
+<<<<<<< HEAD
 	            <span class="m-title" style="font-size:20px;">用户登录</span>
+=======
+	            <span class="m-title" style="font-size:28px;">用户登录</span>
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 	            <div class="m-left">
 	                <a href="javascript::void(0)" onclick="$.mobile.back()">
 	                	<img src="images/back.png" style="margin-top:5;" width="34px" height="34px" onerror="this.src='common/images/default.gif;this.onerror=null'">

@@ -107,11 +107,16 @@ function editOrder(){
 		<header >
 		    <div class="m-toolbar" style="justify-content:center;align-items:center;height:40px;">
 		    	<div class="m-title">
+<<<<<<< HEAD
 				    <span style="font-size:20px">我的商城</span>
+=======
+				    <span style="font-size:28px;">我的商城</span>
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 				</div>
 				
 		    </div>
 	    </header>  
+<<<<<<< HEAD
 	    <footer style="height:60px">
 		    <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
 					<div>
@@ -120,8 +125,35 @@ function editOrder(){
 							<img src='images/homepage.png' width="93.75" height="60"  onerror="this.src='common/images/default.gif;this.onerror=null'">
 							</a>
 						</div>
+=======
+	    <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
+				<div>
+					<div class="panel-header tt-inner">
+					    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
+						<img src='images/homepage.png' width="93.75" height="60"  onerror="this.src='common/images/default.gif;this.onerror=null'">
+						</a>
+					</div>
+				</div>
+				
+				<div>
+					<div class="panel-header tt-inner">
+					    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
+						<img src='images/categroy.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+						</a>
+					</div>
+				</div>
+				
+				<div>
+					<div class="panel-header tt-inner">
+						<span class="m-badge" id="ordernumber" style="font-size:18px;"></span>
+						<a href="javascript:void(0)" class="easyui-linkbutton" onclick="editOrder()">
+						<img src='images/cart.png' width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
+						
+						</a>
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 					</div>
 					
+<<<<<<< HEAD
 					<div>
 						<div class="panel-header tt-inner">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
@@ -153,11 +185,26 @@ function editOrder(){
 		    <div id="baseinfo" style="padding-top:20px;height:100px;width:100%;background:transparent;background-color:#FF1493;color:#ffffff;border-radius:5px;text-align:center; align-items:center;">
 		    	<span class = "shopping-client-text">用户名：</span> 
 		    	<span id="clientname" class = "shopping-client-text">${sessionScope.loginClient.name}</span>&nbsp; &nbsp; &nbsp; 
+=======
+				</div>
+				<div>
+					<div class="panel-header tt-inner">
+						<a href="javascript:void(0)" class="easyui-linkbutton" onclick="">
+						<img src='images/redman.png' width="93.75" height="60" id="clientimage" onerror="this.src='common/images/default.gif;this.onerror=null'">
+			    		</a>
+			        </div>
+				</div>
+		 </div>  
+		    <div id="baseinfo" style="width:100%;background:transparent;background-color:#FF1493;color:#ffffff;border-radius:5px;text-align:center; align-items:center;">
+		    	<span class = "shopping-client-smalltext">用户名：</span> 
+		    	<span id="clientname" class = "shopping-client-smalltext">${sessionScope.loginClient.name}</span>&nbsp; &nbsp; &nbsp; 
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 		    	<a href="javascript:void(0);" onclick="baseInfo()" style="color:#ffffff;">
 		    		<img src='images/setting.png' class="shopping-main-setting-icon" width="14px" height="14px" />
 		    		<span class = "shopping-client-text">账号管理</span>
 				</a>
 		    </div>
+<<<<<<< HEAD
 		    <div id="orderinfo" style="padding:20px;text-align:center;margin:0 auto;">
 		        <table>
 			     	<tr>
@@ -191,6 +238,8 @@ function editOrder(){
 				</table>
 		    </div>
 	   </div>	    
+=======
+>>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
 		     
 	</div>	
 </body>
