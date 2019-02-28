@@ -172,22 +172,21 @@ function toHomePage(){
 }
 </script> 
 
-<body>
-	<div class="easyui-navpanel" >
-		<header>
+<body class="easyui-layout">
+		<div data-options="region:'north',split:false,border:true" style="justify-content:center;align-items:center;overflow:hidden;height:40px;width:100%;z-index:1">
             <div class="m-toolbar" style="justify-content:center;align-items:center;height:40px">
                 <div class="m-title" id="test" style="padding:8px" >
                 	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="findGoods()" data-options="text:'搜索商品请进入'  ,iconCls:'icon-search',plain:true"></a>
                 </div>
                 <div class="m-left">
                 	<a href="javascript:void(0)" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a>
-                	
+               
                 </div>
                 <div class="m-right">
                     <a href="javascript:void(0)" class="easyui-linkbutton" onclick="loginClient()" data-options="iconCls:'icon-man',plain:true"></a>
                 </div>
             </div>
-            <div id="mm" class="easyui-menu" style="width:20px;" data-options="itemHeight:30, itemWidth:50, noline:true">
+            <div id="mm" class="easyui-menu" style="width:20px;" data-options="itemHeight:30, itemWidth:5, noline:true">
 	            <div>
             		易耗品
 	             </div>
@@ -198,10 +197,9 @@ function toHomePage(){
 	            	布草
 	            </div>
 	        </div>
-	    </header>    
+	    </div>    
 
-  
-	    <footer style="height:60px">
+	    <div data-options="region:'south',split:false,border:true" style="height:60px;width:100%;z-index:1">  
 	        <div id="tt" class="easyui-tabs"  data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
 				<div>
 					<div class="panel-header tt-inner" >
@@ -236,9 +234,9 @@ function toHomePage(){
 			        </div>
 				</div>
 		    </div>
-	    </footer>		
+	    </div>		
 	  
-		  <div style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
+		  <div data-options="region:'center',split:false,border:true"  style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
 			    <div id="productlist">
 				    <ul class="m-list" id="product-m-list">
 				    

@@ -14,25 +14,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<title>美酒商城</title>
 	
 	<link rel="stylesheet" type="text/css" href="css/client.css"/>
-<<<<<<< HEAD
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
-		<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
-		<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
-		<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
-			
-		<script type="text/javascript" src="common/easyui/jquery.min.js"></script>
-		<script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
-		<script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
-=======
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
-
+		
 	<script type="text/javascript" src="common/easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
->>>>>>> branch 'master' of https://github.com/sujin1980/springbootshoppingfore.git
+
   </head>
 
 <script type="text/javascript">
