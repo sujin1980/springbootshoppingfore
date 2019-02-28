@@ -170,7 +170,6 @@ function findGoods(){
 function toHomePage(){
 	window.location.href = "mainFrame.jsp";
 }
-
 </script> 
 
 <body>
