@@ -8,21 +8,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>欢迎登录后台管理系统</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+    <meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>美酒商城</title>
 	
-	<link rel="stylesheet" type="text/css" href="common/css/client.css"/>
-	<link rel="stylesheet" type="text/css" href="common/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/client.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
-	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
+    <link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">
-
+	
 	<script type="text/javascript" src="common/easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
+    <script type="text/javascript" src="common/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="common/easyui/jquery.easyui.mobile.js"></script>
   </head>
 
 <script type="text/javascript">
@@ -99,40 +98,37 @@ function buyNow(){
 
 </script> 
 
-<body>
-		<div class="easyui-navpanel">
-			<header>
-			    <div class="m-toolbar" style="justify-content:center;align-items:center;height:80px;">
+<body class="easyui-layout">
+			<div data-options="region:'north',split:false,border:true" style="justify-content:center;align-items:center;overflow:hidden;height:40px;width:100%;z-index:1">
+				    <div class="m-toolbar" style="justify-content:center;align-items:center;height:40px">
 						<span class="m-title"  style="font-size:28px;padding:15px;">
-							<nav>
-								<a href="javascript:void(0);" onclick="goodsBaseInfo()" class="shopping-client-text">商品</a>&nbsp;&nbsp;&nbsp; 
-								<a href="javascript:void(0);" onclick="goodsDetails()" class="shopping-client-text">详情</a>&nbsp;&nbsp;&nbsp;
-								<a href="javascript:void(0);" class="shopping-client-text">推荐</a>
-							</nav>
+							<a href="javascript:void(0);" onclick="goodsBaseInfo()" class="shopping-client-text">商品</a>
+							<a href="javascript:void(0);" onclick="goodsDetails()" class="shopping-client-text">详情</a>
+							<a href="javascript:void(0);" class="shopping-client-text">推荐</a>
 						</span>
 			        
-			        <div class="m-left">
-		                <a href="javascript:void(0);" class="easyui-linkbutton m-back" data-options="plain:true,outline:true" onclick="$.mobile.back()">
-		     				<span class="shopping-client-text">回退</span>
-		     			</a>
-		            </div>
-		            <div class="m-right">
-		                <a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a>
-		            </div>
-			    </div>
-			    <div id="mm" class="easyui-menu" style="width:150px;" data-options="itemHeight:50,noline:true">
-		            <div>
-		            	<span style="font-size:28px;">首页</span>
-		            </div>
-		            <div>
-		            	<span style="font-size:28px;">我的商城</span>
-		            </div>
-		            <div>
-		   				<span style="font-size:28px;">分享</span>         
-		            </div>
-		        </div>
-			</header>
-			<footer>
+						<div class="m-left">
+			                <a href="javascript::void(0)" onclick="$.mobile.back()">
+			                	<img src="images/back.png" style="margin-top:5;" width="34px" height="34px" onerror="this.src='common/images/default.gif;this.onerror=null'">
+			                </a>
+			            </div>
+						<div class="m-right">
+							<a href="javascript:void(0);" class="easyui-menubutton" data-options="iconCls:'icon-more',plain:true,hasDownArrow:false,menu:'#mm',menuAlign:'right'"></a>
+						</div>
+					</div>
+					<div id="mm" class="easyui-menu" style="width:50px;" data-options="itemHeight:20,noline:true">
+						<div>
+							首页
+						</div>
+						<div>
+							我的商城
+						</div>
+						<div>
+							分享         
+						</div>
+					</div>
+			</div>
+			<div data-options="region:'south',split:false,border:true" style="height:60px;width:100%;z-index:1">  
 	            <div class="m-buttongroup m-buttongroup-justified" style="height:60px;width:100%">
 	                <a href="javascript:void(0)" class="easyui-linkbutton" data-options="size:'large',iconAlign:'top',plain:true">
 	                	<span class="shopping-client-text">联系客户</span>
@@ -146,9 +142,9 @@ function buyNow(){
 	                	<span class="shopping-client-text">立即购买</span>
 	                </a>
 	            </div>
-	        </footer>
+	        </div>
         
-			<div id="goodsinfo" style="background:#C71585;padding:20px;height:100%;width:100%;z-index:1">
+			<div data-options="region:'center',split:false,border:true"  id="goodsinfo" style="background:#C71585;padding:20px;height:100%;width:100%;z-index:1">
 			    <div id="goodsbaseinfo" style="text-align:center; align-items:center;height:100%;width:100%;">
 			    	
 			    	<span id="goodsname" class="shopping-client-text">${product.name}</span></br>
@@ -161,7 +157,6 @@ function buyNow(){
 			    	<span id="goodsremarks2" class="shopping-client-text">${product.remarks}</span>
 			    </div>
 			</div>
-										
-		</div>
+	
   </body>
   </html>
