@@ -221,7 +221,7 @@ function initOrderList(){
 		</header>
 		<div  style="height:100%;width:100%;z-index:1;" >
 			<div style="padding:30px;height:50px;width:100%;z-index:1;" >
-				<input class="easyui-textbox" id="querycondition" data-options="prompt:'商品名称/商品编号/订单号'  "  style="width:70%;height:40px">
+					<input class="easyui-textbox" id="querycondition" data-options="prompt:'商品名称/商品编号/订单号'  "  style="width:60%;height:40px">
 					<a id="btn" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="margin:10px;height:40px">
 						<span class="shopping-client-text">搜索</span>
 	                </a>

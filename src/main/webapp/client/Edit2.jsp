@@ -112,6 +112,7 @@ function editOrder(){
 				
 		    </div>
 	    </header>  
+
 	    <footer style="height:60px">
 		    <div id="tt" class="easyui-tabs" data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
 					<div>
@@ -121,7 +122,6 @@ function editOrder(){
 							</a>
 						</div>
 					</div>
-					
 					<div>
 						<div class="panel-header tt-inner">
 						    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
@@ -147,17 +147,20 @@ function editOrder(){
 				    		</a>
 				        </div>
 					</div>
-			 </div>  
+			</div>		
 	   </footer>		 
 	   <div data-options="region:'center',split:false,border:true" style="padding:5px;height:100%;width:100%;z-index:1">   
+ 
 		    <div id="baseinfo" style="padding-top:20px;height:100px;width:100%;background:transparent;background-color:#FF1493;color:#ffffff;border-radius:5px;text-align:center; align-items:center;">
-		    	<span class = "shopping-client-text">用户名：</span> 
-		    	<span id="clientname" class = "shopping-client-text">${sessionScope.loginClient.name}</span>&nbsp; &nbsp; &nbsp; 
+		    	<span class = "shopping-client-smalltext">用户名：</span> 
+		    	<span id="clientname" class = "shopping-client-smalltext">${sessionScope.loginClient.name}</span>&nbsp; &nbsp; &nbsp; 
+
 		    	<a href="javascript:void(0);" onclick="baseInfo()" style="color:#ffffff;">
 		    		<img src='images/setting.png' class="shopping-main-setting-icon" width="14px" height="14px" />
-		    		<span class = "shopping-client-text">账号管理</span>
+		    		<span class = "shopping-client-smalltext">账号管理</span>
 				</a>
 		    </div>
+
 		    <div id="orderinfo" style="padding:20px;text-align:center;margin:0 auto;">
 		        <table>
 			     	<tr>

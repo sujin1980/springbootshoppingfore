@@ -39,6 +39,25 @@
 	font-size:18px;
 }
 
-#panel-header tt-inner{
-	
+.shopping-client-hint{
+	font-size:18px;
+	color:red;
 }
+
+.shopping-client-hint-div{
+	text-align:center;
+	margin-top:40px;
+}
+
+.shopping-main-frame-icon{
+	width:50;
+	height:50;
+}
+
+#clientName{
+	width:80%;
+	height:60px;
+	font-size:60px;
+}
+
+

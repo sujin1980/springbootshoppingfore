@@ -13,8 +13,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>美酒商城</title>
 
+
+	
 	<link rel="stylesheet" type="text/css" href="css/client.css"/>
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/metro/easyui.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/mobile.css">
 	<link rel="stylesheet" type="text/css" href="common/easyui/themes/icon.css">

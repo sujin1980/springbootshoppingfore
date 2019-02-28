@@ -189,7 +189,7 @@ function toHomePage(){
             </div>
             <div id="mm" class="easyui-menu" style="width:20px;" data-options="itemHeight:30, itemWidth:50, noline:true">
 	            <div>
-	             	易耗品
+            		易耗品
 	             </div>
 	            <div>
 	                有偿用品
@@ -199,17 +199,18 @@ function toHomePage(){
 	            </div>
 	        </div>
 	    </header>    
+
   
 	    <footer style="height:60px">
 	        <div id="tt" class="easyui-tabs"  data-options="tabHeight:60,fit:true,tabPosition:'bottom',border:false,pill:true,narrow:true,justified:true">
-				<div >
+				<div>
 					<div class="panel-header tt-inner" >
 					    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="toHomePage()">
 						<img src='images/homepage.png'  width="93.75" height="60" onerror="this.src='common/images/default.gif;this.onerror=null'">
 						</a>
 					</div>
 				</div>
-				
+			
 				<div >
 					<div class="panel-header tt-inner">
 					    <a href="javascript:void(0)" class="easyui-linkbutton" onclick=""> 
@@ -235,14 +236,17 @@ function toHomePage(){
 			        </div>
 				</div>
 		    </div>
-	  </footer>		
+	    </footer>		
 	  
-	  <div style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
-		    <div id="productlist">
-			    <ul class="m-list" id="product-m-list">
-			    
-			    </ul>
-			</div>
-	  </div>
+		  <div style="background:#C71585;padding:5px;height:100%;width:100%;z-index:1">
+			    <div id="productlist">
+				    <ul class="m-list" id="product-m-list">
+				    
+				    </ul>
+				</div>
+		   </div>
+
+    </div>
+
 </body>
 </html>

@@ -186,7 +186,7 @@ function login(){
 		<div class="easyui-navpanel">
 			<header>
 			    <div class="m-toolbar" style="justify-content:center;align-items:center;height:40px;">
-			        <span class="m-title" style="font-size:20px;">用户注册</span>
+			    	<span class="m-title" style="font-size:20px;">用户注册</span>
 			        <div class="m-left">
 		                <a href="javascript::void(0)" onclick="$.mobile.back()">
 		                	<img src="images/back.png" style="margin-top:5;" width="34px" height="34px" onerror="this.src='common/images/default.gif;this.onerror=null'">
